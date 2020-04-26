@@ -11,6 +11,8 @@ import { createTalk as CreateTalk } from './graphql/mutations'
 
 import { withAuthenticator } from 'aws-amplify-react'
 
+import './App.css';
+
 const CLIENT_ID = uuid()
 
 class App extends React.Component {
