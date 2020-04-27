@@ -5,10 +5,9 @@ import ShopContext from '../../hooks/ShopContext';
 const styles ={
     container: {
         display: 'grid',
-        gridTemplateRows: '150px 100px',
+        gridTemplateColumns: '1fr 3fr',
         columnGap: '10px',
         margin: '10px',
-        //border: '1px solid #ddd',
     },
     imageContainer: {
         justifySelf: 'end',
@@ -17,7 +16,7 @@ const styles ={
         width: '200px',
         height: '150px'
     },
-
+    
     name: {
         fontSize: '24px',
     },

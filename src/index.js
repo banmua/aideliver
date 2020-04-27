@@ -22,7 +22,7 @@ ReactDOM.render(
       <ProductList />
       <div><h2>Your order:</h2></div>
       <Cart />
-      <div><h2>Your address:</h2></div>
+      <div><h2>Your info:</h2></div>
       <Address />
       <SubmitButton style={{marginTop: '20px'}} />
     </ShopContextProvider>

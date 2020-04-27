@@ -39,6 +39,12 @@ export default props => {
 
             <div>Email</div>
             <div><input type='text' style={styles.input}></input></div>
+
+            <div>Delivery Date</div>
+            <div><input type='text' style={styles.input}></input></div>
+
+            <div>Deliver Time</div>
+            <div><input type='text' style={styles.input}></input></div>
         </div>
     )
 }

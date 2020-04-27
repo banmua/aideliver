@@ -4,7 +4,9 @@ import Product from './Product';
 
 const styles = {
     container: {
-        display: 'grid',
+        display: 'flex',
+        flexWrap: 'wrap',
+        //display: 'grid',
         gridTemplateColumns: '1fr 1fr'
     }
 }
