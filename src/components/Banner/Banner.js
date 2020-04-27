@@ -2,9 +2,10 @@ import React from 'react';
 
 const styles = {
     container: {
-        border: '2px solid gray',
+        border: '1px solid lightGray',
         margin: '0 10px 20px',
         padding: '0 20px 20px 20px',
+        backgroundColor: '#fafafa',
     }
 }
 
