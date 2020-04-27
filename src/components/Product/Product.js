@@ -25,7 +25,6 @@ export default props => {
             <div style={styles.imageContainer}><img src={image} style={styles.image} /></div>
             <div>
                 <div style={styles.name}>{name}</div>
-                <div>{description}</div>
                 <div>${price}</div>
             </div>
         </div>

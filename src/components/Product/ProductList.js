@@ -1,24 +1,35 @@
 import React from 'react';
 import Product from './Product';
 
+const styles = {
+    container: {
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr'
+    }
+}
+
 const list = [
     {
-        name: 'Beef Noodle Soup (Pho Bo)',
+        id: 'PHO-001',
+        name: 'Beef Pho',
         description: 'Noode with cooked beef slices',
         price: '12.00',
         image: '/images/phoBo.jpg',
     }, {
-        name: 'Chicken Noodle Soup (Pho Ga)',
+        id: 'PHO-002',
+        name: 'Chicken Pho',
         description: 'Noode with cooked chicken',
         price: '12.00',
         image: '/images/phoGa.jpg',
     }, {
-        name: 'Eggrolls (Cha gio)',
+        id: 'ROLL-001',
+        name: 'Eggroll',
         description: 'Fried rolls of ground pork and veggies',
         price: '2.00',
         image: '/images/chaGio.jpg',
     }, {
-        name: 'Spring Rolls (Goi Cuon)',
+        id: 'ROLL-002',
+        name: 'Spring Roll',
         description: 'Rice paper rolls with shrimp and beef',
         price: '2.00',
         image: '/images/goiCuon.jpg',
@@ -27,7 +38,7 @@ const list = [
 
 export default props => {
     return (
-        <div>
+        <div style={styles.container}>
             {list.map(prod => <Product {...prod} />) }
         </div>
     )
