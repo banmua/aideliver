@@ -19,12 +19,20 @@ export default props => {
         <div style={styles.container}>
             <div>Name</div>
             <div style={styles.label}><input type='text' style={styles.input}></input></div>
-            
+
             <div>Street</div>
             <div><input type='text' style={styles.input}></input></div>
 
             <div>City</div>
-            <div><input type='text' style={styles.input}></input></div>
+            <div>
+                <input list="cities" name="browser" style={styles.input}/>
+                <datalist id="cities">
+                    <option value="Palo Alto, CA" />
+                    <option value="Los Altos, CA" />
+                    <option value="MountainView, CA" />
+                    <option value="Sunnyvale, CA" />
+                </datalist>
+            </div>
 
             <div>Phone</div>
             <div><input type='text' style={styles.input}></input></div>
