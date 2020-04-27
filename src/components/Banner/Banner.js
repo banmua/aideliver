@@ -12,9 +12,8 @@ export default props => {
     return (
         <div style={styles.container}>
             <h2>AiDeliver.com</h2>
-            <div>Place orders and we deliver the next day between 2pm to 4pm</div>
+            <div>Deliver from 10 am to 8 pm, Pacific Time</div>
             <div>Currently serving Palo Alto, Los Altos, Mountain View, and Sunnyvale, California</div>
-            <div>We only take a limited number of orders each day. First come, first serve.</div>
         </div>
     )
 }
