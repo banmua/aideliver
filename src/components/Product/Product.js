@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 const styles ={
     container: {
@@ -15,6 +16,9 @@ const styles ={
     },
     name: {
         fontSize: '24px',
+    },
+    button: {
+        marginTop: '5px'
     }
 }
 
@@ -26,6 +30,7 @@ export default props => {
             <div>
                 <div style={styles.name}>{name}</div>
                 <div>${price}</div>
+                <div style={styles.button}> <Button variant="contained" color="secondary" >Add</Button></div>
             </div>
         </div>
     )
