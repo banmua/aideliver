@@ -5,7 +5,7 @@ import ShopContext from '../../hooks/ShopContext';
 const styles = {
     container: {
         display: 'grid',
-        gridTemplateColumns: '8fr 1fr 2fr',
+        gridTemplateColumns: '7fr 2fr 2fr',
         padding: '5px 0'
     },
 
@@ -25,7 +25,7 @@ export default props => {
 
     return (
         <div style={styles.container}>
-            <div style={styles.right}>Tax</div>
+            <div style={styles.right}>Tax:</div>
             <div style={styles.right}>${getTax()}</div>
         </div>
     )

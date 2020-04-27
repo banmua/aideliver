@@ -13,8 +13,10 @@ const styles ={
         justifySelf: 'end',
     },
     image: {
-        width: '150px'
+        width: '200px',
+        height: '150px'
     },
+    
     name: {
         fontSize: '24px',
     },
@@ -24,7 +26,7 @@ const styles ={
 }
 
 export default props => {
-    const {image, name, description, price, id} = props;
+    const {image, name, description, price, id, unit} = props;
     const {state, dispatch} = useContext(ShopContext);
 
     return (
@@ -32,7 +34,7 @@ export default props => {
             <div style={styles.imageContainer}><img src={image} style={styles.image} /></div>
             <div>
                 <div style={styles.name}>{name}</div>
-                <div>${price}</div>
+                <div>${price} / {unit}</div>
                 <div style={styles.button}> 
                     <Button variant="contained" color="secondary" 
                             onClick={() => dispatch({type: 'ADD', payload: {id}})}

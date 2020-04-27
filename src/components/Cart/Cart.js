@@ -7,7 +7,12 @@ import ShopContext from '../../hooks/ShopContext';
 
 const styles = {
     container: {
-        backgroundColor: '#fafafa'
+        backgroundColor: '#fafafa',
+        paddingTop: '10px',
+        paddingBottom: '10px',
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        border: '1px solid lightGray',
     }
 }
 

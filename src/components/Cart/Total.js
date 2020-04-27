@@ -5,7 +5,7 @@ import ShopContext, {getTotal} from '../../hooks/ShopContext';
 const styles = {
     container: {
         display: 'grid',
-        gridTemplateColumns: '8fr 1fr 2fr',
+        gridTemplateColumns: '7fr 2fr 2fr',
         padding: '5px 0'
     },
 
@@ -21,7 +21,7 @@ export default props => {
     const {state, dispatch} = useContext(ShopContext);
     return (
         <div style={styles.container}>
-            <div style={styles.right}>Total</div>
+            <div style={styles.right}>Total:</div>
             <div style={styles.right}>${getTotal(state)}</div>
         </div>
     )
