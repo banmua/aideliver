@@ -4,6 +4,7 @@ const styles = {
     container: {
         display: 'grid',
         gridTemplateColumns: '5fr 1fr 1fr 3fr',
+        padding: '5px 0'
     }
 }
 
