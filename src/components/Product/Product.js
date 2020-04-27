@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Button from '@material-ui/core/Button';
+import ShopContext from '../../hooks/ShopContext';
 
 const styles ={
     container: {
@@ -23,14 +24,20 @@ const styles ={
 }
 
 export default props => {
-    const {image, name, description, price} = props;
+    const {image, name, description, price, id} = props;
+    const {state, dispatch} = useContext(ShopContext);
+
     return (
         <div style={styles.container}>
             <div style={styles.imageContainer}><img src={image} style={styles.image} /></div>
             <div>
                 <div style={styles.name}>{name}</div>
                 <div>${price}</div>
-                <div style={styles.button}> <Button variant="contained" color="secondary" >Add</Button></div>
+                <div style={styles.button}> 
+                    <Button variant="contained" color="secondary" 
+                            onClick={() => dispatch({type: 'ADD', payload: {id}})}
+                    >Add</Button>
+                </div>
             </div>
         </div>
     )

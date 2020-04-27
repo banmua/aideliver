@@ -1,5 +1,6 @@
 export default [
     {
+        id: 'PHO-001',
         name: 'Beef Pho',
         description: 'Noode with cooked beef slices',
         price: '12.00',

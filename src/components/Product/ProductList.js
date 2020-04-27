@@ -10,11 +10,11 @@ const styles = {
 }
 
 export default props => {
-    const {products} = useContext(ShopContext); 
+    const {state, dispatch} = useContext(ShopContext); 
 
     return (
         <div style={styles.container}>
-            {products.map(prod => <Product {...prod} />) }
+            {state.products.map(prod => <Product {...prod} />) }
         </div>
     )
 }
