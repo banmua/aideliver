@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import ProductList from './components/Product/ProductList';
 import * as serviceWorker from './serviceWorker';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
@@ -10,6 +11,7 @@ Amplify.configure(config);
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <ProductList />
   </React.StrictMode>,
   document.getElementById('root')
 );
