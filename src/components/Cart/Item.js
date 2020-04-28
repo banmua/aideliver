@@ -5,7 +5,7 @@ import ShopContext, {getItemTotal} from '../../hooks/ShopContext';
 const styles = {
     container: {
         display: 'grid',
-        gridTemplateColumns: '1fr 3fr 1fr 2fr 2fr 2fr',
+        gridTemplateColumns: '1fr 3fr 1fr 1fr 2fr 2fr',
         padding: '5px 0',
         borderBottom: '1px solid #ddd',
         fontSize: '14px',
@@ -30,7 +30,7 @@ export default props => {
             <div>{product.id} </div>
             <div>{product.name}</div>
             <div style={styles.number}>${product.price}</div>
-            <div style={styles.number}>{count} {unitStr}</div>
+            <div style={styles.number}>{count}</div>
             <div style={styles.number}>${getItemTotal(state, id)}</div>
         </div>
     )

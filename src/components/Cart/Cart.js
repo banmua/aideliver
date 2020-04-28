@@ -10,8 +10,8 @@ const styles = {
         backgroundColor: '#fafafa',
         paddingTop: '10px',
         paddingBottom: '10px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
+        paddingLeft: '10px',
+        paddingRight: '10px',
         border: '1px solid lightGray',
     }
 }

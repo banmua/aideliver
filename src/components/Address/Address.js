@@ -10,7 +10,7 @@ const styles = {
         //justifySelf: 'end',
     },
     input: {
-        width: '300px'
+        width: '250px'
     }
 }
 
@@ -38,12 +38,6 @@ export default props => {
             <div><input type='text' style={styles.input}></input></div>
 
             <div>Email</div>
-            <div><input type='text' style={styles.input}></input></div>
-
-            <div>Delivery Date</div>
-            <div><input type='text' style={styles.input}></input></div>
-
-            <div>Deliver Time</div>
             <div><input type='text' style={styles.input}></input></div>
         </div>
     )

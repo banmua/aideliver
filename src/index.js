@@ -7,6 +7,7 @@ import Banner from './components/Banner';
 import ProductList from './components/Product/ProductList';
 import Cart from './components/Cart';
 import Address from './components/Address';
+import Delivery from './components/Delivery';
 import SubmitButton from './components/SubmitButton';
 import ShopContext, {ShopContextProvider} from './hooks/ShopContext';
 
@@ -24,6 +25,8 @@ ReactDOM.render(
       <Cart />
       <div><h2>Your info:</h2></div>
       <Address />
+      <div><h2>Delivery:</h2></div>
+      <Delivery />
       <SubmitButton style={{marginTop: '20px'}} />
     </ShopContextProvider>
   </React.StrictMode>,
