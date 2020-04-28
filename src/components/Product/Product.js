@@ -44,14 +44,17 @@ export default props => {
             <CardContent className={classes.content}>
                 <div style={styles.name}>{name} ({id})</div>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {description}
+                    {description}<br/>
+                    ${price} / {unit}
                 </Typography>
             </CardContent>
         </CardActionArea>
         <CardActions>
-            <Button size="small" variant='contained' color="secondary" onClick={() => dispatch({type: 'ADD', payload: {id}})}>
-                Add
-            </Button>
+            <Button size="small" variant='contained' color="secondary" onClick={() => {
+                dispatch({type: 'ADD', payload: {id}});
+                window.location.href = '#order';
+            }}
+            >Add</Button>
         </CardActions>
         </Card>
     );

@@ -21,7 +21,7 @@ ReactDOM.render(
       {/* <App /> */}
       <Banner />
       <ProductList />
-      <div><h2>Your order:</h2></div>
+      <div><a name='order'/><h2>Your order:</h2></div>
       <Cart />
       <div><h2>Your info:</h2></div>
       <Address />
