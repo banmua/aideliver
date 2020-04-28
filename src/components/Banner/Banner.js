@@ -12,7 +12,7 @@ const styles = {
 export default props => {
     return (
         <div style={styles.container}>
-            <h2>AiDeliver.com</h2>
+            <h2>PhoBalo.com</h2>
             <div><em>Delicious Vietnamese Pho and Rolls!</em> Deliver from 10 am to 8 pm (PST). Currently serving Palo Alto, Los Altos, Mountain View, and Sunnyvale, California</div>
         </div>
     )
