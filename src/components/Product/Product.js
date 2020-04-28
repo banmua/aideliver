@@ -1,47 +1,58 @@
 import React, {useContext} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import ShopContext from '../../hooks/ShopContext';
 
 const styles ={
-    container: {
-        display: 'grid',
-        gridTemplateRows: '100px 100px',
-        columnGap: '10px',
-        margin: '10px',
-        //border: '1px solid #ddd',
-    },
-    imageContainer: {
-        justifySelf: 'end',
-    },
-    image: {
-        width: '150px',
-        height: '100px'
-    },
-
     name: {
         fontSize: '20px',
     },
-    button: {
-        marginTop: '5px'
-    }
 }
 
+const useStyles = makeStyles({
+    root: {
+      maxWidth: 170,
+      margin: 5,
+    },
+    media: {
+      height: 140,
+    }, 
+    content: {
+      height: 100,
+    }
+  });
+
 export default props => {
-    const {image, name, description, price, id, unit} = props;
+    const classes = useStyles();
+    const {image, name, description, vietnamese, price, id, unit} = props;
     const {state, dispatch} = useContext(ShopContext);
 
     return (
-        <div style={styles.container}>
-            <div style={styles.imageContainer}><img src={image} style={styles.image} /></div>
-            <div>
-                <div style={styles.name}>{name}</div>
-                <div>${price} / {unit}</div>
-                <div style={styles.button}> 
-                    <Button variant="contained" color="secondary" 
-                            onClick={() => dispatch({type: 'ADD', payload: {id}})}
-                    >Add</Button>
-                </div>
-            </div>
-        </div>
-    )
+        <Card className={classes.root}>
+        <CardActionArea>
+            <CardMedia
+                    className={classes.media}
+                    image={image}
+                    title="Contemplative Reptile"
+                    />
+            <CardContent className={classes.content}>
+                <div style={styles.name}>{name} ({id})</div>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {description}
+                </Typography>
+            </CardContent>
+        </CardActionArea>
+        <CardActions>
+            <Button size="small" variant='contained' color="secondary" onClick={() => dispatch({type: 'ADD', payload: {id}})}>
+                Add
+            </Button>
+        </CardActions>
+        </Card>
+    );
 }

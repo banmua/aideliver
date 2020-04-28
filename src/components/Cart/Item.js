@@ -27,7 +27,7 @@ export default props => {
     const unitStr = count === 1 ? unit : unit + 's';
     return (
         <div style={styles.container}>
-            <div>{product.name}</div>
+            <div>{product.name} ({id})</div>
             <div style={styles.number}>${product.price}</div>
             <div style={styles.number}>{count}</div>
             <div style={styles.number}>${getItemTotal(state, id)}</div>
