@@ -8,6 +8,7 @@ const styles = {
         gridTemplateColumns: '1fr 3fr 1fr 2fr 2fr 2fr',
         padding: '5px 0',
         borderBottom: '1px solid #ddd',
+        fontSize: '14px',
     },
 
     number: {

@@ -19,7 +19,7 @@ const styles ={
     },
 
     name: {
-        fontSize: '24px',
+        fontSize: '20px',
     },
     button: {
         marginTop: '5px'
