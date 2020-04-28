@@ -13,7 +13,7 @@ export default props => {
     return (
         <div style={styles.container}>
             <h2>AiDeliver.com</h2>
-            <div>Delicious Vietnamese Pho and Rolls! Deliver from 10 am to 8 pm (Pacific Time). Currently serving Palo Alto, Los Altos, Mountain View, and Sunnyvale, California</div>
+            <div><em>Delicious Vietnamese Pho and Rolls!</em> Deliver from 10 am to 8 pm (PST). Currently serving Palo Alto, Los Altos, Mountain View, and Sunnyvale, California</div>
         </div>
     )
 }

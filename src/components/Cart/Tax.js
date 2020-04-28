@@ -5,7 +5,7 @@ import ShopContext from '../../hooks/ShopContext';
 const styles = {
     container: {
         display: 'grid',
-        gridTemplateColumns: '6fr 2fr 2fr',
+        gridTemplateColumns: '5fr 2fr 2fr',
         padding: '5px 0'
     },
 
