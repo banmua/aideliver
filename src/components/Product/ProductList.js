@@ -4,12 +4,8 @@ import Product from './Product';
 
 const styles = {
     container: {
-        //wdith: 'calc(100% - 25px)',
         display: 'flex',
         flexWrap: 'wrap',
-        //display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        border: '1px solid green'
     }
 }
 
