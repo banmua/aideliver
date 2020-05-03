@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import App from './App';
+//import App from './App';
 import Banner from './components/Banner';
 import ProductList from './components/Product/ProductList';
 import Cart from './components/Cart';
@@ -25,8 +25,6 @@ ReactDOM.render(
       <Cart />
       <div><h2>Your info:</h2></div>
       <Address />
-      {/* <div><h2>Delivery:</h2></div>
-      <Delivery /> */}
       <SubmitButton style={{marginTop: '20px'}} />
     </ShopContextProvider>
   </React.StrictMode>,
