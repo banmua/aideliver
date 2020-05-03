@@ -24,6 +24,17 @@ const reducer = (state, action) => {
             return {...state, cart: {...cart, [id]: cart[id] ? cart[id] + 1 : 1}}
         }
 
+        case 'REMOVE': {
+            const {id} = action.payload;
+            const {cart} = state;
+            const newCart = {...cart}
+            cart[id] > 1 
+                ? newCart[id] = cart[id] - 1 
+                : delete newCart[id];
+
+            return {...state, cart: {...newCart}}
+        }
+
         default:
             return state;
     }
