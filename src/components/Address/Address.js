@@ -14,6 +14,10 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +52,7 @@ const styles = {
 
 export default props => {
     const classes = useStyles();
-    const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
+    const [selectedDate, setSelectedDate] = useState(new Date().addHours(1));
     const [city, setCity] = useState('');
 
     const handleDateChange = (date) => {
