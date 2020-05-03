@@ -88,7 +88,8 @@ export default props => {
         </CardActionArea>
         <CardActions>
             <Button size="small" variant='contained' color="secondary" onClick={() => {
-                dispatch({type: 'ADD', payload: {id}});
+                if (choices && !choice) alert(`Please select a choice of ${state.dict[id].name}`)
+                else dispatch({type: 'ADD', payload: {id: choices ? choice : id}})
                 //window.location.href = '#order';
             }}
             >Add</Button>
