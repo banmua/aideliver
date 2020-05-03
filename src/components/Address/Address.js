@@ -81,6 +81,7 @@ export default props => {
 
                 <div><TextField id="standard-basic" label="Phone" style={styles.text} /></div>
                 <div><TextField id="standard-basic" label="Email" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="Referrer Code" style={styles.text} /></div>
                 <div><KeyboardDatePicker style={styles.text}
                         //margin="normal"
                         id="date-picker-dialog"
