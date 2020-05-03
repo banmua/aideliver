@@ -1,25 +1,5 @@
-export const menu = ['G1', 'G2', 'C1', 'R1', 'R2'];
-
-export const products = [
+export default [
     {
-        id: 'G1',
-        name: 'Beef Pho',
-        description: 'Beef noodle soup',
-        vietnamese: 'Pho bo',
-        price: '12.00',
-        unit: 'bowl',
-        image: '/images/phoBo.jpg',
-        choices: ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7']
-    }, {
-        id: 'G2',
-        name: 'Extra',
-        description: 'Extra noodles, beefs, or chickens',
-        vietnamese: 'Them thuc an',
-        price: '2.00',
-        unit: 'portion',
-        image: '/images/phoBo.jpg',
-        choices: ['X1', 'X2', 'X3']
-    }, {
         id: 'B1',
         name: 'Pho tai',
         description: 'Beef noodle soup with steak',
@@ -98,30 +78,6 @@ export const products = [
         vietnamese: 'Goi cuon',
         price: '2.00',
         unit: 'roll',
-        image: '/images/goiCuon.jpg',
-    }, {
-        id: 'X1',
-        name: 'Extra noddles',
-        description: 'Extra noodles',
-        vietnamese: 'Them bun',
-        price: '2.00',
-        unit: 'portion',
-        image: '/images/goiCuon.jpg',
-    }, {
-        id: 'X2',
-        name: 'Extra Beef',
-        description: 'Extra beef',
-        vietnamese: 'Them thit bo',
-        price: '2.00',
-        unit: 'portion',
-        image: '/images/goiCuon.jpg',
-    }, {
-        id: 'X3',
-        name: 'Extra Chicken',
-        description: 'Extra chicken',
-        vietnamese: 'Them thit ga',
-        price: '2.00',
-        unit: 'portion',
         image: '/images/goiCuon.jpg',
     }
 ]

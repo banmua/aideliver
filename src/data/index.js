@@ -1,5 +1,6 @@
-import products from './products';
+import {products, menu} from './products';
 
 export default {
-    products
+    products,
+    menu,
 }

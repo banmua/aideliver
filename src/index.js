@@ -18,7 +18,7 @@ Amplify.configure(config);
 ReactDOM.render(
   <React.StrictMode>
     <ShopContextProvider>
-      {/* <App /> */}
+      {/* <App />  */}
       <Banner />
       <ProductList />
       <div><a name='order'/><h2>Your order:</h2></div>

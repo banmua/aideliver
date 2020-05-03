@@ -14,7 +14,7 @@ export default props => {
 
     return (
         <div style={styles.container}>
-            {state.products.map(prod => <Product {...prod} />) }
+            {state.menu.map(id => <Product {...state.dict[id]} />)}
         </div>
     )
 }

@@ -10,6 +10,7 @@ const genDict = products => {
 }
 
 const defaultState = {
+    menu: data.menu,
     products: data.products,
     dict: genDict(data.products),
     cart: {},

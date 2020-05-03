@@ -24,14 +24,16 @@ const useStyles = makeStyles({
       height: 140,
     }, 
     content: {
-      height: 105,
+      height: 110,
     }
   });
 
 export default props => {
     const classes = useStyles();
-    const {image, name, description, vietnamese, price, id, unit} = props;
+    const {image, name, description, vietnamese, price, id, unit, choices} = props;
     const {state, dispatch} = useContext(ShopContext);
+
+    const isGroup = choices && choices.length > 0;
 
     return (
         <Card className={classes.root}>
@@ -42,10 +44,20 @@ export default props => {
                     title="Contemplative Reptile"
                     />
             <CardContent className={classes.content}>
-                <div style={styles.name}>{name} ({id})</div>
+                <div style={styles.name}>{name} {isGroup ? '' : `(${id})`}</div>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {description}<br/>
-                    ${price} / {unit}
+                    ${price} / {unit}<br/>
+                    {isGroup
+                        ?   (<div>
+                                <input list={`choices-${id}`} name="browser" style={styles.input}/>
+                                <datalist id={`choices-${id}`}>
+                                    {choices.map(id => <option>{state.dict[id].name} ({state.dict[id].id})</option>)}
+                                </datalist>
+                                </div>
+                            )
+                        : null
+                    }
                 </Typography>
             </CardContent>
         </CardActionArea>
