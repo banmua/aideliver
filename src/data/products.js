@@ -85,7 +85,7 @@ export const products = [
     }, {
         id: 'C1',
         name: 'Chicken Pho',
-        description: 'Noode with cooked chicken',
+        description: 'Chicken noodle soup',
         native: 'Pho ga',
         price: '12.00',
         unit: 'bowl',

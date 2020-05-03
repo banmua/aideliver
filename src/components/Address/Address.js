@@ -1,4 +1,25 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '100%',
+    },
+  },
+}));
 
 const styles = {
     container: {
@@ -11,34 +32,51 @@ const styles = {
     },
     input: {
         width: '250px'
+    },
+    text: {
+        width: '300px',
     }
 }
 
+
 export default props => {
+    const classes = useStyles();
+    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+
     return (
-        <div style={styles.container}>
-            <div>Name</div>
-            <div style={styles.label}><input type='text' style={styles.input}></input></div>
-
-            <div>Street</div>
-            <div><input type='text' style={styles.input}></input></div>
-
-            <div>City</div>
-            <div>
-                <input list="cities" name="browser" style={styles.input}/>
-                <datalist id="cities">
-                    <option value="Palo Alto, CA" />
-                    <option value="Los Altos, CA" />
-                    <option value="MountainView, CA" />
-                    <option value="Sunnyvale, CA" />
-                </datalist>
-            </div>
-
-            <div>Phone</div>
-            <div><input type='text' style={styles.input}></input></div>
-
-            <div>Email</div>
-            <div><input type='text' style={styles.input}></input></div>
-        </div>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <form className={classes.root} noValidate autoComplete="off">
+                <div><TextField id="standard-basic" label="First name" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="Last name" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="Street" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="City" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="Phone" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="Email" style={styles.text} /></div>
+                <div><TextField id="standard-basic" label="Referrer" style={styles.text} /></div>
+                <div><KeyboardDatePicker style={styles.text}
+                        //margin="normal"
+                        id="date-picker-dialog"
+                        label="Delivery Date"
+                        format="MM/dd/yyyy"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{'aria-label': 'change date'}}
+                    />
+                </div>
+                <div><KeyboardTimePicker style={styles.text}
+                        //margin="normal"
+                        id="time-picker"
+                        label="Delivery Time"
+                        value={selectedDate}
+                        onChange={handleDateChange}
+                        KeyboardButtonProps={{'aria-label': 'change time'}}
+                    />
+                </div>
+            </form>
+        </MuiPickersUtilsProvider>
     )
 }
