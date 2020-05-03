@@ -1,4 +1,4 @@
-export const menu = ['G1', 'G2', 'C1', 'R1', 'R2'];
+export const menu = ['G1', 'C1', 'G2', 'R1', 'R2'];
 
 export const products = [
     {
@@ -109,7 +109,7 @@ export const products = [
         image: '/images/goiCuon.jpg',
     }, {
         id: 'X2',
-        name: 'Extra Beef',
+        name: 'Extra beef',
         description: 'Extra beef',
         vietnamese: 'Them thit bo',
         price: '2.00',
@@ -117,7 +117,7 @@ export const products = [
         image: '/images/goiCuon.jpg',
     }, {
         id: 'X3',
-        name: 'Extra Chicken',
+        name: 'Extra chicken',
         description: 'Extra chicken',
         vietnamese: 'Them thit ga',
         price: '2.00',
