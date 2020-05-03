@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-aideliver-dev-112328-deployment",
-					"S3Key": "amplify-builds/currencyfunction-446a2f5042732f316b31-build.zip"
+					"S3Key": "amplify-builds/currencyfunction-36363932584e465a6b65-build.zip"
 				}
 			}
 		},
