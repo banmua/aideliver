@@ -17,14 +17,14 @@ const styles ={
 
 const useStyles = makeStyles({
     root: {
-      width: 190,
+      width: 150,
       margin: 5,
     },
     media: {
       height: 140,
     }, 
     content: {
-      height: 110,
+      height: 100,
     }
   });
 
@@ -44,7 +44,7 @@ export default props => {
                     title="Contemplative Reptile"
                     />
             <CardContent className={classes.content}>
-                <div style={styles.name}>{name} {isGroup ? '' : `(${id})`}</div>
+                <div style={styles.name}>{name}</div>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {description}<br/>
                     ${price} / {unit}<br/>
@@ -52,7 +52,7 @@ export default props => {
                         ?   (<div>
                                 <input list={`choices-${id}`} name="browser" style={styles.input}/>
                                 <datalist id={`choices-${id}`}>
-                                    {choices.map(id => <option>{state.dict[id].name} ({state.dict[id].id})</option>)}
+                                    {choices.map(id => <option>{state.dict[id].name}</option>)}
                                 </datalist>
                                 </div>
                             )
