@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 export default props => {
     const [choice, setChoice] = useState('');
     const classes = useStyles();
-    const {image, name, description, vietnamese, price, id, unit, choices} = props;
+    const {image, name, description, native, price, id, unit, choices} = props;
     const {state, dispatch} = useContext(ShopContext);
 
     const isGroup = choices && choices.length > 0;
@@ -76,7 +76,7 @@ export default props => {
                                 <MenuItem value={""}><em>Choices</em></MenuItem>
                                     {choices.map(id => 
                                         <MenuItem value={`${id}`}>
-                                            {state.dict[id].name} {state.dict[id].isNameInVietnamese && <i>&nbsp;({state.dict[id].description})</i>}
+                                            {state.dict[id].name} {state.dict[id].isNameNative && <i>&nbsp;({state.dict[id].description})</i>}
                                         </MenuItem>
                                     )}
                                 </Select>
