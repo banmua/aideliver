@@ -73,7 +73,7 @@ export default props => {
                                 <Select labelId={`choices-${id}`} id={`choices-${id}`} value={choice} displayEmpty 
                                         renderValue={value => !value ? <div><em>Choices</em></div> : <div>{state.dict[value].name}</div>}
                                         onChange={event => setChoice(event.target.value)}>
-                                <MenuItem value={""}><em>Choices</em></MenuItem>
+                                    <MenuItem value={""}><em>Choices</em></MenuItem>
                                     {choices.map(id => 
                                         <MenuItem value={`${id}`}>
                                             {state.dict[id].name} {state.dict[id].isNameNative && <i>&nbsp;({state.dict[id].description})</i>}
