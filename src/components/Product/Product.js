@@ -35,7 +35,8 @@ const useStyles = makeStyles(theme => ({
         height: 110,
     },
     formControl: {
-        margin: theme.spacing(1),
+        //margin: theme.spacing(1),
+        marginTop: theme.spacing(1),
         minWidth: 120,
     },
     selectEmpty: {
@@ -69,9 +70,15 @@ export default props => {
                 {isGroup
                     ?   (
                             <FormControl className={classes.formControl}>
-                                <Select labelId={`choices-${id}`} id={`choices-${id}`} value={choice} displayEmpty onChange={event => setChoice(event.target.value)}>
+                                <Select labelId={`choices-${id}`} id={`choices-${id}`} value={choice} displayEmpty 
+                                        renderValue={value => !value ? <div><em>Choices</em></div> : <div>{state.dict[value].name}</div>}
+                                        onChange={event => setChoice(event.target.value)}>
                                 <MenuItem value={""}><em>Choices</em></MenuItem>
-                                    {choices.map(id => <MenuItem value={`${id}`}>{state.dict[id].name}</MenuItem>)}
+                                    {choices.map(id => 
+                                        <MenuItem value={`${id}`}>
+                                            {state.dict[id].name} {state.dict[id].isNameInVietnamese && <i>&nbsp;({state.dict[id].description})</i>}
+                                        </MenuItem>
+                                    )}
                                 </Select>
                             </FormControl>
                         )
@@ -82,7 +89,7 @@ export default props => {
         <CardActions>
             <Button size="small" variant='contained' color="secondary" onClick={() => {
                 dispatch({type: 'ADD', payload: {id}});
-                window.location.href = '#order';
+                //window.location.href = '#order';
             }}
             >Add</Button>
         </CardActions>
