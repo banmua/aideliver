@@ -27,7 +27,7 @@ ReactDOM.render(
       <Cart />
       <div><h2>Your info:</h2></div>
       <Address />
-      <SubmitButton style={{marginTop: '20px'}} />
+      <SubmitButton style={{margin: '20px 20px'}} />
     </ShopContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
