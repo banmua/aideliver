@@ -13,7 +13,7 @@ export const products = [
     }, {
         id: 'G2',
         name: 'Extras',
-        description: 'Extra noodles, beefs, or chickens, $2.00 to $4.00 per portion',
+        description: 'Extra noodles, beef, or chicken, $2.00 to $4.00 per portion',
         native: 'Them thuc an',
         price: '2.00',
         unit: 'portion',
