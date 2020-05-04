@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import App from './App';
+//import App from './App';
+import NavBar from './components/NavBar';
 import Banner from './components/Banner';
 import ProductList from './components/Product/ProductList';
 import Cart from './components/Cart';
@@ -18,7 +19,8 @@ Amplify.configure(config);
 ReactDOM.render(
   <React.StrictMode>
     <ShopContextProvider>
-      <App /> 
+      {/* <App />  */}
+      <NavBar />
       <Banner />
       <ProductList />
       <div><a name='order'/><h2>Your order:</h2></div>

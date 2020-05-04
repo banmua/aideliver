@@ -14,6 +14,7 @@ const defaultState = {
     products: data.products,
     dict: genDict(data.products),
     cart: {},
+    deliveryFee: 5,
 }
 
 const reducer = (state, action) => {
@@ -53,10 +54,11 @@ export const ShopContextProvider = ({children}) => {
 
 
 const calcTax = state => 0.08 * Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
-const calcTotal = state => calcTax(state) + Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
+const calcTotal = state => calcTax(state) + state.deliveryFee + Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
 export const getTax = state => calcTax(state).toFixed(2); 
 export const getTotal = state => calcTotal(state).toFixed(2);
 export const getItemTotal = (state, id) => (state.dict[id].price * state.cart[id]).toFixed(2);
+export const getNumOfItems = state => Object.keys(state.cart).reduce((sum, id) => sum + state.cart[id], 0);
 
 
 

@@ -119,7 +119,7 @@ export const products = [
         name: 'Extra chicken',
         description: 'Extra chicken',
         native: 'Them ga',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
@@ -127,7 +127,7 @@ export const products = [
         name: 'Extra steak (tai)',
         description: 'Extra steak (tai)',
         native: 'Them tai',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
@@ -135,7 +135,7 @@ export const products = [
         name: 'Extra meatballs (vien)',
         description: 'Extra meatballs',
         native: 'Them bo vien',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
@@ -143,7 +143,7 @@ export const products = [
         name: 'Extra brisket (chin)',
         description: 'Extra brisket',
         native: 'Them bo chin',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
@@ -151,7 +151,7 @@ export const products = [
         name: 'Extra flank (nam)',
         description: 'Extra flank',
         native: 'Them nam',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
@@ -159,7 +159,7 @@ export const products = [
         name: 'Extra fatty flank (gau)',
         description: 'Extra fatty flank',
         native: 'Them gau',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
@@ -167,7 +167,7 @@ export const products = [
         name: 'Extra tendon (gan)',
         description: 'Extra tendon',
         native: 'Them gan',
-        price: '2.00',
+        price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }
