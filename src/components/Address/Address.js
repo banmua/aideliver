@@ -41,10 +41,10 @@ const styles = {
         width: '250px'
     },
     text: {
-        width: '300px',
+        width: '340px',
     },
     city: {
-        width: '300px',
+        width: '340px',
         marginTop: '15px',
     }
 }

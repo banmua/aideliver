@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         height: 140,
     }, 
     content: {
-        height: 110,
+        height: 120,
     },
     formControl: {
         //margin: theme.spacing(1),
