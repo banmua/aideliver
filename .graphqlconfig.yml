@@ -1,6 +1,6 @@
 projects:
-  ConferenceAPI:
-    schemaPath: amplify/backend/api/ConferenceAPI/build/schema.graphql
+  shopAPI:
+    schemaPath: amplify/backend/api/shopAPI/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -13,6 +13,3 @@ projects:
         region: us-east-1
         apiId: null
         maxDepth: 2
-extensions:
-  amplify:
-    version: 3

@@ -1,0 +1,11 @@
+type Order @model {
+  id: ID!
+  title: String!
+  orderNo: String!
+  products: String!
+  user: String!
+  address: String!
+  phone: String!
+  email: String!
+  total: String!
+}

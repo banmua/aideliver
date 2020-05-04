@@ -1,15 +1,16 @@
 {
 	"api": {
-		"ConferenceAPI": {
+		"shopAPI": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
 				"authConfig": {
 					"additionalAuthenticationProviders": [],
 					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authaideliver9dbe29ce"
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "Shop",
+							"apiKeyExpirationDays": "365"
 						}
 					}
 				}

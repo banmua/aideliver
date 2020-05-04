@@ -1,93 +1,45 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTalk = `subscription OnCreateTalk {
-  onCreateTalk {
+export const onCreateOrder = `subscription OnCreateOrder {
+  onCreateOrder {
     id
-    clientID
-    name
-    description
-    speakerName
-    speakerBio
-    comments {
-      nextToken
-    }
+    title
+    orderNo
+    products
+    user
+    address
+    phone
+    email
+    total
   }
 }
 `;
-export const onUpdateTalk = `subscription OnUpdateTalk {
-  onUpdateTalk {
+export const onUpdateOrder = `subscription OnUpdateOrder {
+  onUpdateOrder {
     id
-    clientID
-    name
-    description
-    speakerName
-    speakerBio
-    comments {
-      nextToken
-    }
+    title
+    orderNo
+    products
+    user
+    address
+    phone
+    email
+    total
   }
 }
 `;
-export const onDeleteTalk = `subscription OnDeleteTalk {
-  onDeleteTalk {
+export const onDeleteOrder = `subscription OnDeleteOrder {
+  onDeleteOrder {
     id
-    clientID
-    name
-    description
-    speakerName
-    speakerBio
-    comments {
-      nextToken
-    }
-  }
-}
-`;
-export const onCreateComment = `subscription OnCreateComment($createdBy: String!) {
-  onCreateComment(createdBy: $createdBy) {
-    id
-    message
-    createdBy
-    talk {
-      id
-      clientID
-      name
-      description
-      speakerName
-      speakerBio
-    }
-  }
-}
-`;
-export const onUpdateComment = `subscription OnUpdateComment($createdBy: String!) {
-  onUpdateComment(createdBy: $createdBy) {
-    id
-    message
-    createdBy
-    talk {
-      id
-      clientID
-      name
-      description
-      speakerName
-      speakerBio
-    }
-  }
-}
-`;
-export const onDeleteComment = `subscription OnDeleteComment($createdBy: String!) {
-  onDeleteComment(createdBy: $createdBy) {
-    id
-    message
-    createdBy
-    talk {
-      id
-      clientID
-      name
-      description
-      speakerName
-      speakerBio
-    }
+    title
+    orderNo
+    products
+    user
+    address
+    phone
+    email
+    total
   }
 }
 `;

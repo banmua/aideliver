@@ -1,111 +1,54 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTalk = `mutation CreateTalk(
-  $input: CreateTalkInput!
-  $condition: ModelTalkConditionInput
+export const createOrder = `mutation CreateOrder(
+  $input: CreateOrderInput!
+  $condition: ModelOrderConditionInput
 ) {
-  createTalk(input: $input, condition: $condition) {
+  createOrder(input: $input, condition: $condition) {
     id
-    clientID
-    name
-    description
-    speakerName
-    speakerBio
-    comments {
-      nextToken
-    }
+    title
+    orderNo
+    products
+    user
+    address
+    phone
+    email
+    total
   }
 }
 `;
-export const updateTalk = `mutation UpdateTalk(
-  $input: UpdateTalkInput!
-  $condition: ModelTalkConditionInput
+export const updateOrder = `mutation UpdateOrder(
+  $input: UpdateOrderInput!
+  $condition: ModelOrderConditionInput
 ) {
-  updateTalk(input: $input, condition: $condition) {
+  updateOrder(input: $input, condition: $condition) {
     id
-    clientID
-    name
-    description
-    speakerName
-    speakerBio
-    comments {
-      nextToken
-    }
+    title
+    orderNo
+    products
+    user
+    address
+    phone
+    email
+    total
   }
 }
 `;
-export const deleteTalk = `mutation DeleteTalk(
-  $input: DeleteTalkInput!
-  $condition: ModelTalkConditionInput
+export const deleteOrder = `mutation DeleteOrder(
+  $input: DeleteOrderInput!
+  $condition: ModelOrderConditionInput
 ) {
-  deleteTalk(input: $input, condition: $condition) {
+  deleteOrder(input: $input, condition: $condition) {
     id
-    clientID
-    name
-    description
-    speakerName
-    speakerBio
-    comments {
-      nextToken
-    }
-  }
-}
-`;
-export const createComment = `mutation CreateComment(
-  $input: CreateCommentInput!
-  $condition: ModelCommentConditionInput
-) {
-  createComment(input: $input, condition: $condition) {
-    id
-    message
-    createdBy
-    talk {
-      id
-      clientID
-      name
-      description
-      speakerName
-      speakerBio
-    }
-  }
-}
-`;
-export const updateComment = `mutation UpdateComment(
-  $input: UpdateCommentInput!
-  $condition: ModelCommentConditionInput
-) {
-  updateComment(input: $input, condition: $condition) {
-    id
-    message
-    createdBy
-    talk {
-      id
-      clientID
-      name
-      description
-      speakerName
-      speakerBio
-    }
-  }
-}
-`;
-export const deleteComment = `mutation DeleteComment(
-  $input: DeleteCommentInput!
-  $condition: ModelCommentConditionInput
-) {
-  deleteComment(input: $input, condition: $condition) {
-    id
-    message
-    createdBy
-    talk {
-      id
-      clientID
-      name
-      description
-      speakerName
-      speakerBio
-    }
+    title
+    orderNo
+    products
+    user
+    address
+    phone
+    email
+    total
   }
 }
 `;
