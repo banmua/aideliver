@@ -4,7 +4,7 @@ export const products = [
     {
         id: 'G1',
         name: 'Beef Pho',
-        description: 'Beef noodle soup',
+        description: 'Beef noodle soup, $12.00 / bowl',
         native: 'Pho bo',
         price: '12.00',
         unit: 'bowl',
@@ -13,7 +13,7 @@ export const products = [
     }, {
         id: 'G2',
         name: 'Extras',
-        description: 'Extra noodles, beefs, or chickens',
+        description: 'Extra noodles, beefs, or chickens, $2.00 to $4.00 per portion',
         native: 'Them thuc an',
         price: '2.00',
         unit: 'portion',

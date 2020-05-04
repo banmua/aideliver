@@ -64,8 +64,8 @@ export default props => {
             <CardContent className={classes.content}>
                 <div style={styles.name}>{name}</div>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {description}<br/>
-                    ${price} / {unit}<br/>
+                    {description}
+                    {isGroup ? null : <div>${price} / {unit}</div>}
                 </Typography>
                 {isGroup
                     ?   (
