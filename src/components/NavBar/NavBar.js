@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: 'none',
+    display: 'block',  //'none'
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
@@ -68,14 +68,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   sectionDesktop: {
-    display: 'none',
+    display: 'flex', //'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
   },
 
   sectionMobile: {
-    display: 'flex',
+    display: 'none', //'flex',
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
@@ -172,14 +172,15 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
+
           <Typography className={classes.title} variant="h6" noWrap>
             PhoBalo.com
           </Typography>
