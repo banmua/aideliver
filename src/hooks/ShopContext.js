@@ -9,12 +9,36 @@ const genDict = products => {
     return dict;
 }
 
+const getDate = () => {
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    return date;
+}
+
+const getTime = () => {
+    const today = new Date();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    return time;
+}
+
 const defaultState = {
+    deliveryFee: 5,
     menu: data.menu,
     products: data.products,
     dict: genDict(data.products),
     cart: {},
-    deliveryFee: 5,
+    userInfo: {
+        firstName: 'John',
+        lastName: 'Doe',
+        street: '123 Main Str.',
+        city: 'Palo Alto',
+        state: 'California',
+        country: 'USA',
+        phone: '40820001234',
+        email: 'john@doe.com',
+        referrer: 'CAN237',
+        deliveryDt: new Date(),
+    }
 }
 
 const reducer = (state, action) => {
@@ -34,6 +58,16 @@ const reducer = (state, action) => {
                 : delete newCart[id];
 
             return {...state, cart: {...newCart}}
+        }
+
+        case 'UPDATE': {
+            const {key, value, parent} = action.payload;
+            if (parent) return {...state, [parent]: {...state[parent], [key]: value}}
+            return {...state, [key]: value}
+        }
+
+        case 'CLEAR': {
+            return {...defaultState}
         }
 
         default:

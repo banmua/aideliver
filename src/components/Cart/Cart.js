@@ -23,7 +23,7 @@ export default props => {
     return (
         <div style={styles.container} >
             <Header />
-            {Object.keys(state.cart).map(key => <Item id={key} />)}
+            {Object.keys(state.cart).map(key => <Item key={key} id={key} />)}
             <Tax />
             <Delivery />
             <Total />
