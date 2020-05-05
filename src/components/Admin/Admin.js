@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { API, graphqlOperation } from 'aws-amplify'
 import { listOrders as ListOrders } from '../../graphql/queries';
+import { withAuthenticator } from 'aws-amplify-react'
 
-export default props => {
+const Admin = props => {
     const [orders, setOrders] = useState(null);
 
     useEffect(() => {
@@ -25,3 +26,5 @@ export default props => {
         </div>
     )
 }
+
+export default withAuthenticator(Admin, {includeGreetings: true})

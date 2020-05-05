@@ -15,7 +15,7 @@ import './App.css';
 
 const CLIENT_ID = uuid()
 
-class App extends React.Component {
+class Login extends React.Component {
   // define some state to hold the data returned from the API
   state = {
     name: '', description: '', speakerName: '', speakerBio: '', talks: []
@@ -104,4 +104,4 @@ class App extends React.Component {
   }
 }
 
-export default withAuthenticator(App, {includeGreetings: true})
+export default withAuthenticator(Login, {includeGreetings: true})
