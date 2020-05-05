@@ -29,7 +29,6 @@ ReactDOM.render(
       <div><h2>Your info:</h2></div>
       <UserInfo />
       <SubmitButton style={{margin: '20px 20px'}} />
-      <Admin />
       </div>
     </ShopContextProvider>
   </React.StrictMode>,
