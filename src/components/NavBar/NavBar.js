@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShopContext, {getNumOfItems} from '../../hooks/ShopContext';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -213,8 +214,8 @@ export default function PrimarySearchAppBar() {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-
-            {/* <IconButton
+{/* 
+            <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}

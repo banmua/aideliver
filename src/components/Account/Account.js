@@ -1,42 +1,46 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { API, graphqlOperation } from 'aws-amplify'
-import { listOrders as ListOrders } from '../../graphql/queries';
+import Admin from '../Admin';
 import { withAuthenticator, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react'
 import { Auth} from 'aws-amplify';
 import ShopContext from '../../hooks/ShopContext';
-import OrderList from './parts/OrderList';
 import {Link} from 'react-router-dom';
 
-const Admin = props => {
+const Account = props => {
     const {state, dispatch} = useContext(ShopContext);
-    const [orders, setOrders] = useState(null);
-
+    const [userName, setUserName] = useState(null);
     useEffect(() => {
         const fetch = async () => {
             try {
                 const tokens = await Auth.currentSession();
                 const userName = tokens.getIdToken().payload['cognito:username'];
                 dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
+                setUserName(userName);
 
-                const data = await API.graphql(graphqlOperation(ListOrders))
-                setOrders(data);
-
+                console.log('>>> USER useEffect', userName);
             } catch (err) {
                 console.log('error fetching orders ...', err.message, err);
             }
         }
         fetch();
-    }, [])
+    }, [userName])
+
+    console.log('>>> USER:', userName);
 
     return (
         <div>
-            <AmplifySignOut />
-            <h2><a href="/">Home</a> / Admin</h2>
-            { ['PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
-                    ? <OrderList orders={orders} state={state} /> 
-                    : <h2>Not Accessible.</h2> }
+            <AmplifySignOut/>
+            <Link to="/admin">Admin</Link>
         </div>
     )
+
+    // return (
+    //     <div>
+    //         <AmplifySignOut/>
+    //         { ['PhuongLe', 'ThanhLe', 'ThachLe'].includes(userName) 
+    //             ? <Admin /> 
+    //             : <h2>(This page is under construction.)</h2> }
+    //     </div>
+    // )
 }
 
-export default withAuthenticator(Admin);
+export default withAuthenticator(Account, {includeGreetings: true})

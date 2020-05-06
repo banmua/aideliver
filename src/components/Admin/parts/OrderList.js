@@ -34,16 +34,7 @@ export default ({orders, state}) => {
             products: list
         }
     }
-
-    console.log('>>> ORDERS', orders && orders.data.listOrders.items, state);
-
-    //return <pre>{JSON.stringify(orders, null, 2)}</pre>
-
-
     const arr = orders && orders.data.listOrders.items.map(order => getOrder(order));
-
-    
-
     return (
         <div>
             {arr && arr.map( (order,i) => <DisplayOrder order={order} i={i} />)}

@@ -38,6 +38,9 @@ const defaultState = {
         email: 'john@doe.com',
         referrer: 'CAN237',
         deliveryDt: new Date(),
+    },
+    login: {
+        userName: null,
     }
 }
 
