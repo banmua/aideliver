@@ -24,8 +24,12 @@ export default {
     text: {
         width: '340px',
     },
+    textError: {
+        width: '340px',
+        color: 'red',
+    },
     city: {
         width: '340px',
         marginTop: '15px',
-    }
+    },
 }

@@ -41,7 +41,21 @@ const defaultState = {
     },
     login: {
         userName: null,
-    }
+    },
+    isValid: {
+        fisrtName: true,
+        lastName: true,
+        street: true,
+        city: true,
+        state: true,
+        country: true,
+        phone: true,
+        email: true,
+        referrer: true,
+        deliveryDate: true,
+        deliveryTime: true,
+    },
+    errorChecking: false,
 }
 
 const reducer = (state, action) => {

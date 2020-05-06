@@ -10,6 +10,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker} from '@material-ui/pickers';
 import ShopContext from '../../hooks/ShopContext';
 import styles, {useStyles} from './styles';
+import {errorMessages, isValid} from './errors';
 
 Date.prototype.addHours= function(h){
     this.setHours(this.getHours()+h);
@@ -22,23 +23,42 @@ export default props => {
     const {firstName, lastName, street, city, phone, email, referrer, deliveryDT} = state.userInfo;
 
     const update = (key, value, parent) => dispatch({type: 'UPDATE', payload: {key, value, parent}});
+    const checking = state.submitCount > 0;
+    const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email'];
+    const errors = {};
+    fields.forEach(field => errors[field] = !isValid(field, state.userInfo[field], state.errorChecking))
     
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <form className={classes.root} noValidate autoComplete="off">
-                <div><TextField id="standard-basic" label="First name" style={styles.text} 
-                            value={firstName} onChange={event => update('firstName', event.target.value, 'userInfo')}
+                <div><TextField id="standard-basic" label="First name" 
+                            style={errors.fistName ? styles.textError : styles.text} 
+                            error={errors.firstName}
+                            helperText={errors.firstName ? errorMessages.firstName : ''}
+                            value={firstName} 
+                            onChange={event => update('firstName', event.target.value, 'userInfo')}
                         /></div>
-                <div><TextField id="standard-basic" label="Last name" style={styles.text} 
-                            value={lastName} onChange={event => update('lastName', event.target.value, 'userInfo')}
+                <div><TextField id="standard-basic" label="Last name" 
+                            style={errors.lastName ? styles.textError : styles.text} 
+                            error={errors.lastName}
+                            helperText={errors.lastName ? errorMessages.lastName : ''}
+                            value={lastName} 
+                            onChange={event => update('lastName', event.target.value, 'userInfo')}
                         /></div>
-                <div><TextField id="standard-basic" label="Street" style={styles.text} 
-                            value={street} onChange={event => update('street', event.target.value, 'userInfo')}
+                <div><TextField id="standard-basic" label="Street"
+                            style={errors.street ? styles.textError : styles.text} 
+                            error={errors.street}
+                            helperText={errors.street ? errorMessages.street : ''}
+                            value={street} 
+                            onChange={event => update('street', event.target.value, 'userInfo')}
                         /></div>
                <div>
                     <FormControl className={classes.formControl}>
                         <InputLabel id="demo-simple-select-label">City</InputLabel>
                         <Select labelId={`city`} id={`city`} style={styles.city}
+                                    style={errors.city ? styles.textError : styles.text} 
+                                    error={errors.city}
+                                    helperText={errors.city ? errorMessages.city : ''}
                                     value={city} 
                                     onChange={event => update('city', event.target.value, 'userInfo')}>
                             <MenuItem value={"Palo Alto"}>Palo Alto, CA</MenuItem>
@@ -49,15 +69,23 @@ export default props => {
                     </FormControl>
                 </div>
 
-                <div><TextField id="standard-basic" label="Phone" style={styles.text} 
-                            value={phone} onChange={event => update('phone', event.target.value, 'userInfo')}
+                <div><TextField id="standard-basic" label="Phone" 
+                            style={errors.phone ? styles.textError : styles.text} 
+                            error={errors.phone}
+                            helperText={errors.phone ? errorMessages.phone : ''}
+                            value={phone} 
+                            onChange={event => update('phone', event.target.value, 'userInfo')}
                         /></div>
                 <div><TextField id="standard-basic" label="Email" style={styles.text} 
-                            value={email} onChange={event => update('email', event.target.value, 'userInfo')}
+                            style={errors.email ? styles.textError : styles.text} 
+                            error={errors.email}
+                            helperText={errors.email ? errorMessages.email : ''}
+                            value={email} 
+                            onChange={event => update('email', event.target.value, 'userInfo')}
                         /></div>
-                <div><TextField id="standard-basic" label="Referrer Code" style={styles.text} 
+                {/* <div><TextField id="standard-basic" label="Referrer Code" style={styles.text} 
                             value={referrer} onChange={event => update('referrer', event.target.value, 'userInfo')}
-                        /></div>
+                        /></div> */}
                 <div><KeyboardDatePicker style={styles.text}
                         //margin="normal"
                         id="date-picker-dialog"

@@ -65,7 +65,7 @@ export default props => {
                 <div style={styles.name}>{name}</div>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {description}
-                    {isGroup ? null : <span>${price} / {unit}</span>}
+                    {isGroup ? null : <span>, ${price} / {unit}</span>}
                 </Typography>
                 {isGroup
                     ?   (
