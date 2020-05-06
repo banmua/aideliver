@@ -11,24 +11,34 @@ import Amplify from 'aws-amplify';
 import config from './aws-exports';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
-
-
-
 Amplify.configure(config);
 
 ReactDOM.render(
   <React.StrictMode>
     <ShopContextProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/"><Order/></Route>
-          <Route path="/admin"><Admin /></Route>
-          <Route path="/cart"><Cart /></Route>
-        </Switch>
-      </Router>
+      {window.location.pathname === '/admin' 
+          ? <Admin />
+          : <Order />
+      }
     </ShopContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <ShopContextProvider>
+//       <Router>
+//         <Switch>
+//           <Route exact path="/"><Order/></Route>
+//           <Route path="/admin"><Admin /></Route>
+//           <Route path="/cart"><Cart /></Route>
+//         </Switch>
+//       </Router>
+//     </ShopContextProvider>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 serviceWorker.unregister();
