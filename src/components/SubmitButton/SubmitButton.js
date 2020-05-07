@@ -4,7 +4,8 @@ import ShopContext, {getTotal} from '../../hooks/ShopContext';
 import {API, graphqlOperation} from 'aws-amplify';
 import {createOrder as CreateOrder} from '../../graphql/mutations';
 import {errorMessages, isValid} from '../UserInfo/errors';
-import uuid from 'uuid/v4';
+//import uuid from 'uuid/v4';
+import {v4 as uuid} from 'uuid';
 
 
 export default ({style}) => {
