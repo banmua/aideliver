@@ -53,7 +53,7 @@ export default ({style}) => {
             }
 
         } else if (Object.keys(state.cart).length == 0) {
-            window.confirm('Your order is currently empty. Please select products and submit again.')
+            window.confirm('Your order is currently empty. Please select products, provide valid user info and submit again.')
         
         } else {
             window.confirm('Please provide valid user info and submit again.')
