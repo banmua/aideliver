@@ -8,4 +8,6 @@ type Order @model {
   phone: String!
   email: String!
   total: String!
+  deliveryDT: String!
+  orderDT: String!
 }

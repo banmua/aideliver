@@ -146,7 +146,7 @@ export default function PrimarySearchAppBar() {
       </MenuItem> */}
 
       <MenuItem  onClick={() => window.location.href='#order'}>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
+        <IconButton aria-label="show notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <ShoppingCartIcon />
           </Badge>
@@ -173,14 +173,14 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>
-          {/* <IconButton
+          <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton> */}
+          </IconButton>
 
           <Typography className={classes.title} variant="h6" noWrap>
             PhoBalo.com

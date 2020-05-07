@@ -46,17 +46,17 @@ export default ({style}) => {
 
         const isValidated = validate();
         if (isValidated) {
-            if (window.confirm('Are you sure to submit this order?')) {
+            if (window.confirm(`You order total is $${getTotal(state)}. After submitting, we will contact you via your phone number or email for delivery and payment. Are you sure you want to submit this order?`)) {
                 const id = uuid();
                 createOrder();
                 dispatch({type: 'CLEAR'})
             }
 
         } else if (Object.keys(state.cart).length == 0) {
-            window.confirm('Your order is currently empty. Please select products, provide valid user info and submit again.')
+            window.alert('Your order is currently empty. Please select products, provide valid user info and submit again.')
         
         } else {
-            window.confirm('Please provide valid user info and submit again.')
+            window.alert('Please provide valid user info and submit again.')
         }
     }
 
