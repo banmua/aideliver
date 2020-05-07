@@ -43,7 +43,7 @@ export default ({style}) => {
 
     const submitOrder = () => {
         dispatch({type: 'UPDATE', payload: {key: 'errorChecking', value: true}});
-        
+
         const isValidated = validate();
         if (isValidated) {
             if (window.confirm('Are you sure to submit this order?')) {
@@ -51,6 +51,12 @@ export default ({style}) => {
                 createOrder();
                 dispatch({type: 'CLEAR'})
             }
+
+        } else if (Object.keys(state.cart).length == 0) {
+            window.confirm('Your order is currently empty. Please select products and submit again.')
+        
+        } else {
+            window.confirm('Please provide valid user info and submit again.')
         }
     }
 
