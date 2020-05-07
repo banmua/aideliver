@@ -27,6 +27,8 @@ export default ({style}) => {
                     phone,
                     email,
                     total: getTotal(state),
+                    deliveryDT: deliveryDT.toISOString(),
+                    orderDT: (new Date()).toISOString(),
                 }
             }))
 

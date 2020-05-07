@@ -9,5 +9,5 @@ type Order @model {
   email: String!
   total: String!
   deliveryDT: String!
-  createdDT: String!
+  orderDT: String!
 }
