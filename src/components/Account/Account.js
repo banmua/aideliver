@@ -15,16 +15,12 @@ const Account = props => {
                 const userName = tokens.getIdToken().payload['cognito:username'];
                 dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
                 setUserName(userName);
-
-                console.log('>>> USER useEffect', userName);
             } catch (err) {
                 console.log('error fetching orders ...', err.message, err);
             }
         }
         fetch();
     }, [userName])
-
-    console.log('>>> USER:', userName);
 
     return (
         <div>

@@ -25,7 +25,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
               const tokens = await Auth.currentSession();
               const userName = tokens.getIdToken().payload['cognito:username'];
               dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
-              console.log('>>> USER useEffect', userName);
           } catch (err) {
               console.log('error fetching orders ...', err.message, err);
           }

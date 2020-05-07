@@ -11,7 +11,15 @@ export const validatePhone = phoneNumber => {
     return false;
 }
 
+export const checkTime = (date) => {
+    var hours = date.getHours();
+    var mins = date.getMinutes();
+    var day = date.getDay();
+    return hours >= 10 && (hours <20);     // 10 AM to 8 PM
+}
+
 export default {
     validateEmail,
     validatePhone,
+    checkTime,
 }

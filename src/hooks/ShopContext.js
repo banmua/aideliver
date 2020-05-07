@@ -21,6 +21,11 @@ const getTime = () => {
     return time;
 }
 
+Date.prototype.addHours = function(h) {
+    this.setTime(this.getTime() + (h*60*60*1000));
+    return this;
+}
+
 const defaultState = {
     deliveryFee: 5,
     menu: data.menu,
@@ -28,30 +33,30 @@ const defaultState = {
     dict: genDict(data.products),
     cart: {},
     userInfo: {
-        firstName: 'John',
-        lastName: 'Doe',
-        street: '123 Main Str.',
-        city: 'Palo Alto',
-        state: 'California',
-        country: 'USA',
-        phone: '40820001234',
-        email: 'john@doe.com',
-        referrer: 'CAN237',
-        deliveryDt: new Date(),
+        firstName: '',
+        lastName: '',
+        street: '',
+        city: '',
+        state: '',
+        country: '',
+        phone: '',
+        email: '',
+        referrer: '',
+        deliveryDT: (new Date()).addHours(1.5),
     },
     login: {
         userName: null,
     },
     isValid: {
-        fisrtName: true,
-        lastName: true,
-        street: true,
-        city: true,
-        state: true,
-        country: true,
-        phone: true,
-        email: true,
-        referrer: true,
+        firstName: false,
+        lastName: false,
+        street: false,
+        city: false,
+        state: false,
+        country: false,
+        phone: false,
+        email: false,
+        referrer: false,
         deliveryDate: true,
         deliveryTime: true,
     },

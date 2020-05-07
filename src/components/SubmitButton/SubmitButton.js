@@ -35,29 +35,23 @@ export default ({style}) => {
         }
     }
 
+    const validate = () => {
+        const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
+        const reducer = (acc, field) => acc && state.isValid[field];
+        return fields.reduce(reducer, true);
+    }
+
     const submitOrder = () => {
         dispatch({type: 'UPDATE', payload: {key: 'errorChecking', value: true}});
-
+        
         const isValidated = validate();
         if (isValidated) {
             if (window.confirm('Are you sure to submit this order?')) {
                 const id = uuid();
-                console.log('>>> ORDER:', id, cart, state.userInfo, getTotal(state));
                 createOrder();
                 dispatch({type: 'CLEAR'})
             }
         }
-    }
-
-    const validate = () => {
-        const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
-
-        fields.forEach(field => {
-            const flag = isValid(field, state.userInfo[field], state.submitCount);
-            dispatch({type: 'UPDATE', payload: {key: field, value: flag, parent: 'isValid'}});
-        })
-        
-        return fields.reduce((field, res) => state.isValid[field] && res, true);
     }
 
     return (
