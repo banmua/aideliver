@@ -28,8 +28,8 @@ export default ({orders, state}) => {
             phone,
             email,
             total,
-            deliveryDT: new Date(deliveryDT),
-            orderDT: new Date(orderDT),
+            deliveryDT: (new Date(deliveryDT)).toString(),
+            orderDT: (new Date(orderDT)).toString(),
             products: list
         }
     }
