@@ -14,8 +14,7 @@ export default ({style}) => {
     const {cart} = state;
     const {firstName, lastName, street, city, phone, email, referrer, deliveryDT} = state.userInfo;
 
-    const createOrder = async () => {
-        const id = uuid();
+    const createOrder = async (id) => {
         try {
             API.graphql(graphqlOperation(CreateOrder, {
                 input: {
@@ -33,6 +32,8 @@ export default ({style}) => {
                 }
             }))
 
+            return id;
+
         } catch (err) {
             console.log('>>> ERROR:', err);
         }
@@ -48,16 +49,18 @@ export default ({style}) => {
         dispatch({type: 'UPDATE', payload: {key: 'errorChecking', value: true}});
 
         const isValidated = validate();
-        if (isValidated) {
-            if (window.confirm(`You order total is $${getTotal(state)}. After submitting, we will contact you via your phone number or email for delivery and payment. Are you sure you want to submit this order?`)) {
-                const id = uuid();
-                createOrder();
-                dispatch({type: 'CLEAR'})
-            }
 
-        } else if (Object.keys(state.cart).length == 0) {
+        if (Object.keys(state.cart).length == 0) {
             window.alert('Your order is currently empty. Please select products, provide valid user info and submit again.')
         
+        } else if (isValidated) {
+            if (window.confirm(`You order total is $${getTotal(state)}. Are you sure you want to submit this order?`)) {
+                dispatch({type: 'CLEAR'})
+                const id = uuid();
+                createOrder(id);
+                window.alert(`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment. Out contact info: (657) 336-4136 / phobalo72@gmail.com.`)
+            }
+
         } else {
             window.alert('Please provide valid user info and submit again.')
         }
