@@ -25,7 +25,7 @@ export default props => {
         <div style={styles.container}>
             <div style={styles.bold}>Product</div>
             <div style={{...styles.bold, ...styles.number}}>Price</div>
-            <div style={{...styles.bold, ...styles.number}}>Unit</div>
+            <div style={{...styles.bold, ...styles.number}}>Qty</div>
             <div style={{...styles.bold, ...styles.number}}>Sub</div>
         </div>
     )

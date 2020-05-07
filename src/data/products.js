@@ -9,7 +9,7 @@ export const products = [
         price: '12.00',
         unit: 'bowl',
         image: '/images/phoBo.jpg',
-        choices: ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7'],
+        choices: ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8'],
     }, {
         id: 'G2',
         name: 'Extras',
@@ -81,6 +81,15 @@ export const products = [
         price: '12.00',
         unit: 'bowl',
         image: '/images/phoGa.jpg',
+        isNameNative: true,
+    }, { 
+        id: 'B8',
+        name: 'Pho dac biet',
+        description: 'everything',
+        native: 'Pho dac biet',
+        price: '12.00',
+        unit: 'bowl',
+        image: '/images/phoBo.jpg',
         isNameNative: true,
     }, {
         id: 'C1',
