@@ -9,11 +9,8 @@ const DisplayOrder = ({order, i})=> {
 }
 
 export default ({orders, state}) => {
-
-    
-
     const getOrder = order => {
-        const {id, products, user, address, phone, email, total} = order;
+        const {id, products, user, address, phone, email, total, deliveryDT, orderDT} = order;
         const cart = JSON.parse(products);
         const list = Object.keys(cart).map(key => {
             const prod = state.dict[key];
@@ -31,6 +28,8 @@ export default ({orders, state}) => {
             phone,
             email,
             total,
+            deliveryDT: new Date(deliveryDT),
+            orderDT: new Date(orderDT),
             products: list
         }
     }
