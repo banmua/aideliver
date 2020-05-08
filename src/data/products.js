@@ -1,4 +1,4 @@
-export const menu = ['G1', 'C1', 'G2', 'R1', 'R2'];
+export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'C2'];
 
 export const products = [
     {
@@ -99,6 +99,14 @@ export const products = [
         price: '12.00',
         unit: 'bowl',
         image: '/images/phoGa3.png',
+    }, {
+        id: 'C2',
+        name: 'Popcorn Chicken',
+        description: 'Fried chicken nuggets',
+        native: 'Ga ran',
+        price: '5.00',
+        unit: 'box',
+        image: '/images/popcornChicken3.jpg',
     }, {
         id: 'R1',
         name: 'Eggroll',
