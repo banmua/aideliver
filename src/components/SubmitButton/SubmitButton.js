@@ -33,6 +33,11 @@ export default ({style}) => {
             total: getTotal(state),
             deliveryDT: deliveryDT.toISOString(),
             orderDT: (new Date()).toISOString(),
+            status: 'ordered',
+            //referrer: '',
+            //actualDeliveryDT: '',
+            //deliverer: '',
+            //notes: '',
         };
 
         try {

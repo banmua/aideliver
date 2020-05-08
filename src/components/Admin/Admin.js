@@ -35,10 +35,11 @@ const Admin = props => {
             <h2><a href="/">Home</a> / Admin</h2>
             <div>
             { ['PhoBalo', 'TrangPham', 'PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
-                    ? <OrderList orders={orders} state={state} /> 
+                    // ? <OrderList orders={orders} state={state} /> 
+                    ? <Table data={orders?.data ? orders.data.listOrders.items : []} />
                     : <h2>Not Accessible.</h2> }
             </div>
-            <Table />
+            
         </div>
     )
 }
