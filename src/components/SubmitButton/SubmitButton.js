@@ -12,7 +12,7 @@ export default ({style}) => {
     const {state, dispatch} = useContext(ShopContext);
 
     const {cart} = state;
-    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, deliveryDT} = state.userInfo;
+    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, deliveryDT, entity} = state.userInfo;
 
     const createOrder = async (id) => {
         const order = {
@@ -38,6 +38,7 @@ export default ({style}) => {
             //actualDeliveryDT: '',
             //deliverer: '',
             //notes: '',
+            entity,
         };
 
         try {

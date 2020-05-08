@@ -26,19 +26,7 @@ export const getOrder = `query GetOrder($id: ID!) {
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
+    entity
   }
 }
 `;
@@ -72,48 +60,7 @@ export const listOrders = `query ListOrders(
       actualDeliveryDT
       deliverer
       notes
-    }
-    nextToken
-  }
-}
-`;
-export const getEntity = `query GetEntity($id: ID!) {
-  getEntity(id: $id) {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
-  }
-}
-`;
-export const listEntitys = `query ListEntitys(
-  $filter: ModelEntityFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listEntitys(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
+      entity
     }
     nextToken
   }

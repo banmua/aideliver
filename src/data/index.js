@@ -1,6 +1,12 @@
-import {products, menu} from './products';
+import phobalo from './phobalo';
+import vietdrinks from './vietdrinks';
 
-export default {
-    products,
-    menu,
+export const config = () => {
+    const hostname = window.location.hostname;
+    if (hostname.endsWith('phobalo.com')) return phobalo;
+    if (hostname.endsWith('vietdrinks.com')) return vietdrinks;
+
+    return phobalo; // default
 }
+
+export default config();

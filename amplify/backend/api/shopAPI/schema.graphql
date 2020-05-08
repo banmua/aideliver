@@ -22,23 +22,6 @@ type Order @model {
   actualDeliveryDT: String
   deliverer: String
   notes: String
-  entity: Entity @connection(name: "EntityOrders")
+  entity: String!
 }
-
-
-type Entity @model {
-  id: ID!
-  name: String!
-  place: String
-  street: String
-  city: String
-  state: String
-  country: String
-  language: String
-  phone: String!
-  email: String!
-  contact: String
-  orders: [Order] @connection(name: "EntityOrders")
-}
-
 

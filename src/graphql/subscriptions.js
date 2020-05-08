@@ -26,19 +26,7 @@ export const onCreateOrder = `subscription OnCreateOrder {
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
+    entity
   }
 }
 `;
@@ -67,19 +55,7 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
+    entity
   }
 }
 `;
@@ -108,76 +84,7 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
-  }
-}
-`;
-export const onCreateEntity = `subscription OnCreateEntity {
-  onCreateEntity {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdateEntity = `subscription OnUpdateEntity {
-  onUpdateEntity {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteEntity = `subscription OnDeleteEntity {
-  onDeleteEntity {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
+    entity
   }
 }
 `;

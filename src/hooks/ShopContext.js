@@ -1,5 +1,5 @@
 import React, {useContext, useState, useReducer} from 'react';
-import data from '../data';
+import data  from '../data';
 
 const ShopContext = React.createContext(data);
 
@@ -45,6 +45,7 @@ const defaultState = {
         email: '',
         referrer: '',
         deliveryDT: (new Date()).addHours(1.5),
+        entity: 'aideliver'
     },
     login: {
         userName: null,

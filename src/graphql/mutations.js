@@ -29,19 +29,7 @@ export const createOrder = `mutation CreateOrder(
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
+    entity
   }
 }
 `;
@@ -73,19 +61,7 @@ export const updateOrder = `mutation UpdateOrder(
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
+    entity
   }
 }
 `;
@@ -117,85 +93,7 @@ export const deleteOrder = `mutation DeleteOrder(
     actualDeliveryDT
     deliverer
     notes
-    entity {
-      id
-      name
-      place
-      street
-      city
-      state
-      country
-      language
-      phone
-      email
-      contact
-    }
-  }
-}
-`;
-export const createEntity = `mutation CreateEntity(
-  $input: CreateEntityInput!
-  $condition: ModelEntityConditionInput
-) {
-  createEntity(input: $input, condition: $condition) {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
-  }
-}
-`;
-export const updateEntity = `mutation UpdateEntity(
-  $input: UpdateEntityInput!
-  $condition: ModelEntityConditionInput
-) {
-  updateEntity(input: $input, condition: $condition) {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
-  }
-}
-`;
-export const deleteEntity = `mutation DeleteEntity(
-  $input: DeleteEntityInput!
-  $condition: ModelEntityConditionInput
-) {
-  deleteEntity(input: $input, condition: $condition) {
-    id
-    name
-    place
-    street
-    city
-    state
-    country
-    language
-    phone
-    email
-    contact
-    orders {
-      nextToken
-    }
+    entity
   }
 }
 `;
