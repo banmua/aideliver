@@ -17,7 +17,7 @@ export const products = [
         native: 'Them thuc an',
         price: '2.00',
         unit: 'portion',
-        image: '/images/bunPho.jpg',
+        image: '/images/bunPho2.jpg',
         choices: ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8']
     }, {
         id: 'B1',
@@ -98,7 +98,7 @@ export const products = [
         native: 'Pho ga',
         price: '12.00',
         unit: 'bowl',
-        image: '/images/phoGa2.jpg',
+        image: '/images/phoGa3.png',
     }, {
         id: 'R1',
         name: 'Eggroll',

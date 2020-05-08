@@ -8,12 +8,24 @@ export const getOrder = `query GetOrder($id: ID!) {
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;
@@ -29,12 +41,24 @@ export const listOrders = `query ListOrders(
       orderNo
       products
       user
-      address
+      firstName
+      lastName
+      place
+      street
+      city
+      state
+      country
+      language
       phone
       email
       total
       deliveryDT
       orderDT
+      referrer
+      status
+      actualDeliveryDT
+      deliverer
+      notes
     }
     nextToken
   }

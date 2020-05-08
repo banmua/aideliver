@@ -6,7 +6,6 @@ type Order @model {
   user: String!
   firstName: String!
   lastName: String!
-  address: String!
   place: String
   street: String!
   city: String!

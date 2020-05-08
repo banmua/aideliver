@@ -8,6 +8,7 @@ import ShopContext from '../../hooks/ShopContext';
 
 const styles = {
     container: {
+        maxWidth: '820px',
         backgroundColor: '#fafafa',
         paddingTop: '10px',
         paddingBottom: '10px',

@@ -8,12 +8,24 @@ export const onCreateOrder = `subscription OnCreateOrder {
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;
@@ -24,12 +36,24 @@ export const onUpdateOrder = `subscription OnUpdateOrder {
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;
@@ -40,12 +64,24 @@ export const onDeleteOrder = `subscription OnDeleteOrder {
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;

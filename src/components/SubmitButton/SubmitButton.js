@@ -12,31 +12,31 @@ export default ({style}) => {
     const {state, dispatch} = useContext(ShopContext);
 
     const {cart} = state;
-    const {firstName, lastName, street, city, state: geoState, country, phone, email, deliveryDT} = state.userInfo;
+    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, deliveryDT} = state.userInfo;
 
     const createOrder = async (id) => {
-        try {
-            API.graphql(graphqlOperation(CreateOrder, {
-                input: {
-                    id,
-                    title: `PhoBalo.com`,
-                    orderNo: id,
-                    products: JSON.stringify(cart),
-                    user: `${firstName} ${lastName}`,
-                    firstName,
-                    lastName,
-                    street,
-                    city,
-                    state: geoState,
-                    country,
-                    phone,
-                    email,
-                    total: getTotal(state),
-                    deliveryDT: deliveryDT.toISOString(),
-                    orderDT: (new Date()).toISOString(),
-                }
-            }))
+        const order = {
+            id,
+            title: `PhoBalo.com`,
+            orderNo: id,
+            products: JSON.stringify(cart),
+            user: `${firstName} ${lastName}`,
+            firstName,
+            lastName,
+            street,
+            city,
+            state: geoState,
+            country,
+            language,
+            phone,
+            email,
+            total: getTotal(state),
+            deliveryDT: deliveryDT.toISOString(),
+            orderDT: (new Date()).toISOString(),
+        };
 
+        try {
+            API.graphql(graphqlOperation(CreateOrder, {input: order}))
             return id;
 
         } catch (err) {

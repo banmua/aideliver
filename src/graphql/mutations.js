@@ -11,12 +11,24 @@ export const createOrder = `mutation CreateOrder(
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;
@@ -30,12 +42,24 @@ export const updateOrder = `mutation UpdateOrder(
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;
@@ -49,12 +73,24 @@ export const deleteOrder = `mutation DeleteOrder(
     orderNo
     products
     user
-    address
+    firstName
+    lastName
+    place
+    street
+    city
+    state
+    country
+    language
     phone
     email
     total
     deliveryDT
     orderDT
+    referrer
+    status
+    actualDeliveryDT
+    deliverer
+    notes
   }
 }
 `;
