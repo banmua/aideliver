@@ -58,7 +58,7 @@ export default ({style}) => {
                 dispatch({type: 'CLEAR'})
                 const id = uuid();
                 createOrder(id);
-                window.alert(`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment. Our contact info: (657) 336-4136 / phobalo72@gmail.com.`)
+                window.alert(`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment. Our contact info: (714) 448-9496 / phobalo72@gmail.com.`)
             }
 
         } else {

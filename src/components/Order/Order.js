@@ -5,6 +5,7 @@ import ProductList from '../Product/ProductList';
 import Cart from '../Cart';
 import UserInfo from '../UserInfo';
 import SubmitButton from '../SubmitButton';
+import Contact from '../Contact';
 
 export default props => {
   return (
@@ -18,6 +19,7 @@ export default props => {
       <div><h2>Your info:</h2></div>
       <UserInfo />
       <SubmitButton style={{margin: '20px 20px'}} />
+      <Contact />
       </div>
     </div>
   )
