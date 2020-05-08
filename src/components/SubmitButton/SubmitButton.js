@@ -12,7 +12,7 @@ export default ({style}) => {
     const {state, dispatch} = useContext(ShopContext);
 
     const {cart} = state;
-    const {firstName, lastName, street, city, phone, email, referrer, deliveryDT} = state.userInfo;
+    const {firstName, lastName, street, city, state: geoState, country, phone, email, deliveryDT} = state.userInfo;
 
     const createOrder = async (id) => {
         try {
@@ -23,7 +23,12 @@ export default ({style}) => {
                     orderNo: id,
                     products: JSON.stringify(cart),
                     user: `${firstName} ${lastName}`,
-                    address: `${street}, ${city}`,
+                    firstName,
+                    lastName,
+                    street,
+                    city,
+                    state: geoState,
+                    country,
                     phone,
                     email,
                     total: getTotal(state),

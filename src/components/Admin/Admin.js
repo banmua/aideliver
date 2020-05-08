@@ -6,6 +6,7 @@ import { Auth} from 'aws-amplify';
 import ShopContext from '../../hooks/ShopContext';
 import OrderList from './parts/OrderList';
 import {Link} from 'react-router-dom';
+import Table from './parts/Table';
 
 const Admin = props => {
     const {state, dispatch} = useContext(ShopContext);
@@ -32,9 +33,12 @@ const Admin = props => {
         <div>
             <AmplifySignOut />
             <h2><a href="/">Home</a> / Admin</h2>
+            <div>
             { ['PhoBalo', 'TrangPham', 'PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
                     ? <OrderList orders={orders} state={state} /> 
                     : <h2>Not Accessible.</h2> }
+            </div>
+            <Table />
         </div>
     )
 }

@@ -4,10 +4,23 @@ type Order @model {
   orderNo: String!
   products: String!
   user: String!
+  firstName: String!
+  lastName: String!
   address: String!
+  place: String
+  street: String!
+  city: String!
+  state: String!
+  country: String!
+  language: String!
   phone: String!
   email: String!
   total: String!
   deliveryDT: String!
   orderDT: String!
+  referrer: String
+  status: String
+  actualDeliveryDT: String
+  deliverer: String
+  notes: String
 }
