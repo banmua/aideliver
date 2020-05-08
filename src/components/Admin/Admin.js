@@ -32,7 +32,7 @@ const Admin = props => {
         <div>
             <AmplifySignOut />
             <h2><a href="/">Home</a> / Admin</h2>
-            { ['PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
+            { ['PhoBalo', 'TrangPham', 'PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
                     ? <OrderList orders={orders} state={state} /> 
                     : <h2>Not Accessible.</h2> }
         </div>
