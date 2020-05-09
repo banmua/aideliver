@@ -2,8 +2,10 @@ import React, {useContext} from 'react';
 import Header from './Header';
 import Item from './Item';
 import Tax from './Tax';
+import SubTotal from './SubTotal';
 import Total from './Total';
 import Delivery from './Delivery';
+import Discount from './Discount';
 import ShopContext from '../../hooks/ShopContext';
 
 const styles = {
@@ -25,6 +27,8 @@ export default props => {
         <div style={styles.container} >
             <Header />
             {Object.keys(state.cart).map(key => <Item key={key} id={key} />)}
+            <Discount />
+            <SubTotal />
             <Tax />
             <Delivery />
             <Total />

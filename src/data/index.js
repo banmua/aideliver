@@ -5,7 +5,7 @@ import vietdrinks from './vietdrinks';
 export const config = () => {
     const hostname = window.location.hostname;
 
-    const res = aideliver; //vietdrinks; //phobalo; // default;
+    const res = phobalo; // default;
 
     if (hostname.endsWith('aideliver.com')) return aideliver;
     if (hostname.endsWith('phobalo.com')) return phobalo;

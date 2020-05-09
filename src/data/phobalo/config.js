@@ -12,10 +12,14 @@ export const footer = {
 }
 
 export const payment = {
-    discounts: [{
-        name: 'Grand Opening Discount', 
-        value: 0.3
-    }]
+    discounts: {
+        grandOpening: {
+            name: 'Discount', 
+            value: 30,
+            unit: 'percent',
+            unitPostfix: '% Off'
+        }
+    }
 }
 
 

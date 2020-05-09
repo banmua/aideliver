@@ -118,13 +118,34 @@ export const ShopContextProvider = ({children}) => {
     )
 }
 
+const calcDiscount = (discount) => state => {
+    if (!discount || !discount.value) return (0).toFixed(2);
+    return (calcRawSubTotal(state) * discount.value / 100).toFixed(2);
+}
 
-const calcTax = state => 0.08 * Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
-const calcTotal = state => calcTax(state) + state.deliveryFee + Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
+const calcAllDiscounts = state => {
+    if (!state.payment || !state.payment.discounts) return 0;
+    let sum = 0;
+    Object.keys(state.payment.discounts).map(key => {
+        sum = sum + calcDiscount(state.payment.discounts[key])(state);
+    })
+    return sum;
+}
+
+
+const calcRawSubTotal = state => Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
+
+const calcSubTotal = state => (calcRawSubTotal(state) - calcAllDiscounts(state));
+
+const calcTax = state => 0.08 * calcSubTotal(state);
+const calcTotal = state => calcTax(state) + state.deliveryFee + calcSubTotal(state);
+
+export const getSubTotal = state => calcSubTotal(state).toFixed(2);
 export const getTax = state => calcTax(state).toFixed(2); 
 export const getTotal = state => calcTotal(state).toFixed(2);
 export const getItemTotal = (state, id) => (state.dict[id].price * state.cart[id]).toFixed(2);
 export const getNumOfItems = state => Object.keys(state.cart).reduce((sum, id) => sum + state.cart[id], 0);
+export const getDiscount = discount => calcDiscount(discount);
 
 
 
