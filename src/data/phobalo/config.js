@@ -4,11 +4,18 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em>Delicious Vietnamese Pho and Rolls!</em> Serving Palo Alto, Los Altos, Mountain View, and Sunnyvale of California",
+    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We will start delivering on May 23rd 2020. You can pre-order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
 }
 
 export const footer = {
     line: 'PhoBalo.com - 714-448-9496 - phobalo72@gmail.com'
+}
+
+export const payment = {
+    discounts: [{
+        name: 'Grand Opening Discount', 
+        value: 0.3
+    }]
 }
 
 export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'C2'];
@@ -209,4 +216,5 @@ export default {
     entity,
     banner,
     footer,
+    payment,
 }

@@ -11,8 +11,8 @@ import {v4 as uuid} from 'uuid';
 export default ({style}) => {
     const {state, dispatch} = useContext(ShopContext);
 
-    const {cart} = state;
-    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, deliveryDT, entity} = state.userInfo;
+    const {cart, entity} = state;
+    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, deliveryDT} = state.userInfo;
 
     const createOrder = async (id) => {
         const order = {
@@ -38,7 +38,7 @@ export default ({style}) => {
             //actualDeliveryDT: '',
             //deliverer: '',
             //notes: '',
-            entity,
+            entity: entity.name,
         };
 
         try {

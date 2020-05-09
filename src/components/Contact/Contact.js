@@ -7,6 +7,10 @@ const styles = {
         marginTop: '20px', 
         marginBottom: '10px',
         fontSize: '10px',
+    },
+    line: {
+        display: 'flex',
+        justifyContent: 'center'
     }
 }
 
@@ -16,7 +20,7 @@ export default () => {
     return (
         <div style={styles.container}>
             <hr/>
-            <div>{state.footer.line}</div>
+            <div style={styles.line}>{state.footer.line}</div>
         </div>
     )
 }
