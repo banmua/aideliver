@@ -69,7 +69,8 @@ const defaultState = {
     entity: data.entity,
     footer: data.footer,
     banner: data.banner,
-    payment: data.payment || {discounts: []}
+    payment: data.payment || {discounts: []},
+    geo: data.geo || {locations: []}
 }
 
 const reducer = (state, action) => {

@@ -4,7 +4,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We will start delivering on May 23rd 2020. You can pre-order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We are still in Beta and will officially open on May 23rd 2020. You can pre-order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
 }
 
 export const footer = {
@@ -16,6 +16,32 @@ export const payment = {
         name: 'Grand Opening Discount', 
         value: 0.3
     }]
+}
+
+
+export const geo = {
+    locations: [{
+            name: 'Palo Alto, CA',
+            city: 'Palo Alto',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Los Altos, CA',
+            city: 'Los Altos',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Mountain View, CA',
+            city: 'Mountain View',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Sunnyvale, CA',
+            city: 'Sunnyvale',
+            state: 'California',
+            zipCode: [],
+        }
+    ]
 }
 
 export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'C2'];
@@ -217,4 +243,5 @@ export default {
     banner,
     footer,
     payment,
+    geo,
 }

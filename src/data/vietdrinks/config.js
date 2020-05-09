@@ -11,6 +11,32 @@ export const footer = {
     line: 'VietDrinks.com - 714-600-5806 - thanhlenow@gmail.com - Mr. Le'
 }
 
+
+export const geo = {
+    locations: [{
+            name: 'Westminster, CA',
+            city: 'Westminster',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Garden Grove, CA',
+            city: 'Garden Grove',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Fountain Valley, CA',
+            city: 'Fountain Valley',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Midway, CA',
+            city: 'Midway',
+            state: 'California',
+            zipCode: [],
+        }
+    ]
+}
+
 export const menu = ['M1', 'M2', 'M3', 'M4'];
 
 export const products = [
@@ -59,4 +85,5 @@ export default {
     entity,
     banner,
     footer,
+    geo,
 }

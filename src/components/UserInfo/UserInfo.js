@@ -67,10 +67,13 @@ export default props => {
                                     error={errors.city}
                                     value={city} 
                                     onChange={event => update('city', event.target.value, 'userInfo')}>
-                            <MenuItem value={"Palo Alto"}>Palo Alto, CA</MenuItem>
+                            {state.geo.locations.map((loc, i) => 
+                                <MenuItem key={`${loc.name}_${i}`} value={loc.city}>{loc.name}</MenuItem>
+                            )}
+                            {/* <MenuItem value={"Palo Alto"}>Palo Alto, CA</MenuItem>
                             <MenuItem value={"Los Altos"}>Los Altos, CA</MenuItem>
                             <MenuItem value={"Mountain View"}>Mountain View, CA</MenuItem>
-                            <MenuItem value={"Sunnyvale"}>Sunnyvale, CA</MenuItem>
+                            <MenuItem value={"Sunnyvale"}>Sunnyvale, CA</MenuItem> */}
                         </Select>
                         <FormHelperText style={styles.textError}>{errors.city ? errorMessages.city : ''}</FormHelperText>
                     </FormControl>
