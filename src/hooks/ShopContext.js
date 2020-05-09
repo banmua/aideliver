@@ -68,6 +68,7 @@ const defaultState = {
     errorChecking: false,
     entity: data.entity,
     footer: data.footer,
+    banner: data.banner,
 }
 
 const reducer = (state, action) => {

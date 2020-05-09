@@ -3,6 +3,10 @@ export const entity = {
     name: 'VietDrinks',
 }
 
+export const banner = {
+    line: "<em>Healthy Juice!</em> Serving the cities of Westminster, Garden Grove, Midway and Fountain Valley of Orange County, California",
+}
+
 export const footer = {
     line: 'VietDrinks.com - 714-500-5806 - thanhlenow@gmail.com'
 }
@@ -50,8 +54,9 @@ export const products = [
 ]
 
 export default {
-    entity,
     products,
     menu,
+    entity,
+    banner,
     footer,
 }

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import ShopContext from '../../hooks/ShopContext';
 
 const styles = {
     container: {
@@ -10,9 +11,11 @@ const styles = {
 }
 
 export default props => {
+    const {state, dispatch} = useContext(ShopContext);
+
     return (
         <div style={styles.container}>
-            <div><em>Delicious Vietnamese Pho and Rolls!</em> Serving Palo Alto, Los Altos, Mountain View, and Sunnyvale of California</div>
+            <div dangerouslySetInnerHTML={{__html: state.banner.line}} />
         </div>
     )
 }

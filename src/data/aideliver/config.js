@@ -2,6 +2,9 @@ export const entity = {
     url: 'aideliver.com',
     name: 'aideliver'
 }
+export const banner = {
+    line: "<em>Healthy Juice!</em> Serving the cities of Westminster, Garden Grove, Midway and Fountain Valley of Orange County, California",
+}
 
 export const footer = {
     line: 'AiDeliver.com - 714-448-9496 - phobalo72@gmail.com'
@@ -200,8 +203,9 @@ export const products = [
 ]
 
 export default {
-    entity,
     products,
     menu,
+    entity,
     footer,
+    banner,
 }

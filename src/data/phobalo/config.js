@@ -3,6 +3,10 @@ export const entity = {
     name: 'PhoBalo',
 }
 
+export const banner = {
+    line: "<em>Delicious Vietnamese Pho and Rolls!</em> Serving Palo Alto, Los Altos, Mountain View, and Sunnyvale of California",
+}
+
 export const footer = {
     line: 'PhoBalo.com - 714-448-9496 - phobalo72@gmail.com'
 }
@@ -200,8 +204,9 @@ export const products = [
 ]
 
 export default {
-    entity,
     products,
     menu,
+    entity,
+    banner,
     footer,
 }
