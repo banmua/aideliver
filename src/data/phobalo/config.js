@@ -4,7 +4,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We will start delivering on May 23rd 2020. You can pre-order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We are still in Beta and will officially open on May 23rd 2020. You can pre-order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
 }
 
 export const footer = {
