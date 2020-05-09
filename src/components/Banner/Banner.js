@@ -5,7 +5,7 @@ const styles = {
     container: {
         //border: '1px solid lightGray',
         //margin: '0 10px 20px',
-        padding: '70px 20px 20px 20px',
+        padding: '0px 20px 20px 20px',
         //backgroundColor: '#fafafa',
     }
 }

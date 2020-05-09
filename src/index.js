@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './components/App';
+import Layout from './components/Layout';
+import NavBar from './components/NavBar';
 import Order from './components/Order';
 import Admin from './components/Admin';
 import Account from './components/Account';
@@ -26,7 +28,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
               const userName = tokens.getIdToken().payload['cognito:username'];
               dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
           } catch (err) {
-              console.log('error fetching orders ...', err.message, err);
+              console.log('>>> ERROR fetching user', err.message, err);
           }
       }
       fetch();
@@ -41,35 +43,35 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ShopContextProvider>
-        {window.location.hostname === 'admin.phobalo.com' || window.location.pathname === '/admin'
-            ? <Admin />
-            : <Order />
-        }
-      </ShopContextProvider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-
 // ReactDOM.render(
 //   <React.StrictMode>
-//     <ShopContextProvider>
-//       <Router>
-//         <Switch>
-//           <Route exact path="/"><Order/></Route>
-//           <Route path="/user"><Account /></Route>
-//           <PrivateRoute path="/admin" component={<Admin />} />
-//           <Route path="/cart"><Cart /></Route>
-//         </Switch>
-//       </Router>
-//     </ShopContextProvider>
+//     <Router>
+//       <ShopContextProvider>
+//         {window.location.hostname === 'admin.phobalo.com' || window.location.pathname === '/admin'
+//             ? <Admin />
+//             : <Order />
+//         }
+//       </ShopContextProvider>
+//     </Router>
 //   </React.StrictMode>,
 //   document.getElementById('root')
 // );
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ShopContextProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/"><Layout><Order /></Layout></Route>
+          <Route path="/user"><Layout><Account /></Layout></Route>
+          <PrivateRoute path="/admin" component={<Admin />} />
+          <Route path="/cart"><Cart /></Route>
+        </Switch>
+      </Router>
+    </ShopContextProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 serviceWorker.unregister();

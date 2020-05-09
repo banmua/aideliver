@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +17,15 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShopContext, {getNumOfItems} from '../../hooks/ShopContext';
 import {Link} from 'react-router-dom';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import AppsIcon from '@material-ui/icons/Apps';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -86,8 +95,9 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const {state, dispatch} = useContext(ShopContext);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -122,6 +132,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
     </Menu>
   );
 
@@ -154,7 +165,7 @@ export default function PrimarySearchAppBar() {
         <p>Shopping Cart</p>
       </MenuItem>
 
-      {/* <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -164,43 +175,58 @@ export default function PrimarySearchAppBar() {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      </MenuItem> */}
+      </MenuItem>
 
     </Menu>
   );
-
-  console.log('>>> STATE:', state);
 
   return (
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+
+            <IconButton edge="start" className={classes.menuButton}
+                    color="inherit" aria-label="open drawer"
+                    onClick={() => setIsDrawerOpen(true)}
+                  >
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor={'left'} open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+              <List>
+                <ListItem button>
+                    <ListItemIcon><AppsIcon /></ListItemIcon>
+                    <ListItemText primary="Product Catalog" />
+                </ListItem>
+
+                <ListItem button>
+                    <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
+                    <ListItemText primary="Shopping Cart" />
+                </ListItem>
+
+                <ListItem button>
+                    <ListItemIcon><LocalShippingIcon /></ListItemIcon>
+                    <ListItemText primary="About Us" />
+                </ListItem>
+
+                <ListItem button>
+                    <ListItemIcon><ContactPhoneIcon /></ListItemIcon>
+                    <ListItemText primary="Contact Info" />
+                </ListItem>
+              </List>
+            </Drawer>
 
           <Typography className={classes.title} variant="h6" noWrap>
-            {state.entity.name}
+            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>{state.entity.name}</Link>
           </Typography>
 
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
+          <div className={classes.search}>
+            <div className={classes.searchIcon}><SearchIcon /></div>
+            <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }} />
+          </div>
 
           <div className={classes.grow} />
 
@@ -216,16 +242,17 @@ export default function PrimarySearchAppBar() {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-{/* 
+
             <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               color="inherit"
+              onClick={handleProfileMenuOpen}
             >
-              <Link to="/admin" style={{color: 'white'}}><AccountCircle /></Link>
-            </IconButton> */}
+              <AccountCircle />
+            </IconButton>
           </div>
 
           <div className={classes.sectionMobile}>

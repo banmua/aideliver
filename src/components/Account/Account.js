@@ -4,6 +4,7 @@ import { withAuthenticator, AmplifySignOut, AmplifySignIn } from '@aws-amplify/u
 import { Auth} from 'aws-amplify';
 import ShopContext from '../../hooks/ShopContext';
 import {Link} from 'react-router-dom';
+import {withCenter} from '../Layout/utils';
 
 const Account = props => {
     const {state, dispatch} = useContext(ShopContext);
@@ -28,15 +29,6 @@ const Account = props => {
             <Link to="/admin">Admin</Link>
         </div>
     )
-
-    // return (
-    //     <div>
-    //         <AmplifySignOut/>
-    //         { ['PhuongLe', 'ThanhLe', 'ThachLe'].includes(userName) 
-    //             ? <Admin /> 
-    //             : <h2>(This page is under construction.)</h2> }
-    //     </div>
-    // )
 }
 
-export default withAuthenticator(Account, {includeGreetings: true})
+export default withCenter(withAuthenticator(Account, {includeGreetings: true}))
