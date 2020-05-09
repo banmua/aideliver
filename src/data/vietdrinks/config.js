@@ -8,7 +8,7 @@ export const banner = {
 }
 
 export const footer = {
-    line: 'VietDrinks.com - 714-500-5806 - thanhlenow@gmail.com'
+    line: 'VietDrinks.com - 714-600-5806 - thanhlenow@gmail.com'
 }
 
 export const menu = ['M1', 'M2', 'M3', 'M4'];
@@ -35,7 +35,7 @@ export const products = [
     }, {
         id: 'M3',
         name: 'Mia Quat',
-        description: 'meatballs',
+        description: 'mia quat',
         native: 'Pho bo vien',
         price: '12.00',
         unit: 'bowl',
