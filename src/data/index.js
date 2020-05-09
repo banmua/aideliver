@@ -6,7 +6,7 @@ export const config = () => {
     if (hostname.endsWith('phobalo.com')) return phobalo;
     if (hostname.endsWith('vietdrinks.com')) return vietdrinks;
 
-    return phobalo; // default
+    return vietdrinks; // default
 }
 
 export default config();
