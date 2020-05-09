@@ -8,7 +8,7 @@ export const banner = {
 }
 
 export const footer = {
-    line: 'VietDrinks.com - 714-600-5806 - thanhlenow@gmail.com'
+    line: 'VietDrinks.com - 714-600-5806 - thanhlenow@gmail.com - Mr. Le'
 }
 
 export const menu = ['M1', 'M2', 'M3', 'M4'];
