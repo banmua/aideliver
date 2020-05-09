@@ -3,6 +3,10 @@ export const entity = {
     name: 'VietDrinks',
 }
 
+export const footer = {
+    line: 'VietDrinks.com - 714-500-5806 - thanhlenow@gmail.com'
+}
+
 export const menu = ['M1', 'M2', 'M3', 'M4'];
 
 export const products = [
@@ -49,4 +53,5 @@ export default {
     entity,
     products,
     menu,
+    footer,
 }

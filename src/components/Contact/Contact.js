@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import ShopContext from '../../hooks/ShopContext';
 
 const styles = {
     container: {
@@ -10,10 +11,12 @@ const styles = {
 }
 
 export default () => {
+    const {state, dispatch} = useContext(ShopContext);
+
     return (
         <div style={styles.container}>
             <hr/>
-            <div>PhoBalo.com - 714-448-9496 - phobalo72@gmail.com</div>
+            <div>{state.footer.line}</div>
         </div>
     )
 }

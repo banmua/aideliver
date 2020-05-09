@@ -3,6 +3,10 @@ export const entity = {
     name: 'aideliver'
 }
 
+export const footer = {
+    line: 'AiDeliver.com - 714-448-9496 - phobalo72@gmail.com'
+}
+
 export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'C2'];
 
 export const products = [
@@ -199,4 +203,5 @@ export default {
     entity,
     products,
     menu,
+    footer,
 }

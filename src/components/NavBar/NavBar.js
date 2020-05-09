@@ -169,6 +169,8 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  console.log('>>> STATE:', state);
+
   return (
     <div className={classes.grow}>
       <AppBar position="fixed">
@@ -183,7 +185,7 @@ export default function PrimarySearchAppBar() {
           </IconButton>
 
           <Typography className={classes.title} variant="h6" noWrap>
-            PhoBalo.com
+            {state.entity.name}
           </Typography>
 
           {/* <div className={classes.search}>
