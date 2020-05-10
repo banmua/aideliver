@@ -70,9 +70,8 @@ function Table({ columns, data }) {
   )
 }
 
-const App = ({data = []})  => {
-  const columns = React.useMemo(
-    () => [
+const OrderTable = ({data = []})  => {
+  const columns = React.useMemo(() => [
       {
         Header: 'Orders',
         columns: [
@@ -129,4 +128,4 @@ const App = ({data = []})  => {
   )
 }
 
-export default App
+export default OrderTable;

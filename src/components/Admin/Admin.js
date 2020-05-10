@@ -7,6 +7,8 @@ import ShopContext from '../../hooks/ShopContext';
 import OrderList from './parts/OrderList';
 import {Link} from 'react-router-dom';
 import Table from './parts/Table';
+import moment from 'moment';
+import NavBar from '../NavBar';
 
 const Admin = props => {
     const {state, dispatch} = useContext(ShopContext);
@@ -20,7 +22,15 @@ const Admin = props => {
                 dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
 
                 const data = await API.graphql(graphqlOperation(ListOrders))
-                setOrders(data);
+                const items = data.data.listOrders.items.map(item => {
+                    return {
+                        ...item,
+                        deliveryDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
+                        orderDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
+                    }
+                })
+
+                setOrders(items);
 
             } catch (err) {
                 console.log('error fetching orders ...', err.message, err);
@@ -31,15 +41,12 @@ const Admin = props => {
 
     return (
         <div>
-            <AmplifySignOut />
-            <h2><a href="/">Home</a> / Admin</h2>
             <div>
-            { ['PhoBalo', 'TrangPham', 'PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
-                    // ? <OrderList orders={orders} state={state} /> 
-                    ? <Table data={orders?.data ? orders.data.listOrders.items : []} />
+            { ['TrangPham', 'PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
+                    ? <Table data={orders || []} />
                     : <h2>Not Accessible.</h2> }
             </div>
-            
+            <AmplifySignOut />
         </div>
     )
 }

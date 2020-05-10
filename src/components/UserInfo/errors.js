@@ -79,8 +79,8 @@ export const isValid = (fieldName, value, errorChecking = false) => {
 
         case 'deliveryDate': 
             const now = new Date();
-            //return errorChecking ? moment(value).isAfter(moment(now.minusDays(0)), 'day') : true;
-            return errorChecking ? moment(value).isAfter(moment(now), 'day') : true;
+            return errorChecking ? moment(value).isAfter(moment(now.minusDays(0)), 'day') : true;
+            //return errorChecking ? moment(value).isAfter(moment(now), 'day') : true;
             
         case 'deliveryTime': {
             const now = new Date();

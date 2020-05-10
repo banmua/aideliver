@@ -1,5 +1,6 @@
-import React, {useContext, useState, useReducer} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import data  from '../data';
+
 
 const ShopContext = React.createContext(data);
 

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
@@ -21,42 +21,31 @@ Amplify.configure(config);
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const {state, dispatch} = useContext(ShopContext);
+  const [userName, setUserName] = useState(null);
+
   useEffect(() => {
       const fetch = async () => {
           try {
               const tokens = await Auth.currentSession();
               const userName = tokens.getIdToken().payload['cognito:username'];
-              dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
+              dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}});
+              setUserName(userName);
+
           } catch (err) {
               console.log('>>> ERROR fetching user', err.message, err);
           }
       }
       fetch();
-  }, [])
+  }, [userName]);
 
   return (
     <Route {...rest} render={props => 
-            state.login.userName 
+            userName
               ? (<Component {...props} />) 
               : (<Redirect to={{pathname: "/user", state: { from: props.location }}}/>)}
     />
   );
 }
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Router>
-//       <ShopContextProvider>
-//         {window.location.hostname === 'admin.phobalo.com' || window.location.pathname === '/admin'
-//             ? <Admin />
-//             : <Order />
-//         }
-//       </ShopContextProvider>
-//     </Router>
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
 
 ReactDOM.render(
   <React.StrictMode>
@@ -64,9 +53,10 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/"><Layout><Order /></Layout></Route>
-          <Route path="/user"><Layout><Account /></Layout></Route>
           <PrivateRoute path="/admin" component={<Admin />} />
+          <Route path="/user"><Layout><Account /></Layout></Route>
           <Route path="/cart"><Cart /></Route>
+          <Route path="/profile"><Layout><Admin /></Layout></Route>
         </Switch>
       </Router>
     </ShopContextProvider>
