@@ -15,7 +15,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShopContext, {getNumOfItems} from '../../hooks/ShopContext';
-import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import Link from '../Link';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -28,6 +29,7 @@ import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import HomeIcon from '@material-ui/icons/Home';
 import {useStyles} from './styles';
 import ProfileIcon from './ProfileIcon';
+import history from '../history';
 
 export default (props) => {
   const classes = useStyles();
@@ -112,32 +114,30 @@ export default (props) => {
             </IconButton>
             <Drawer anchor={'left'} open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
               <List>
-                <ListItem button>
-                    <ListItemIcon><AppsIcon /></ListItemIcon>
-                    <ListItemText primary="Product Catalog" />
+                <ListItem button onClick={() => setIsDrawerOpen(false)}>
+                    <Link to="/catalog" ><ListItemIcon><AppsIcon /></ListItemIcon></Link>
+                    <Link to="/catalog" ><ListItemText primary="Product Catalog" /></Link>
                 </ListItem>
 
-                <ListItem button>
-                    <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
-                    <ListItemText primary="Shopping Cart" />
+                <ListItem button onClick={() => setIsDrawerOpen(false)}>
+                    <Link to="/cart" ><ListItemIcon><ShoppingCartIcon /></ListItemIcon></Link>
+                    <Link to="/cart" ><ListItemText primary="Shopping Cart" /></Link>
                 </ListItem>
 
-                <ListItem button>
-                    <ListItemIcon><LocalShippingIcon /></ListItemIcon>
-                    <ListItemText primary="About Us" />
+                <ListItem button onClick={() => setIsDrawerOpen(false)}>
+                  <Link to="/about" ><ListItemIcon><LocalShippingIcon /></ListItemIcon></Link>
+                  <Link to="/about" ><ListItemText primary="About Us" /></Link>
                 </ListItem>
 
-                <ListItem button>
+                {/* <ListItem button onClick={() => window.location.pathname = '/contact'}>
                     <ListItemIcon><ContactPhoneIcon /></ListItemIcon>
                     <ListItemText primary="Contact Info" />
-                </ListItem>
+                </ListItem> */}
               </List>
             </Drawer>
 
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
-              {state.entity.name}
-            </Link>
+            <Link to="/" color="white">{state.entity.name}</Link>
           </Typography>
 
           {window.innerWidth < 450 ? null : 
@@ -159,7 +159,10 @@ export default (props) => {
                 </IconButton> 
             }
 
-            <IconButton aria-label="show 17 new notifications" color="inherit"  onClick={() => window.location.href='#order'}>
+            <IconButton aria-label="show 17 new notifications" color="inherit"  
+                  onClick={() => window.location.pathname === '/' 
+                      ? window.location.href='#order' 
+                      : window.location.pathname = '/cart'}>
               <Badge badgeContent={getNumOfItems(state)} color="secondary">
                 <ShoppingCartIcon />
               </Badge>

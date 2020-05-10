@@ -3,7 +3,7 @@ import Admin from '../Admin';
 import { withAuthenticator, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react'
 import { Auth} from 'aws-amplify';
 import ShopContext from '../../hooks/ShopContext';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {withCenter} from '../Layout/utils';
 
 const Account = props => {
@@ -23,12 +23,7 @@ const Account = props => {
         fetch();
     }, [userName])
 
-    return (
-        <div>
-            <AmplifySignOut/>
-            <Link to="/admin">Admin</Link>
-        </div>
-    )
+    return <h2>Account</h2>
 }
 
 export default withCenter(withAuthenticator(Account, {includeGreetings: true}))

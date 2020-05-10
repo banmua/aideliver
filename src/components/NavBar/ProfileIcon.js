@@ -5,13 +5,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ShopContext, {isAdmin} from '../../hooks/ShopContext';
 import {Auth} from 'aws-amplify';
-import {Link} from 'react-router-dom';
+import Link from '../Link';
 
 
 export default (props) => {
     const {state, dispatch} = useContext(ShopContext);
     const [anchor, setAnchor] = useState(null);
     const [userName, setUserName] = useState(null);
+
+    const loginUserName = state.login.userName;
 
     useEffect(() => {
         const fetch = async () => {
@@ -26,7 +28,7 @@ export default (props) => {
             }
         }
         fetch();
-    }, [userName])
+    }, [loginUserName])
     
     const handleMenuOpen = (event) => {
         setAnchor(event.currentTarget);
@@ -59,11 +61,11 @@ export default (props) => {
         >
             {state.login.userName 
                 ?   <div>
-                        <MenuItem onClick={() => window.location.pathname = '/profile'}>Account</MenuItem>
-                        {isAdmin(state) && <MenuItem onClick={() => window.location.pathname = '/admin'}>Admin</MenuItem>}
+                        <MenuItem onClick={handleMenuClose}><Link to='/user'>Account</Link></MenuItem>
+                        {isAdmin(state) && <MenuItem onClick={handleMenuClose} ><Link to='/admin'>Admin</Link></MenuItem>}
                         <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
                     </div>
-                :   <MenuItem><Link to="/admin" style={{textDecoration: 'none', color: 'black'}}>Sign in</Link></MenuItem>  
+                : <MenuItem onClick={handleMenuClose}><Link to="/user">Sign in</Link></MenuItem>
                 }
         </Menu>
       );

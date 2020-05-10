@@ -100,6 +100,14 @@ const OrderTable = ({data = []})  => {
             accessor: 'total',
           },
           {
+            Header: 'Phone',
+            accessor: 'phone',
+          },
+          {
+            Header: 'Email',
+            accessor: 'email',
+          },
+          {
             Header: 'DeliveryDT',
             accessor: 'deliveryDT',
           },

@@ -14,6 +14,8 @@ const Admin = props => {
     const {state, dispatch} = useContext(ShopContext);
     const [orders, setOrders] = useState(null);
 
+    const userName = state.login.userName;
+
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -37,7 +39,7 @@ const Admin = props => {
             }
         }
         fetch();
-    }, [])
+    }, [userName])
 
     return (
         <div>
@@ -46,7 +48,7 @@ const Admin = props => {
                     ? <Table data={orders || []} />
                     : <h2>Not Accessible.</h2> }
             </div>
-            <AmplifySignOut />
+            {/* <AmplifySignOut /> */}
         </div>
     )
 }

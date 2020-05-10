@@ -10,6 +10,7 @@ import Admin from './components/Admin';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import Cart from './components/Cart';
+import ProductList from './components/Product/ProductList';
 import {ShopContextProvider} from './hooks/ShopContext';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
@@ -53,12 +54,14 @@ ReactDOM.render(
     <ShopContextProvider>
       <Router>
         <Switch>
-          <Route exact path="/"><Layout><Order /></Layout></Route>
           {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
           <Route path="/user"><Layout><Account /></Layout></Route>
-          <Route path="/cart"><Cart /></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
-          <Route paht="/profile"><Layout><Profile /></Layout></Route>
+          <Route path="/profile"><Layout><Profile /></Layout></Route>
+          <Route path="/about"><Layout><h2>About Us:</h2></Layout></Route>
+          <Route path="/catalog"><Layout><ProductList /></Layout></Route>
+          <Route path="/cart"><Layout><Cart /></Layout></Route>
+          <Route path="/"><Layout><Order /></Layout></Route>
         </Switch>
       </Router>
     </ShopContextProvider>
