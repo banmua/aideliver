@@ -25,6 +25,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import AppsIcon from '@material-ui/icons/Apps';
 import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import HomeIcon from '@material-ui/icons/Home';
 import {useStyles} from './styles';
 
 export default (props) => {
@@ -119,7 +120,6 @@ export default (props) => {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>
-
             <IconButton edge="start" className={classes.menuButton}
                     color="inherit" aria-label="open drawer"
                     onClick={() => setIsDrawerOpen(true)}
@@ -151,26 +151,29 @@ export default (props) => {
             </Drawer>
 
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>{state.entity.name}</Link>
+            <Link to="/" style={{textDecoration: 'none', color: 'white'}}>
+              {state.entity.name}
+            </Link>
           </Typography>
 
-          <div className={classes.search}>
-            <div className={classes.searchIcon}><SearchIcon /></div>
-            <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }} />
-          </div>
+          {window.innerWidth < 450 ? null : 
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}><SearchIcon /></div>
+                  <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
+                        classes={{
+                          root: classes.inputRoot,
+                          input: classes.inputInput,
+                        }} />
+                </div>}
 
           <div className={classes.grow} />
 
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
+            {window.innerWidth > 450 ? null :
+                <IconButton aria-label="search icon" color="inherit">
+                    <SearchIcon />
+                </IconButton> 
+            }
 
             <IconButton aria-label="show 17 new notifications" color="inherit"  onClick={() => window.location.href='#order'}>
               <Badge badgeContent={getNumOfItems(state)} color="secondary">
