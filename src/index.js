@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import NavBar from './components/NavBar';
 import Order from './components/Order';
 import Admin from './components/Admin';
+import Profile from './components/Profile';
 import Account from './components/Account';
 import Cart from './components/Cart';
 import {ShopContextProvider} from './hooks/ShopContext';
@@ -57,6 +58,7 @@ ReactDOM.render(
           <Route path="/user"><Layout><Account /></Layout></Route>
           <Route path="/cart"><Cart /></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
+          <Route paht="/profile"><Layout><Profile /></Layout></Route>
         </Switch>
       </Router>
     </ShopContextProvider>

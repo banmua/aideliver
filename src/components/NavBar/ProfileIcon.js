@@ -59,8 +59,7 @@ export default (props) => {
         >
             {state.login.userName 
                 ?   <div>
-                        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                        <MenuItem onClick={() => window.location.pathname = '/profile'}>Account</MenuItem>
                         {isAdmin(state) && <MenuItem onClick={() => window.location.pathname = '/admin'}>Admin</MenuItem>}
                         <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
                     </div>
