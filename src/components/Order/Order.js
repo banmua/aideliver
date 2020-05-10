@@ -10,9 +10,9 @@ export default props => {
       <div style={{margin: '0 10px'}}>
         <Banner />
         <ProductList />
-        <div><a name='order'/><h2>Your order:</h2></div>
+        <div><a name='order'/><h2>Showing Requests:</h2></div>
         <Cart />
-        <div><h2>Showing Requests:</h2></div>
+        <div><h2>Your Info:</h2></div>
         <UserInfo />
         <SubmitButton style={{margin: '20px 20px'}} />
       </div>
