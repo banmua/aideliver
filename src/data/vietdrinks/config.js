@@ -12,6 +12,15 @@ export const footer = {
 }
 
 
+export const payment = {
+    discounts: {},
+    checkout: {
+        step1: ({id, total}) => (`You order total is $${total}. Are you sure you want to submit this order?`),
+
+        step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (714) 600-5806 / thanhlenow@gmail.com`)
+    }
+}
+
 export const geo = {
     locations: [{
             name: 'Westminster, CA',
@@ -70,7 +79,7 @@ export const products = [
     }, {
         id: 'M4',
         name: 'Coconut Juice',
-        description: 'steak and brisket',
+        description: 'Coconut juice',
         native: 'Pho tai chin',
         price: '12.00',
         unit: 'bowl',
@@ -85,5 +94,6 @@ export default {
     entity,
     banner,
     footer,
+    payment,
     geo,
 }

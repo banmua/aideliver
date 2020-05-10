@@ -65,11 +65,12 @@ export default ({style}) => {
             window.alert('Your order is currently empty. Please select products, provide valid user info and submit again.')
         
         } else if (isValidated) {
-            if (window.confirm(`You order total is $${getTotal(state)}. Are you sure you want to submit this order?`)) {
+            const id = uuid();
+            const total = getTotal(state);
+            if (window.confirm(state.payment.checkout.step1({id, total}))) {
                 dispatch({type: 'CLEAR'})
-                const id = uuid();
                 createOrder(id);
-                window.alert(`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (714) 448-9496 / phobalo72@gmail.com.`);
+                window.alert(state.payment.checkout.step2({id, total}));
                 window.scrollTo(0, 0); 
             }
 

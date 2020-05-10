@@ -4,7 +4,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We are still in Beta and will officially open on May 23rd 2020. You can pre-order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+    line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We are still in Beta and will officially open on May 23rd 2020. However, you can order now for next-day delivery and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
 }
 
 export const footer = {
@@ -19,6 +19,11 @@ export const payment = {
             unit: 'percent',
             unitPostfix: '%'
         }
+    },
+    checkout: {
+        step1: ({id, total}) => (`You order total is $${total}. Are you sure you want to submit this order?`),
+
+        step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (714) 448-9496 / phobalo72@gmail.com`)
     }
 }
 
