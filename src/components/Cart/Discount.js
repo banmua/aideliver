@@ -6,7 +6,8 @@ const styles = {
     container: {
         display: 'grid',
         gridTemplateColumns: '5fr 2fr 2fr',
-        padding: '5px 0'
+        padding: '5px 0',
+        backgroundColor: 'lightGray'
     },
 
     right: {
@@ -31,7 +32,7 @@ export default props => {
                 const dis = state.payment.discounts[key];
                 return (
                     <div style={styles.container}>
-                        <div style={styles.right}>{`${dis.name} (${dis.value}${dis.unitPostfix}):`}</div>
+                        <div style={styles.right}>{`${dis.name} ${dis.value}${dis.unitPostfix}:`}</div>
                         <div style={styles.right}>{`- $${getDiscount(dis)(state)}`}</div>
                     </div>
                 )
