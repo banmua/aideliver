@@ -17,7 +17,7 @@ export const payment = {
             name: 'Discount', 
             value: 30,
             unit: 'percent',
-            unitPostfix: '% Off'
+            unitPostfix: '%'
         }
     }
 }
