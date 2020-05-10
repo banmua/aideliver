@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
             const w = Math.round((window.innerWidth - 50) / 2);
             console.log('>>> WIDTH:', window.innerWidth, w);
 
-            return window.innerWidth >= 320 && window.innerWidth < 411 ? w : 160;
+            return window.innerWidth >= 320 && window.innerWidth < 415 ? w : 160;
         },
         margin: 5,
     },
