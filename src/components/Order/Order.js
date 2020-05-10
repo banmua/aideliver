@@ -12,7 +12,7 @@ export default props => {
         <ProductList />
         <div><a name='order'/><h2>Your order:</h2></div>
         <Cart />
-        <div><h2>Your info:</h2></div>
+        <div><h2>Showing Requests:</h2></div>
         <UserInfo />
         <SubmitButton style={{margin: '20px 20px'}} />
       </div>
