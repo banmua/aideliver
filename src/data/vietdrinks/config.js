@@ -4,7 +4,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em>Healthy Juice!</em> Serving the cities of Westminster, Garden Grove, Midway and Fountain Valley of Orange County, California",
+    line: "<em>Healthy, fresh and delicious juice!</em> Serving the cities of Westminster, Garden Grove, Midway and Fountain Valley of Orange County, California",
 }
 
 export const footer = {
@@ -42,11 +42,11 @@ export const geo = {
             city: 'Midway',
             state: 'California',
             zipCode: [],
-        }
+        }, 
     ]
 }
 
-export const menu = ['M1', 'M2', 'M3', 'M4'];
+export const menu = ['M1', 'M2', 'M3', 'M4', 'C1', 'S1'];
 
 export const products = [
      {
@@ -72,8 +72,8 @@ export const products = [
         name: 'Mia Quat',
         description: 'mia quat',
         native: 'Pho bo vien',
-        price: '12.00',
-        unit: 'bowl',
+        price: '7.00',
+        unit: 'cup',
         image: '/images/vietdrinks/miaQuat.png',
         isNameNative: true,
     }, {
@@ -81,9 +81,27 @@ export const products = [
         name: 'Coconut Juice',
         description: 'Coconut juice',
         native: 'Pho tai chin',
-        price: '12.00',
-        unit: 'bowl',
+        price: '7.00',
+        unit: 'cup',
         image: '/images/vietdrinks/coconutJuice.png',
+        isNameNative: true,
+    }, {
+        id: 'C1',
+        name: 'Viet Ice Coffeee',
+        description: 'Vietnamese ice coffee',
+        native: 'Pho tai chin',
+        price: '5.00',
+        unit: 'cup',
+        image: '/images/vietdrinks/vietIceCoffee.jpg',
+        isNameNative: true,
+    }, {
+        id: 'S1',
+        name: 'Ice Coffee Smoothie with Boba',
+        description: 'Viet ice coffee smoothie with boba',
+        native: 'Pho tai chin',
+        price: '7.00',
+        unit: 'cup',
+        image: '/images/vietdrinks/vietIceCoffeeSmoothieBoba.jpg',
         isNameNative: true,
     }, 
 ]
