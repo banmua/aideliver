@@ -1,6 +1,7 @@
 import React, {useEffect, useReducer} from 'react';
 import data  from '../data';
 
+const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham'];
 
 const ShopContext = React.createContext(data);
 
@@ -69,7 +70,7 @@ const defaultState = {
     footer: data.footer,
     banner: data.banner,
     payment: data.payment || {discounts: []},
-    geo: data.geo || {locations: []}
+    geo: data.geo || {locations: []},
 }
 
 const reducer = (state, action) => {
@@ -131,7 +132,6 @@ const calcAllDiscounts = state => {
     return sum;
 }
 
-
 const calcRawSubTotal = state => Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
 
 const calcSubTotal = state => (calcRawSubTotal(state) - calcAllDiscounts(state));
@@ -145,6 +145,7 @@ export const getTotal = state => calcTotal(state).toFixed(2);
 export const getItemTotal = (state, id) => (state.dict[id].price * state.cart[id]).toFixed(2);
 export const getNumOfItems = state => Object.keys(state.cart).reduce((sum, id) => sum + state.cart[id], 0);
 export const getDiscount = discount => calcDiscount(discount);
+export const isAdmin = state => !!state.login.userName && admins.includes(state.login.userName);
 
 
 

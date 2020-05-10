@@ -53,10 +53,10 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/"><Layout><Order /></Layout></Route>
-          <PrivateRoute path="/admin" component={<Admin />} />
+          {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
           <Route path="/user"><Layout><Account /></Layout></Route>
           <Route path="/cart"><Cart /></Route>
-          <Route path="/profile"><Layout><Admin /></Layout></Route>
+          <Route path="/admin"><Layout><Admin /></Layout></Route>
         </Switch>
       </Router>
     </ShopContextProvider>

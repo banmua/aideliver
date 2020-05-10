@@ -3,7 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import ShopContext from '../../hooks/ShopContext';
+import ShopContext, {isAdmin} from '../../hooks/ShopContext';
 import {Auth} from 'aws-amplify';
 import {Link} from 'react-router-dom';
 
@@ -61,6 +61,7 @@ export default (props) => {
                 ?   <div>
                         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
                         <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                        {isAdmin(state) && <MenuItem onClick={() => window.location.pathname = '/admin'}>Admin</MenuItem>}
                         <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
                     </div>
                 :   <MenuItem><Link to="/admin" style={{textDecoration: 'none', color: 'black'}}>Sign in</Link></MenuItem>  

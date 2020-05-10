@@ -110,7 +110,11 @@ const OrderTable = ({data = []})  => {
           {
             Header: 'Id',
             accessor: 'id',
-          },,
+          },
+          {
+            Header: 'Entity',
+            accessor: 'entity',
+          },
           {
             Header: 'Status',
             accessor: 'status',
@@ -123,6 +127,7 @@ const OrderTable = ({data = []})  => {
 
   return (
     <Styles>
+      <div style={{marginBottom: '10px'}}>Total: {data.length}</div>
       <Table columns={columns} data={data} />
     </Styles>
   )
