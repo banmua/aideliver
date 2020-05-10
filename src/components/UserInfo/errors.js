@@ -8,7 +8,7 @@ export const errorMessages = {
     city: 'required field',
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
-    deliveryDate: 'please set the delivery date to today or in the future',
+    deliveryDate: 'we are still in beta, please set to the next day and later',
     deliveryTime: 'at least 1 hour from now and between 10AM - 8PM',
 }
 
@@ -79,7 +79,8 @@ export const isValid = (fieldName, value, errorChecking = false) => {
 
         case 'deliveryDate': 
             const now = new Date();
-            return errorChecking ? moment(value).isAfter(moment(now.minusDays(1)), 'day') : true;
+            //return errorChecking ? moment(value).isAfter(moment(now.minusDays(0)), 'day') : true;
+            return errorChecking ? moment(value).isAfter(moment(now), 'day') : true;
             
         case 'deliveryTime': {
             const now = new Date();
