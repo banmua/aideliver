@@ -1,8 +1,6 @@
 import React, {useContext, useState, useReducer} from 'react';
 import data  from '../data';
 
-console.log('>>> DATA:', data);
-
 const ShopContext = React.createContext(data);
 
 const genDict = products => {

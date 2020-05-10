@@ -25,7 +25,12 @@ const styles ={
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: 160,
+        width: prop => {
+            const w = Math.round((window.innerWidth - 50) / 2);
+            console.log('>>> WIDTH:', window.innerWidth, w);
+
+            return window.innerWidth >= 320 && window.innerWidth < 411 ? w : 160;
+        },
         margin: 5,
     },
     media: {

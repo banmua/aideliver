@@ -6,7 +6,8 @@ const styles = {
     container: {
         display: 'grid',
         gridTemplateColumns: '5fr 2fr 2fr',
-        padding: '5px 0'
+        padding: '5px 0',
+        whiteSpace: 'nowrap'
     },
 
     right: {
