@@ -94,6 +94,8 @@ export default (props) => {
               </List>
             </Drawer>
 
+          <Link to="/" color="white"><HomeIcon style={{marginRight: '10px'}} /></Link>
+
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to="/" color="white">{state.entity.name}</Link>
           </Typography>

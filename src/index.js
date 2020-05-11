@@ -10,6 +10,7 @@ import Admin from './components/Admin';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import Cart from './components/Cart';
+import CartAndSubmit from './components/Cart/CartAndSubmit';
 import ProductList from './components/Product/ProductList';
 import {ShopContextProvider} from './hooks/ShopContext';
 import Amplify from 'aws-amplify';
@@ -61,7 +62,7 @@ ReactDOM.render(
           <Route path="/contact"><Layout><h2>Contact Info:</h2></Layout></Route>
           <Route path="/about"><Layout><h2>About Us:</h2></Layout></Route>
           <Route path="/catalog"><Layout><ProductList /></Layout></Route>
-          <Route path="/cart"><Layout><Cart /></Layout></Route>
+          <Route path="/cart"><Layout><CartAndSubmit /></Layout></Route>
           <Route path="/"><Layout><Order /></Layout></Route>
         </Switch>
       </Router>

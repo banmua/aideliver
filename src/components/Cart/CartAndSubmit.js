@@ -8,9 +8,6 @@ import SubmitButton from '../SubmitButton';
 export default props => {
   return (
       <div style={{margin: '0 10px'}}>
-        <a name='top'/>
-        <Banner />
-        <ProductList />
         <div><a name='order'/><h2>Your order:</h2></div>
         <Cart />
         <div><h2>Your info:</h2></div>
