@@ -1,4 +1,4 @@
-import defaultConfig from './default';
+import defaultConfig from '../default';
 
 export const entity = {
     url: 'vietdrinks.com',
