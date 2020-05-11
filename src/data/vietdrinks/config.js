@@ -3,6 +3,8 @@ import defaultConfig from '../default';
 export const entity = {
     url: 'vietdrinks.com',
     name: 'VietDrinks',
+    type: defaultConfig.entityTypes.retails,
+    subtype: defaultConfig.entityTypes.restaurant,
 }
 
 export const banner = {

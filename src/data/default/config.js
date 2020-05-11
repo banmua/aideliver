@@ -1,6 +1,16 @@
+export const entityTypes = {
+    retails: 'retails',
+    appointment: 'appointment',
+    realestate: 'realestate',
+    nails: 'nails',
+    restaurant: 'restaurant',
+}
+
 export const entity = {
     url: 'phobalo.com',
     name: 'PhoBalo',
+    type: entityTypes.retails,
+    subtype: entityTypes.restaurant,
 }
 
 export const banner = {
@@ -254,6 +264,7 @@ export default {
     products,
     menu,
     entity,
+    entityTypes,
     banner,
     footer,
     payment,

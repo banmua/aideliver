@@ -3,6 +3,8 @@ import defaultConfig from '../default';
 export const entity = {
     url: 'goldenrimrealty.com',
     name: 'Golden Rim Realty',
+    type: defaultConfig.entityTypes.appointment,
+    subtype: defaultConfig.entityTypes.realty,
 }
 
 export const banner = {

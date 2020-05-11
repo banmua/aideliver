@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ShopContext, {getSubTotal} from '../../hooks/ShopContext';
+import ShopContext, {getTotal} from '../../../hooks/ShopContext';
 
 
 const styles = {
@@ -12,6 +12,7 @@ const styles = {
 
     right: {
         justifySelf: 'end',
+        color: 'red',
         fontWeight: 'bold',
         fontSize: '16px',
     }
@@ -21,8 +22,8 @@ export default props => {
     const {state, dispatch} = useContext(ShopContext);
     return (
         <div style={styles.container}>
-            <div style={styles.right}>Subtotal:</div>
-            <div style={styles.right}>${getSubTotal(state)}</div>
+            <div style={styles.right}>Total:</div>
+            <div style={styles.right}>${getTotal(state)}</div>
         </div>
     )
 }

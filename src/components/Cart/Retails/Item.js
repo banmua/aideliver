@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ShopContext, {getItemTotal} from '../../hooks/ShopContext';
+import ShopContext, {getItemTotal} from '../../../hooks/ShopContext';
 import AddIcon from '@material-ui/icons/AddCircleSharp';
 import RemoveIcon from '@material-ui/icons/RemoveCircleSharp';
 

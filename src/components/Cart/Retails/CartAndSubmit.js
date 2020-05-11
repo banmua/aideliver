@@ -1,9 +1,7 @@
 import React from 'react';
-import Banner from '../Banner';
-import ProductList from '../Product/ProductList';
-import Cart from '../Cart';
-import UserInfo from '../UserInfo';
-import SubmitButton from '../SubmitButton';
+import Cart from './Cart';
+import UserInfo from '../../UserInfo';
+import SubmitButton from '../../SubmitButton';
 
 export default props => {
   return (

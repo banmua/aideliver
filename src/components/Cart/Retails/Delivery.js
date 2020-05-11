@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ShopContext, {getTotal} from '../../hooks/ShopContext';
+import ShopContext from '../../../hooks/ShopContext';
 
 
 const styles = {
@@ -12,7 +12,6 @@ const styles = {
 
     right: {
         justifySelf: 'end',
-        color: 'red',
         fontWeight: 'bold',
         fontSize: '16px',
     }
@@ -20,10 +19,15 @@ const styles = {
 
 export default props => {
     const {state, dispatch} = useContext(ShopContext);
+
+    const {cart, dict} = state;
+
+    const getDelivery = () => state.deliveryFee.toFixed(2); 
+
     return (
         <div style={styles.container}>
-            <div style={styles.right}>Total:</div>
-            <div style={styles.right}>${getTotal(state)}</div>
+            <div style={styles.right}>Delivery:</div>
+            <div style={styles.right}>${getDelivery()}</div>
         </div>
     )
 }

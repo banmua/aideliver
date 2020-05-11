@@ -6,7 +6,7 @@ import SubTotal from './SubTotal';
 import Total from './Total';
 import Delivery from './Delivery';
 import Discount from './Discount';
-import ShopContext from '../../hooks/ShopContext';
+import ShopContext from '../../../hooks/ShopContext';
 
 const styles = {
     container: {

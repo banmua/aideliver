@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../NavBar';
 import Banner from '../Banner';
 import ProductList from '../Product/ProductList';
-import Cart from '../Cart';
+import {Cart} from '../Cart';
 import UserInfo from '../UserInfo';
 import SubmitButton from '../SubmitButton';
 

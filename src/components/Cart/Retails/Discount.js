@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ShopContext, {getDiscount} from '../../hooks/ShopContext';
+import ShopContext, {getDiscount} from '../../../hooks/ShopContext';
 
 
 const styles = {
