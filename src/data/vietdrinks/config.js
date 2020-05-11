@@ -1,3 +1,5 @@
+import defaultConfig from './default';
+
 export const entity = {
     url: 'vietdrinks.com',
     name: 'VietDrinks',
@@ -107,6 +109,7 @@ export const products = [
 ]
 
 export default {
+    ...defaultConfig,
     products,
     menu,
     entity,
