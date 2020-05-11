@@ -71,6 +71,7 @@ const defaultState = {
     banner: data.banner,
     payment: data.payment || {discounts: []},
     geo: data.geo || {locations: []},
+    content: data.content,
 }
 
 const reducer = (state, action) => {
