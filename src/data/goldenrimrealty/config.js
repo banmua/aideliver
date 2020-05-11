@@ -2,7 +2,7 @@ import defaultConfig from '../default';
 
 export const entity = {
     url: 'goldenrimrealty.com',
-    name: 'goldenrimrealty',
+    name: 'Golden Rim Realty',
 }
 
 export const banner = {
