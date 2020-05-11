@@ -3,8 +3,9 @@ import ShopContext from '../../hooks/ShopContext';
 
 const styles = {
     container: {
-        //width: '100%', 
-        margin: '20px 10px 20px',
+        width: '100%', 
+        marginTop: '20px', 
+        marginBottom: '10px',
         fontSize: '10px',
     },
     line: {
@@ -18,8 +19,8 @@ export default () => {
 
     return (
         <div style={styles.container}>
-            
-            <h2>Contact Info:</h2>
+            <hr/>
+            <div style={styles.line}>{state.footer.line}</div>
         </div>
     )
 }

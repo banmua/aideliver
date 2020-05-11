@@ -9,6 +9,7 @@ import Order from './components/Order';
 import Admin from './components/Admin';
 import Profile from './components/Profile';
 import Account from './components/Account';
+import Contact from './components/Contact';
 import Cart from './components/Cart';
 import CartAndSubmit from './components/Cart/CartAndSubmit';
 import ProductList from './components/Product/ProductList';
@@ -59,7 +60,7 @@ ReactDOM.render(
           <Route path="/user"><Layout><Account /></Layout></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
           <Route path="/profile"><Layout><Profile /></Layout></Route>
-          <Route path="/contact"><Layout><h2>Contact Info:</h2></Layout></Route>
+          <Route path="/contact"><Layout><Contact /></Layout></Route>
           <Route path="/about"><Layout><h2>About Us:</h2></Layout></Route>
           <Route path="/catalog"><Layout><ProductList /></Layout></Route>
           <Route path="/cart"><Layout><CartAndSubmit /></Layout></Route>

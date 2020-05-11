@@ -83,8 +83,8 @@ export default (props) => {
                 </ListItem>
 
                 <ListItem button onClick={() => setIsDrawerOpen(false)}>
-                  <Link to="/about" ><ListItemIcon><LocalShippingIcon /></ListItemIcon></Link>
-                  <Link to="/about" ><ListItemText primary="About Us" /></Link>
+                  <Link to="/contact" ><ListItemIcon><LocalShippingIcon /></ListItemIcon></Link>
+                  <Link to="/contact" ><ListItemText primary="Contact Info" /></Link>
                 </ListItem>
 
                 {/* <ListItem button onClick={() => window.location.pathname = '/contact'}>

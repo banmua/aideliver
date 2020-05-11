@@ -1,10 +1,13 @@
 import React from 'react';
 import NavBar from '../NavBar';
-import Contact from '../Contact';
+import Footer from '../Footer';
 
 const styles = {
-    navGap: {
-        height: '80px'
+    gap: {
+        height: '80px',
+    },
+    content: {
+        margin: '0 10px'
     }
 }
 
@@ -12,9 +15,12 @@ export default ({children}) => {
     return (
         <div>
             <NavBar />
-            <div style={styles.navGap} />
-            {children}
-            <Contact />
+            <div style={styles.gap} />
+            <div style={styles.content}>
+                {children}
+                <Footer />
+            </div>
+
         </div>
     )
 }
