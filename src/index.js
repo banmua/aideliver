@@ -58,6 +58,7 @@ ReactDOM.render(
           <Route path="/user"><Layout><Account /></Layout></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
           <Route path="/profile"><Layout><Profile /></Layout></Route>
+          <Route path="/contact"><Layout><h2>Contact Info:</h2></Layout></Route>
           <Route path="/about"><Layout><h2>About Us:</h2></Layout></Route>
           <Route path="/catalog"><Layout><ProductList /></Layout></Route>
           <Route path="/cart"><Layout><Cart /></Layout></Route>

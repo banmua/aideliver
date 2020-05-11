@@ -59,48 +59,6 @@ export default (props) => {
   };
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      {/* <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
-
-      <MenuItem  onClick={() => window.location.href='#order'}>
-        <IconButton aria-label="show notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-        <p>Shopping Cart</p>
-      </MenuItem>
-
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-
-    </Menu>
-  );
 
   return (
     <div className={classes.grow}>
@@ -159,12 +117,15 @@ export default (props) => {
                 </IconButton> 
             }
 
-            <IconButton aria-label="show 17 new notifications" color="inherit"  
-                  onClick={() => window.location.pathname === '/' 
-                      ? window.location.href='#order' 
-                      : window.location.pathname = '/cart'}>
+            <IconButton aria-label="shopping cart" color="inherit"  
+                  onClick={() => {
+                    if (window.location.pathname === '/') {
+                        window.location.href='#order' 
+                    } 
+                  }}>
               <Badge badgeContent={getNumOfItems(state)} color="secondary">
-                <ShoppingCartIcon />
+                {window.location.pathname === '/' ? <ShoppingCartIcon /> :
+                        <Link to='/cart' color='white'><ShoppingCartIcon /></Link>}
               </Badge>
             </IconButton>
 
@@ -184,7 +145,6 @@ export default (props) => {
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
     </div>
   );
 }
