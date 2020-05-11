@@ -1,3 +1,5 @@
+import defaultConfig from '../default';
+
 export const entity = {
     url: 'goldenrimrealty.com',
     name: 'goldenrimrealty',
@@ -97,7 +99,12 @@ export const products = [
     }
 ]
 
+export const content = {
+    cartHeading: 'Showing Request',
+}
+
 export default {
+    ...defaultConfig,
     products,
     menu,
     entity,
@@ -105,4 +112,5 @@ export default {
     footer,
     payment,
     geo,
+    content,
 }
