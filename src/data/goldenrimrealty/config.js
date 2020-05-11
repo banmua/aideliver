@@ -100,6 +100,7 @@ export const products = [
 ]
 
 export const content = {
+    ...defaultConfig.content,
     cartHeading: 'Showing Request',
 }
 
