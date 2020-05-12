@@ -28,7 +28,7 @@ const Admin = props => {
                     return {
                         ...item,
                         deliveryDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
-                        orderDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
+                        orderDT: moment(item.orderDT).format("MM/DD/YYYY hh:mm A"),
                     }
                 })
 
