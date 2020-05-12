@@ -9,7 +9,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em>We find the best deals for you!</em> -- Golden Rim Realty",
+    line: "<em>We find the best deals for you!</em> Submit your showing requests and we will contact you. -- Golden Rim Realty",
 }
 
 export const navbar = {
