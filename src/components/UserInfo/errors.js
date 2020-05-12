@@ -9,7 +9,7 @@ export const errorMessages = {
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
     deliveryDate: 'we are still in beta, please set to the next day and later',
-    deliveryTime: 'at least 1 hour from now and between 10AM - 8PM',
+    deliveryTime: 'please set the time between 10AM - 8PM',
 }
 
 Date.prototype.addHours = function(h) {
@@ -42,13 +42,26 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
         case 'email': 
             return errorChecking ? validateEmail(state.userInfo.email) : true;
 
-        case 'deliveryDate': 
-            const now = new Date();
-            return errorChecking ? moment(state.userInfo.deliveryDT).isAfter(moment(now.minusDays(1)), 'day') : true;
+        case 'deliveryDate': {
+            if (!errorChecking) return true;
+
+            const now = moment();
+            const value = moment(state.userInfo.deliveryDT).startOf('day');
+            const tomorrow = moment().add(1, 'days').startOf('day');
+
+            return value.isSameOrAfter(tomorrow);
+        }
             
         case 'deliveryTime': {
-            const now = new Date();
-            return errorChecking ? moment(state.userInfo.deliveryDT).isAfter(moment(now.addHours(1))) && checkTime(state.userInfo.deliveryDT) : true;
+            if (!errorChecking) return true;
+
+            const value = moment(state.userInfo.deliveryDT);
+            const startOfDay = moment(state.userInfo.deliveryDT).startOf('day');
+            const openTime = moment(startOfDay).add(10, 'hours');
+            const closeTime = moment(startOfDay).add(20, 'hours').add(1, 'seconds');
+            const twoHoursFromNow = moment().add(2, 'hours');
+            
+            return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
         }
 
         
@@ -77,11 +90,13 @@ export const isValid = (fieldName, value, errorChecking = false) => {
         case 'email': 
             return errorChecking ? validateEmail(value) : true;
 
-        case 'deliveryDate': 
-            const now = new Date();
-            return errorChecking ? moment(value).isAfter(moment(now.minusDays(0)), 'day') : true;
-            //return errorChecking ? moment(value).isAfter(moment(now), 'day') : true;
-            
+        case 'deliveryDate': {
+            const now = moment(new Date());
+            if (!errorChecking) return true;
+            const val = moment(value);
+            return val.isSameOrAfter(now.add(1, 'days'));
+        }
+
         case 'deliveryTime': {
             const now = new Date();
             return errorChecking ? moment(value).isAfter(moment(now.addHours(1))) && checkTime(value) : true;

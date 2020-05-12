@@ -4,11 +4,8 @@ import { listOrders as ListOrders } from '../../graphql/queries';
 import { withAuthenticator, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react'
 import { Auth} from 'aws-amplify';
 import ShopContext from '../../hooks/ShopContext';
-import OrderList from './parts/OrderList';
-import {Link} from 'react-router-dom';
 import Table from './parts/Table';
 import moment from 'moment';
-import NavBar from '../NavBar';
 
 const Admin = props => {
     const {state, dispatch} = useContext(ShopContext);

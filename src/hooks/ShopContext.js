@@ -1,5 +1,6 @@
 import React, {useEffect, useReducer} from 'react';
 import data  from '../data';
+import moment from 'moment';
 
 const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham'];
 
@@ -46,7 +47,7 @@ const defaultState = {
         phone: '',
         email: '',
         referrer: '',
-        deliveryDT: (new Date()).addHours(1.5),
+        deliveryDT: moment().add(2, 'hours').startOf('hour'), //(new Date()).addHours(2),
         entity: 'aideliver'
     },
     login: {
