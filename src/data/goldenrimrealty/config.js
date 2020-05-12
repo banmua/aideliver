@@ -1,14 +1,20 @@
 import defaultConfig from '../default';
+import {entityTypes} from '../../constants';
 
 export const entity = {
     url: 'goldenrimrealty.com',
     name: 'Golden Rim Realty',
-    type: defaultConfig.entityTypes.appointment,
-    subtype: defaultConfig.entityTypes.realty,
+    type: entityTypes.appointment,
+    subtype: entityTypes.realty,
 }
 
 export const banner = {
-    line: "<em>Healthy, fresh and delicious juice!</em> Serving the cities of Westminster, Garden Grove, Midway and Fountain Valley of Orange County, California",
+    line: "<em>We find the best deals for you!</em> -- Golden Rim Realty",
+}
+
+export const navbar = {
+    ...defaultConfig.navbar,
+    homeIcon: false,
 }
 
 export const footer = {
@@ -62,6 +68,7 @@ export const products = [
         unit: '',
         image: '/images/goldenrimrealty/forRent2.jpg',
         isNameNative: true,
+        limit: 1,
     }, {
         id: 'M2',
         name: 'Hanover Ave',
@@ -71,6 +78,7 @@ export const products = [
         unit: 'per month',
         image: '/images/goldenrimrealty/apt2.jpg',
         isNameNative: true,
+        limit: 1,
     }, {
         id: 'M3',
         name: 'Mapple Dr',
@@ -80,6 +88,7 @@ export const products = [
         unit: 'week',
         image: '/images/goldenrimrealty/mapple2.jpg',
         isNameNative: true,
+        limit: 1,
     }, {
         id: 'M4',
         name: 'Sierra Lane',
@@ -89,6 +98,7 @@ export const products = [
         unit: 'day',
         image: '/images/goldenrimrealty/pool2.jpg',
         isNameNative: true,
+        limit: 1,
     }, {
         id: 'C1',
         name: 'Stuben Dr',
@@ -98,6 +108,7 @@ export const products = [
         unit: '',
         image: '/images/goldenrimrealty/stuben2.jpg',
         isNameNative: true,
+        limit: 1,
     }
 ]
 
@@ -116,4 +127,5 @@ export default {
     payment,
     geo,
     content,
+    navbar,
 }

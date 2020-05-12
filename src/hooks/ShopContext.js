@@ -72,6 +72,7 @@ const defaultState = {
     payment: data.payment || {discounts: []},
     geo: data.geo || {locations: []},
     content: data.content,
+    navbar: data.navbar,
 }
 
 const reducer = (state, action) => {

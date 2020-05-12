@@ -93,8 +93,15 @@ export default props => {
         <CardActions>
             <Button size="small" variant='contained' color="secondary" onClick={() => {
                 if (choices && !choice) alert(`Please select a choice of ${state.dict[id].name}`)
-                else dispatch({type: 'ADD', payload: {id: choices ? choice : id}})
-                //window.location.href = '#order';
+                else {
+                    const prod = state.dict[id];
+                    const count = state.cart[id] || 0;
+
+                    if (!prod.limit || count < prod.limit) {
+                        dispatch({type: 'ADD', payload: {id: choices ? choice : id}});
+                    }
+                }
+
             }}
             >Add</Button>
         </CardActions>

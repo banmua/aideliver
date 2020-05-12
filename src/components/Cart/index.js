@@ -1,8 +1,14 @@
-// import Cart from './Retails/Cart'
-// import CartAndSubmit from './Retails/CartAndSubmit';
+import React from 'react';
 
-export const Cart = require('./Retails/Cart');
-export const CartAndSubmit = require('./Retails/CartAndSubmit');
+import importCart from './Cart';
+import importCartAndSubmit from './CartAndSubmit';
+
+// export const Cart = props => <h2>Cart</h2>
+// export const CartAndSubmit = props => <h2>CartAndSubmit</h2>
+
+
+export const Cart = importCart;
+export const CartAndSubmit = importCartAndSubmit;
 
 export default {
   Cart,

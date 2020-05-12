@@ -10,7 +10,7 @@ import Admin from './components/Admin';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import Contact from './components/Contact';
-import CartAndSubmit from './components/Cart/Retails/CartAndSubmit';
+import {CartAndSubmit} from './components/Cart';
 import ProductList from './components/Product/ProductList';
 import {ShopContextProvider} from './hooks/ShopContext';
 import Amplify from 'aws-amplify';

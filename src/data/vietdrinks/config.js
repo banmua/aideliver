@@ -1,10 +1,11 @@
 import defaultConfig from '../default';
+import {entityTypes} from '../../constants';
 
 export const entity = {
     url: 'vietdrinks.com',
     name: 'VietDrinks',
-    type: defaultConfig.entityTypes.retails,
-    subtype: defaultConfig.entityTypes.restaurant,
+    type: entityTypes.retails,
+    subtype: entityTypes.restaurant,
 }
 
 export const banner = {

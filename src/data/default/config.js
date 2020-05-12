@@ -1,10 +1,4 @@
-export const entityTypes = {
-    retails: 'retails',
-    appointment: 'appointment',
-    realestate: 'realestate',
-    nails: 'nails',
-    restaurant: 'restaurant',
-}
+import {entityTypes} from '../../constants';
 
 export const entity = {
     url: 'phobalo.com',
@@ -15,6 +9,10 @@ export const entity = {
 
 export const banner = {
     line: "<em style='font-weight:bold;color:red'>Delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. We are still in Beta and will officially open on May 23rd 2020. However, you can order now for next-day delivery and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+}
+
+export const navbar = {
+    homeIcon: true,
 }
 
 export const footer = {
@@ -264,8 +262,8 @@ export default {
     products,
     menu,
     entity,
-    entityTypes,
     banner,
+    navbar,
     footer,
     payment,
     geo,

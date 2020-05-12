@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import Cart from './Cart';
-import UserInfo from '../../UserInfo';
-import SubmitButton from '../../SubmitButton';
-import ShopContext from '../../../hooks/ShopContext';
+import UserInfo from '../UserInfo';
+import SubmitButton from '../SubmitButton';
+import ShopContext from '../../hooks/ShopContext';
 
 export default props => {
   const {state, dispatch} = useContext(ShopContext);
