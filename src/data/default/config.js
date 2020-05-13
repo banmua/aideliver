@@ -181,7 +181,7 @@ export const products = [
     }, {
         id: 'R2',
         name: 'Spring Roll',
-        description: 'Rice paper rolls with shrimp and beef',
+        description: 'Rice paper rolls with shrimp and pork',
         native: 'Goi cuon',
         price: '2.00',
         unit: 'roll',
