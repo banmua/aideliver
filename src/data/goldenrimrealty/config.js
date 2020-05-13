@@ -75,7 +75,7 @@ export const products = [
         description: 'townhouse, 2br/2ba',
         native: 'Pho tai bo vien',
         price: '2300',
-        unit: 'per month',
+        unit: 'month',
         image: '/images/goldenrimrealty/apt2.jpg',
         isNameNative: true,
         limit: 1,
