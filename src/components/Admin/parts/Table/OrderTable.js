@@ -133,9 +133,11 @@ const OrderTable = ({data = []})  => {
     []
   )
 
+  const total = data.reduce((acc, item) => acc + Number(item.total), 0);
+
   return (
     <Styles>
-      <div style={{marginBottom: '10px'}}>Total: {data.length}</div>
+      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total}</div>
       <Table columns={columns} data={data} />
     </Styles>
   )
