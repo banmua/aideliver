@@ -56,7 +56,7 @@ ReactDOM.render(
       <Router>
         <Switch>
           {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
-          <Route path="/user"><Layout><Account /></Layout></Route>
+          <Route path="/user"><Account /></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
           <Route path="/profile"><Layout><Profile /></Layout></Route>
           <Route path="/contact"><Layout><Contact /></Layout></Route>

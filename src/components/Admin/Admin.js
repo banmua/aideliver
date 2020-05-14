@@ -3,7 +3,7 @@ import { API, graphqlOperation } from 'aws-amplify'
 import { listOrders as ListOrders } from '../../graphql/queries';
 import { withAuthenticator, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react'
 import { Auth} from 'aws-amplify';
-import ShopContext from '../../hooks/ShopContext';
+import ShopContext, {getAdmins} from '../../hooks/ShopContext';
 import Table from './parts/Table';
 import moment from 'moment';
 
@@ -36,12 +36,12 @@ const Admin = props => {
             }
         }
         fetch();
-    }, [userName])
+    }, [state.login.userName])
 
     return (
         <div>
             <div>
-            { ['TrangPham', 'PhuongLe', 'ThanhLe', 'ThachLe'].includes(state.login.userName) 
+            { getAdmins().includes(state.login.userName) 
                     ? <Table data={orders || []} />
                     : <h2>Not Accessible.</h2> }
             </div>

@@ -5,6 +5,7 @@ import { Auth} from 'aws-amplify';
 import ShopContext from '../../hooks/ShopContext';
 import {Link, Redirect} from 'react-router-dom';
 import {withCenter} from '../Layout/utils';
+import Layout from '../Layout';
 
 const Account = props => {
     const {state, dispatch} = useContext(ShopContext);
@@ -23,7 +24,9 @@ const Account = props => {
         fetch();
     }, [userName])
 
-    return <h2>Account</h2>
+    return (
+        <Layout><h2>Account</h2></Layout>
+    )
 }
 
 export default withCenter(withAuthenticator(Account, {includeGreetings: true}))
