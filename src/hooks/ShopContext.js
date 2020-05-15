@@ -48,7 +48,7 @@ const defaultState = {
         phone: '',
         email: '',
         referrer: '',
-        deliveryDT: moment().add(2, 'hours').startOf('hour'), //(new Date()).addHours(2),
+        deliveryDT: moment().add(1, 'days').add(2, 'hours').startOf('hour'), //(new Date()).addHours(2),
         entity: 'aideliver'
     },
     login: {

@@ -90,11 +90,21 @@ export const isValid = (fieldName, value, errorChecking = false) => {
         case 'email': 
             return errorChecking ? validateEmail(value) : true;
 
-        case 'deliveryDate': {
+        case 'deliveryDate2': {
             const now = moment(new Date());
             if (!errorChecking) return true;
             const val = moment(value);
             return val.isSameOrAfter(now.add(1, 'days'));
+        }
+
+        case 'deliveryDate': {
+            const value = moment(value);
+            const startOfDay = moment(value).startOf('day');
+            const openTime = moment(startOfDay).add(10, 'hours');
+            const closeTime = moment(startOfDay).add(20, 'hours').add(1, 'seconds');
+            const twoHoursFromNow = moment().add(2, 'hours');
+            
+            return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
         }
 
         case 'deliveryTime': {
