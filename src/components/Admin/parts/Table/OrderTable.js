@@ -133,11 +133,11 @@ const OrderTable = ({data = []})  => {
     []
   )
 
-  const total = data.reduce((acc, item) => acc + Number(item.total), 0);
+  const total = data.reduce((acc, item) => item.status === 'canceled' ? acc : acc + Number(item.total), 0);
 
   return (
     <Styles>
-      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total}</div>
+      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.fixed(2)}</div>
       <Table columns={columns} data={data} />
     </Styles>
   )
