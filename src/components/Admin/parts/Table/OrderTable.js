@@ -91,19 +91,6 @@ const OrderTable = ({data = []})  => {
         Header: 'Orders',
         columns: [
           {
-            getProps: (state, rowInfo) => {
-              if (rowInfo && rowInfo.row) {
-                return {
-                  style: {
-                    background:
-                      rowInfo.row.firstName === "school" ? "red" : "green"
-
-                  }
-                };
-              } else {
-                return {};
-              }
-            },
             Header: 'First Name',
             accessor: 'firstName',
           },
@@ -167,21 +154,19 @@ const OrderTable = ({data = []})  => {
     <Styles>
       <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.toFixed(2)}</div>
       <Table columns={columns} data={data} 
-        getCellProps={cell => {
-          return cell.column.Header === 'Status'
-                  ? {
-                      style: {
-                        backgroundColor: cell.value === 'canceled'
-                                ? '#ffe6e6'
-                                : cell.value === 'delivered'
-                                    ? '#e6ffe6'
-                                    : cell.value === 'ordered'
-                                        ? '#e6ffff'
-                                        : 'white'
-                      }
-                    }
-                  : {}
-
+        getRowProps={row => {
+          const status = row.values.status;
+          return {
+              style: {
+                backgroundColor: status === 'canceled'
+                        ? '#ffe6e6'
+                        : status === 'delivered'
+                            ? '#e6ffe6'
+                            : status === 'ordered'
+                                ? '#e6ffff'
+                                : 'white'
+              }
+            }
           }
         } />
     </Styles>
