@@ -29,7 +29,15 @@ const Styles = styled.div`
   }
 `
 
-function Table({ columns, data }) {
+// Create a default prop getter
+const defaultPropGetter = () => ({})
+
+function Table({ columns, data, 
+    getHeaderProps = defaultPropGetter,
+    getColumnProps = defaultPropGetter,
+    getRowProps = defaultPropGetter,
+    getCellProps = defaultPropGetter,
+  }) {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -58,9 +66,16 @@ function Table({ columns, data }) {
         {rows.map((row, i) => {
           prepareRow(row)
           return (
-            <tr {...row.getRowProps()}>
+            <tr {...row.getRowProps(getRowProps(row))}>
               {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                return <td {...cell.getCellProps([
+                  {
+                    className: cell.column.className,
+                    style: cell.column.style,
+                  },
+                  getColumnProps(cell.column),
+                  getCellProps(cell),
+                ])}>{cell.render('Cell')}</td>
               })}
             </tr>
           )
@@ -76,6 +91,19 @@ const OrderTable = ({data = []})  => {
         Header: 'Orders',
         columns: [
           {
+            getProps: (state, rowInfo) => {
+              if (rowInfo && rowInfo.row) {
+                return {
+                  style: {
+                    background:
+                      rowInfo.row.firstName === "school" ? "red" : "green"
+
+                  }
+                };
+              } else {
+                return {};
+              }
+            },
             Header: 'First Name',
             accessor: 'firstName',
           },
@@ -138,7 +166,24 @@ const OrderTable = ({data = []})  => {
   return (
     <Styles>
       <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.toFixed(2)}</div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} 
+        getCellProps={cell => {
+          return cell.column.Header === 'Status'
+                  ? {
+                      style: {
+                        backgroundColor: cell.value === 'canceled'
+                                ? '#ffe6e6'
+                                : cell.value === 'delivered'
+                                    ? '#e6ffe6'
+                                    : cell.value === 'ordered'
+                                        ? '#e6ffff'
+                                        : 'white'
+                      }
+                    }
+                  : {}
+
+          }
+        } />
     </Styles>
   )
 }
