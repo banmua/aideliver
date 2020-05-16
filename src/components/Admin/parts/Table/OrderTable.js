@@ -137,7 +137,7 @@ const OrderTable = ({data = []})  => {
 
   return (
     <Styles>
-      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.fixed(2)}</div>
+      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.toFixed(2)}</div>
       <Table columns={columns} data={data} />
     </Styles>
   )
