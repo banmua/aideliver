@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTable } from 'react-table'
+import { useTable } from 'react-table';
+import {Link} from 'react-router-dom';
 
 import makeData from './makeData'
 
@@ -68,6 +69,8 @@ function Table({ columns, data,
           return (
             <tr {...row.getRowProps(getRowProps(row))}>
               {row.cells.map(cell => {
+                console.log('>>> CELL', cell);
+
                 return <td {...cell.getCellProps([
                   {
                     className: cell.column.className,
@@ -75,7 +78,7 @@ function Table({ columns, data,
                   },
                   getColumnProps(cell.column),
                   getCellProps(cell),
-                ])}>{cell.render('Cell')}</td>
+                ])}>{cell.column.Heading === 'Id' ? <Link to={`/admin/${cell.value}`}><b>ABC {cell.render('Cell')}</b></Link> : cell.render('Cell')}</td>
               })}
             </tr>
           )

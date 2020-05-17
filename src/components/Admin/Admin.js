@@ -20,7 +20,7 @@ const Admin = props => {
                 const userName = tokens.getIdToken().payload['cognito:username'];
                 dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
 
-                const data = await API.graphql(graphqlOperation(ListOrders))
+                const data = await API.graphql(graphqlOperation(ListOrders, {limit: 500}))
                 const items = data.data.listOrders.items.map(item => {
                     return {
                         ...item,
