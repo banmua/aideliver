@@ -75,6 +75,10 @@ const defaultState = {
     geo: data.geo || {locations: []},
     content: data.content,
     navbar: data.navbar,
+    admin: {
+        orders: [],
+        dict: {},
+    }
 }
 
 const reducer = (state, action) => {
@@ -104,6 +108,13 @@ const reducer = (state, action) => {
 
         case 'CLEAR': {
             return {...defaultState}
+        }
+
+        case 'SET_ORDERS': {
+            const {orders} = action.payload;
+            const dict = {};
+            orders.forEach(order => dict[order.id] = order);
+            return {...state, admin: {...state.admin, orders, dict}}
         }
 
         default:

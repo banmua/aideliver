@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import NavBar from './components/NavBar';
 import Order from './components/Order';
 import Admin from './components/Admin';
+import AdminItem from './components/Admin/AdminItem';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import Contact from './components/Contact';
@@ -57,6 +58,7 @@ ReactDOM.render(
         <Switch>
           {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
           <Route path="/user"><Account /></Route>
+          <Route path="/admin/:id"><AdminItem /></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
           <Route path="/profile"><Layout><Profile /></Layout></Route>
           <Route path="/contact"><Layout><Contact /></Layout></Route>

@@ -30,6 +30,7 @@ const Admin = props => {
                 })
 
                 setOrders(items);
+                dispatch({type: 'SET_ORDERS', payload: {orders: items}})
 
             } catch (err) {
                 console.log('error fetching orders ...', err.message, err);
