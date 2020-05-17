@@ -5,7 +5,7 @@ import Layout from '../Layout';
 
 const styles = {
     container: {
-        //padding: '20px',
+        padding: '10px',
     },
     products: {
         border: '1px solid gray',
@@ -42,7 +42,7 @@ const Product_Text = ({product}) => {
     if (!product) return null;
     const {id, name, qty, unit} = product;
 
-    return `${id}    ${name} (${qty})\n`;
+    return `${id}   ${name} (${qty})\n`;
 }
 
 const Products = ({products}) => (
@@ -85,13 +85,13 @@ const UserInfo = ({order: {firstName, lastName, street, city, state, phone, emai
 
 const UserInfo_Text = ({order: {firstName, lastName, street, city, state, phone, email, total, deliveryDT}}) => (
 <pre>{`
-Name:       ${firstName} ${lastName}
-Address:    ${street}
-            ${city}, ${state}
-Phone:      ${phone}
-Email:      ${email}
-Time:       ${deliveryDT}
-Total:      ${total}
+Name:    ${firstName} ${lastName}
+Address: ${street}
+         ${city}, ${state}
+Phone:   ${phone}
+Email:   ${email}
+Time:    ${deliveryDT}
+Total:   $${total}
 `}</pre>
 )
 
@@ -112,9 +112,10 @@ export default (props) => {
     }
 
     return (
-        <div>
-            <pre>----------------------------------------------------------</pre>
-            <pre>PhoBalo.com, Order#: {id}</pre>
+        <div style={styles.container}>
+            <pre>---------------------------------------</pre>
+            <pre>PhoBalo.com</pre>
+            <pre>#{id}</pre>
             <Products_Text products={products} />
             {order && <UserInfo_Text order={order} />}
 
