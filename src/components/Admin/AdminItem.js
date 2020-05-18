@@ -26,6 +26,10 @@ const styles = {
     userInfo: {
         padding: '10px',
         width: '500px'
+    },
+    notes: {
+        fontSize: '12px',
+        fontWeight: 'bold',
     }
 }
 
@@ -118,11 +122,20 @@ export default (props) => {
             <pre>#{id}</pre>
             <Products_Text products={products} />
             {order && <UserInfo_Text order={order} />}
+            <pre>--------------------------------------</pre>
+            <pre style={styles.notes}>{`
+Please don't forget to reheat the 
+broth for your maximum enjoyment. 
+Thank you for ordering Phở at PhoBalo.com!
+            `}</pre>
+
+            
 
             {/* <h3>PhoBalo.com</h3>
             <h3>Order #{id} </h3>
             <Products products={products} />
             {order && <UserInfo order={order} />} */}
+
         </div>
     )
 }
