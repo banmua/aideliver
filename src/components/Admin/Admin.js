@@ -21,13 +21,18 @@ const Admin = props => {
                 dispatch({type: 'UPDATE', payload: {key: 'userName', value: userName, parent: 'login'}})
 
                 const data = await API.graphql(graphqlOperation(ListOrders, {limit: 500}))
-                const items = data.data.listOrders.items.map(item => {
-                    return {
-                        ...item,
-                        deliveryDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
-                        orderDT: moment(item.orderDT).format("MM/DD/YYYY hh:mm A"),
-                    }
-                })
+
+                console.log('>>> DATA', data, state);
+
+                const items = data.data.listOrders.items
+                       .filter(obj => obj.entity === state.entity.name)
+                        . map(item => {
+                                return {
+                                    ...item,
+                                    deliveryDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
+                                    orderDT: moment(item.orderDT).format("MM/DD/YYYY hh:mm A"),
+                                }
+                            });
 
                 setOrders(items);
                 dispatch({type: 'SET_ORDERS', payload: {orders: items}})
