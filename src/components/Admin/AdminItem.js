@@ -117,14 +117,14 @@ export default (props) => {
 
     return (
         <div style={styles.container}>
+            
+            <pre style={styles.notes}>PhoBalo.com</pre>
             <pre>--------------------------------------</pre>
-            <pre>PhoBalo.com</pre>
             <pre>#{id}</pre>
             <Products_Text products={products} />
             {order && <UserInfo_Text order={order} />}
             <pre>--------------------------------------</pre>
-            <pre style={styles.notes}>{`
-Please don't forget to reheat the 
+            <pre style={styles.notes}>{`Please don't forget to reheat the 
 broth for your maximum enjoyment. 
 Thank you for ordering Phở at PhoBalo.com!
             `}</pre>
