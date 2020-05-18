@@ -113,7 +113,7 @@ export default (props) => {
 
     return (
         <div style={styles.container}>
-            <pre>---------------------------------------</pre>
+            <pre>--------------------------------------</pre>
             <pre>PhoBalo.com</pre>
             <pre>#{id}</pre>
             <Products_Text products={products} />
