@@ -25,7 +25,7 @@ const Admin = props => {
                 console.log('>>> DATA', data, state);
 
                 const items = data.data.listOrders.items
-                       .filter(obj => obj.entity === state.entity.name)
+                        .filter(obj => obj.entity.toLowerCase() === state.entity.id.toLowerCase())
                         . map(item => {
                                 return {
                                     ...item,

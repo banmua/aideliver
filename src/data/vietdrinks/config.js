@@ -2,6 +2,7 @@ import defaultConfig from '../default';
 import {entityTypes} from '../../constants';
 
 export const entity = {
+    id: 'vietdrinks',
     url: 'vietdrinks.com',
     name: 'VietDrinks',
     type: entityTypes.retails,
