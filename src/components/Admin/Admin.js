@@ -22,8 +22,6 @@ const Admin = props => {
 
                 const data = await API.graphql(graphqlOperation(ListOrders, {limit: 500}))
 
-                console.log('>>> DATA', data, state);
-
                 const items = data.data.listOrders.items
                         .filter(obj => obj.entity.toLowerCase() === state.entity.id.toLowerCase())
                         . map(item => {

@@ -3,7 +3,7 @@ import {entityTypes} from '../../constants';
 export const entity = {
     id: 'phobalo',
     url: 'phobalo.com',
-    name: 'PhoBalo',
+    name: 'PhoBalo.com',
     type: entityTypes.retails,
     subtype: entityTypes.restaurant,
 }
