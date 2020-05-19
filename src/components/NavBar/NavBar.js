@@ -100,7 +100,7 @@ export default (props) => {
             <Link to="/" color="white">{state.entity.name}</Link>
           </Typography>
 
-          {window.innerWidth < 450 ? null : 
+          {window.innerWidth < 537 ? null : 
                 <div className={classes.search}>
                   <div className={classes.searchIcon}><SearchIcon /></div>
                   <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
@@ -113,7 +113,7 @@ export default (props) => {
           <div className={classes.grow} />
 
           <div className={classes.sectionDesktop}>
-            {window.innerWidth > 450 ? null :
+            {window.innerWidth > 537 ? null :
                 <IconButton aria-label="search icon" color="inherit">
                     <SearchIcon />
                 </IconButton> 
