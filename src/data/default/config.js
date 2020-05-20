@@ -263,7 +263,7 @@ export const products = [
         native: 'Bun thit nuong',
         price: '12.00',
         unit: 'bowl',
-        image: '/images/bunThitNuong.jpg',
+        image: '/images/bunThitNuong2.jpg',
     }
 ]
 
