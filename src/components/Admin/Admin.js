@@ -4,7 +4,7 @@ import { listOrders as ListOrders } from '../../graphql/queries';
 import { withAuthenticator, AmplifySignOut, AmplifySignIn } from '@aws-amplify/ui-react'
 import { Auth} from 'aws-amplify';
 import ShopContext, {getAdmins} from '../../hooks/ShopContext';
-import Table from './parts/Table';
+import Table from '../core/Table';
 import moment from 'moment';
 
 const Admin = props => {

@@ -92,6 +92,10 @@ const OrderTable = ({data = []})  => {
         Header: 'Orders',
         columns: [
           {
+            Header: 'user',
+            accessor: 'user',
+          },
+          {
             Header: 'First Name',
             accessor: 'firstName',
           },

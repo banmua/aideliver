@@ -20,7 +20,7 @@ export default ({style}) => {
             title: `PhoBalo.com`,
             orderNo: id,
             products: JSON.stringify(cart),
-            user: `${firstName} ${lastName}`,
+            user: state.login.userName || `${firstName} ${lastName}`,
             firstName,
             lastName,
             street,
@@ -38,7 +38,7 @@ export default ({style}) => {
             //actualDeliveryDT: '',
             //deliverer: '',
             //notes: '',
-            entity: entity.name,
+            entity: entity.id,
         };
 
         try {

@@ -64,7 +64,7 @@ const Products = ({products}) => (
 const Products_Text = ({products}) => (
     <pre>
         {/* {`Id    Product (Qty)\n`} */}
-        {products && products.map(prod => <Product_Text product={prod} />)}
+        {products && products.map((prod, i) => <Product_Text key={`product_${i}`} product={prod} />)}
     </pre>
 )
 

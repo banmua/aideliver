@@ -62,7 +62,7 @@ export const geo = {
     ]
 }
 
-export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'C2'];
+export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'N1'];
 
 export const products = [
     {
@@ -77,7 +77,7 @@ export const products = [
     }, {
         id: 'G2',
         name: 'Extras',
-        description: 'Extra noodles, beef, or chicken, $2.00 to $4.00 per portion',
+        description: 'Extra noodles ($2.00), beef, or chicken, $4.00 per portion',
         native: 'Them thuc an',
         price: '2.00',
         unit: 'portion',
@@ -251,6 +251,14 @@ export const products = [
         price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
+    }, {
+        id: 'N1',
+        name: 'Grilled Pork & Rice Noodles',
+        description: 'Grilled pork with rice noodles',
+        native: 'Bun thit nuong',
+        price: '12.00',
+        unit: 'bowl',
+        image: '/images/bunThitNuong.jpg',
     }
 ]
 
