@@ -64,12 +64,14 @@ export default (props) => {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>
-            <IconButton edge="start" className={classes.menuButton}
-                    color="inherit" aria-label="open drawer"
-                    onClick={() => setIsDrawerOpen(true)}
-                  >
-              <MenuIcon />
-            </IconButton>
+            {state.navbar.leftMenu &&
+              <IconButton edge="start" className={classes.menuButton}
+                      color="inherit" aria-label="open drawer"
+                      onClick={() => setIsDrawerOpen(true)}
+                    >
+                <MenuIcon />
+              </IconButton>}
+
             <Drawer anchor={'left'} open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
               <List>
                 <ListItem button onClick={() => setIsDrawerOpen(false)}>
@@ -100,7 +102,7 @@ export default (props) => {
             <Link to="/" color="white">{state.entity.name}</Link>
           </Typography>
 
-          {window.innerWidth < 537 ? null : 
+          {state.navbar.searchBar && window.innerWidth < 537 && 
                 <div className={classes.search}>
                   <div className={classes.searchIcon}><SearchIcon /></div>
                   <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }}
@@ -113,13 +115,13 @@ export default (props) => {
           <div className={classes.grow} />
 
           <div className={classes.sectionDesktop}>
-            {window.innerWidth > 537 ? null :
+            {state.navbar.searchIcon && window.innerWidth > 537 &&
                 <IconButton aria-label="search icon" color="inherit">
                     <SearchIcon />
                 </IconButton> 
             }
 
-            <IconButton aria-label="shopping cart" color="inherit"  
+            {state.navbar.cartIcon && <IconButton aria-label="shopping cart" color="inherit"  
                   onClick={() => {
                     if (window.location.pathname === '/') {
                         window.location.href='#order' 
@@ -129,9 +131,9 @@ export default (props) => {
                 {window.location.pathname === '/' ? <ShoppingCartIcon /> :
                         <Link to='/cart' color='white'><ShoppingCartIcon /></Link>}
               </Badge>
-            </IconButton>
+            </IconButton>}
 
-            <ProfileIcon />
+            {state.navbar.profileIcon && <ProfileIcon />}
           </div>
 
           <div className={classes.sectionMobile}>

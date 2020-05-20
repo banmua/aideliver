@@ -14,6 +14,11 @@ export const banner = {
 
 export const navbar = {
     homeIcon: true,
+    searchBar: true,
+    searchIcon: true,
+    cartIcon: true,
+    profileIcon: true,
+    leftMenu: true,
 }
 
 export const footer = {
