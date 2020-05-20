@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {useParams} from 'react-router-dom';
 import ShopContext from '../../hooks/ShopContext';
 import Layout from '../Layout';
+import Status from './Status';
 
 const styles = {
     container: {
@@ -116,26 +117,27 @@ export default (props) => {
     }
 
     return (
-        <div style={styles.container}>
-            
-            <pre style={styles.notes}>PhoBalo.com</pre>
-            <pre>--------------------------------------</pre>
-            <pre>#{id}</pre>
-            <Products_Text products={products} />
-            {order && <UserInfo_Text order={order} />}
-            <pre>--------------------------------------</pre>
-            <pre style={styles.notes}>{`Please don't forget to reheat the 
-broth for your maximum enjoyment. 
-Thank you for ordering Phở at PhoBalo.com!
-            `}</pre>
+        <Layout>
+            <div style={styles.container}>
+                <pre style={styles.notes}>PhoBalo.com</pre>
+                <pre>--------------------------------------</pre>
+                <pre>#{id}</pre>
+                <Products_Text products={products} />
+                {order && <UserInfo_Text order={order} />}
+                <pre>--------------------------------------</pre>
+                <pre style={styles.notes}>{`Please don't forget to reheat the\nbroth for your maximum enjoyment.\nThank you for ordering Phở at PhoBalo.com!
+                `}</pre>
 
-            
+                {/* <h3>PhoBalo.com</h3>
+                <h3>Order #{id} </h3>
+                <Products products={products} />
+                {order && <UserInfo order={order} />} */}
 
-            {/* <h3>PhoBalo.com</h3>
-            <h3>Order #{id} </h3>
-            <Products products={products} />
-            {order && <UserInfo order={order} />} */}
-
-        </div>
+                <hr />
+                <div style={{backgroundColor: '#f0f0f0', padding: '10px 10px 20px'}}>
+                    <Status id={id} order={order} />
+                </div>
+            </div>
+        </Layout>
     )
 }
