@@ -19,6 +19,7 @@ const Status = (props) => {
     const [notes, setNotes] = useState('');
 
     const changeStatus = async () => {
+        console.log('>>> STATUS:', id, status, order.status);
         if (!id || status === order.status) return;
 
         const details = {id, status};
