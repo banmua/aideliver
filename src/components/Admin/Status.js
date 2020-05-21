@@ -21,8 +21,10 @@ const Status = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const changeStatus = async () => {
-        console.log('>>> STATUS:', id, status, order.status);
-        if (!id || status === order.status) return;
+        if (!id || !order || status === order.status) {
+            setIsOpen(false);
+            return;
+        };
 
         const details = {id, status};
         const updatedTodo = await API.graphql(graphqlOperation(mutations.updateOrder, {input: details}));
