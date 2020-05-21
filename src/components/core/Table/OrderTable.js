@@ -30,6 +30,20 @@ const Styles = styled.div`
   }
 `
 
+const getBackgroundColor = status => {
+  switch(status) {
+    case 'canceled': return '#ffe6e6';
+    case 'delivered': return '#e6ffe6';
+    case 'completed': return '#e6ffe6';
+    case 'paid': return '#e6ffe6';
+    case 'ordered': return '#e6ffff';
+    case 'reordered': return '#fff9e6';
+    case 'confirmed': return '#ffe6cc';
+    case 'in-transit': return '#f5e6ff';
+    default: return 'white';
+  }
+}
+
 // Create a default prop getter
 const defaultPropGetter = () => ({})
 
@@ -162,15 +176,7 @@ const OrderTable = ({data = []})  => {
         getRowProps={row => {
           const status = row.values.status;
           return {
-              style: {
-                backgroundColor: status === 'canceled'
-                        ? '#ffe6e6'
-                        : status === 'delivered'
-                            ? '#e6ffe6'
-                            : status === 'ordered'
-                                ? '#e6ffff'
-                                : 'white'
-              }
+              style: {backgroundColor: getBackgroundColor(status)}
             }
           }
         } />
