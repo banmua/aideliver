@@ -46,10 +46,8 @@ const Status = (props) => {
         <div>
             <FormControl className={classes.formControl}>
                 <InputLabel id="shop-status"  >Status</InputLabel>
-                <Select labelId={`status`} id={`status`} 
-                            value={status}
-                            onChange={event => setStatus(event.target.value)}
-                        >
+                <Select labelId={`status`} id={`status`} value={status}
+                            onChange={event => setStatus(event.target.value)} >
                     <MenuItem value={"ordered"}>ordered</MenuItem>
                     <MenuItem value={"reordered"}>reordered</MenuItem>
                     <MenuItem value={"confirmed"}>confirmed</MenuItem>

@@ -168,10 +168,14 @@ const OrderTable = ({data = []})  => {
   )
 
   const total = data.reduce((acc, item) => item.status === 'canceled' ? acc : acc + Number(item.total), 0);
+  const ordered = data.reduce((acc, item) => item.status === 'ordered' ? acc + 1 : acc, 0);
+  const confirmed = data.reduce((acc, item) => item.status === 'confirmed' ? acc + 1 : acc, 0);
+  const canceled = data.reduce((acc, item) => item.status === 'canceled' ? acc + 1 : acc, 0);
+
 
   return (
     <Styles>
-      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.toFixed(2)}</div>
+      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.toFixed(2)}, Ordered: {ordered}, Confirm: {confirmed}, Canceled: {canceled}</div>
       <Table columns={columns} data={data} 
         getRowProps={row => {
           const status = row.values.status;
