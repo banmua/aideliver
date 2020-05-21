@@ -35,8 +35,9 @@ const Status = (props) => {
         return (
             <div>
                 Status: {status}
-                <EditIcon color='secondary' style={{paddingLeft: '20px'}} 
-                        onClick={() => setIsOpen(true)} />
+                {status !== 'completed' &&
+                    <EditIcon color='secondary' style={{paddingLeft: '20px'}} 
+                            onClick={() => setIsOpen(true)} />}
             </div>
         )
     }

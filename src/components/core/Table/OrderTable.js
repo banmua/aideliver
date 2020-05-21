@@ -34,7 +34,7 @@ const getBackgroundColor = status => {
   switch(status) {
     case 'canceled': return '#ffe6e6';
     case 'delivered': return '#e6ffe6';
-    case 'completed': return '#e6ffe6';
+    case 'completed': return '#ebebe0';
     case 'paid': return '#e6ffe6';
     case 'ordered': return '#e6ffff';
     case 'reordered': return '#fff9e6';
