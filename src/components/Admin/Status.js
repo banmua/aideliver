@@ -35,7 +35,7 @@ const Status = (props) => {
         return (
             <div>
                 Status: {status}
-                {['completed', 'canceled'].includes(status) &&
+                {!['completed', 'canceled'].includes(status) &&
                     <EditIcon color='secondary' style={{paddingLeft: '20px'}} 
                             onClick={() => setIsOpen(true)} />}
             </div>
