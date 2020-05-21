@@ -8,7 +8,7 @@ import costcotogo from './costcotogo';
 export const config = () => {
     const hostname = window.location.hostname;
 
-    const res = costcotogo; //goldenrimrealty; //vietdrinks; // default;
+    const res = phobalo; //costcotogo; //goldenrimrealty; //vietdrinks; // default;
 
     if (hostname.endsWith('aideliver.com')) return aideliver;
     if (hostname.endsWith('phobalo.com')) return phobalo;

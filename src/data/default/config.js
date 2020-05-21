@@ -9,8 +9,10 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Palo Alto, Los Altos, Mountain View, and Sunnyvale of California. Order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, Mountain View, and Sunnyvale of California. Order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
 }
+
+
 
 export const navbar = {
     homeIcon: true,
@@ -44,6 +46,11 @@ export const payment = {
 
 export const geo = {
     locations: [{
+            name: 'Menlo Park, CA',
+            city: 'Menlo Park',
+            state: 'California',
+            zipCodes: [],
+        }, {
             name: 'Palo Alto, CA',
             city: 'Palo Alto',
             state: 'California',
@@ -51,6 +58,11 @@ export const geo = {
         }, {
             name: 'Los Altos, CA',
             city: 'Los Altos',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Los Altos Hills, CA',
+            city: 'Los Altos Hills',
             state: 'California',
             zipCodes: [],
         }, {
