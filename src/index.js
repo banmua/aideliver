@@ -8,6 +8,8 @@ import NavBar from './components/NavBar';
 import Order from './components/Order';
 import Admin from './components/Admin';
 import AdminItem from './components/Admin/AdminItem';
+import Today from './components/Admin/Today';
+import Tomorrow from './components/Admin/Tomorrow';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import Contact from './components/Contact';
@@ -58,6 +60,8 @@ ReactDOM.render(
         <Switch>
           {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
           <Route path="/user"><Account /></Route>
+          <Route path="/admin/today"><Today /></Route>
+          <Route path="/admin/tomorrow"><Tomorrow /></Route>
           <Route path="/admin/:id"><AdminItem /></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
           <Route path="/profile"><Layout><Profile /></Layout></Route>

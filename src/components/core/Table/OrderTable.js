@@ -175,7 +175,13 @@ const OrderTable = ({data = []})  => {
 
   return (
     <Styles>
-      <div style={{marginBottom: '10px'}}>Orders: {data.length}, Total: ${total.toFixed(2)}, Ordered: {ordered}, Confirm: {confirmed}, Canceled: {canceled}</div>
+      <div style={{marginBottom: '10px'}}>
+            Orders: {data.length}, 
+            Total: ${total.toFixed(2)}, 
+            Ordered: {ordered}, 
+            Confirm: {confirmed}, 
+            Canceled: {canceled}, <Link to="/admin/today">Today</Link>, <Link to="/admin/tomorrow">Tomorrow</Link>
+      </div>
       <Table columns={columns} data={data} 
         getRowProps={row => {
           const status = row.values.status;
