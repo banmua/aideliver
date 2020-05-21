@@ -1,4 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
+import { API, graphqlOperation } from "aws-amplify";
+import * as mutations from '../../graphql/mutations';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -15,6 +17,13 @@ const Status = (props) => {
     const {state, dispatch} = useContext(ShopContext);
     const [status, setStatus] = useState(order ? order.status : '');
     const [notes, setNotes] = useState('');
+
+    const changeStatus = async () => {
+        if (!id || status === order.status) return;
+
+        const details = {id, status};
+        const updatedTodo = await API.graphql(graphqlOperation(mutations.updateOrder, {input: details}));
+    }
 
     return (
         <div>
@@ -40,7 +49,7 @@ const Status = (props) => {
                     />
             </div>
             <div style={{marginTop: '20px'}}>
-                <Button variant="contained" type="submit" color="secondary" onClick={() => {}}>
+                <Button variant="contained" type="submit" color="secondary" onClick={changeStatus} >
                     Change Order Status
                 </Button>
             </div>
