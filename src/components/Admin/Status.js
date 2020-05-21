@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import styles, {useStyles} from './styles';
 import ShopContext from '../../hooks/ShopContext';
+import EditIcon from '@material-ui/icons/Edit';
 
 
 const Status = (props) => {
@@ -17,6 +18,7 @@ const Status = (props) => {
     const {state, dispatch} = useContext(ShopContext);
     const [status, setStatus] = useState(order ? order.status : '');
     const [notes, setNotes] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
 
     const changeStatus = async () => {
         console.log('>>> STATUS:', id, status, order.status);
@@ -24,6 +26,17 @@ const Status = (props) => {
 
         const details = {id, status};
         const updatedTodo = await API.graphql(graphqlOperation(mutations.updateOrder, {input: details}));
+        setIsOpen(false);
+    }
+
+    if (!isOpen) {
+        return (
+            <div>
+                Status: {status}
+                <EditIcon color='secondary' style={{paddingLeft: '20px'}} 
+                        onClick={() => setIsOpen(true)} />
+            </div>
+        )
     }
 
     return (
