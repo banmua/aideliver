@@ -49,13 +49,12 @@ const Products_Text = ({products}) => (
     </pre>
 )
 
-
 export default (props) => {
     let { id } = useParams();
     const {state, dispatch} = useContext(ShopContext);
     const orders = state.admin.orders;
+    const today = moment();
     const targetOrders =orders.filter(item => {
-        const today = moment();
         const deliveryTime = moment(item.deliveryDT);
         console.log('>>> ID:', today, deliveryTime, item.id, today.isSame(deliveryTime, 'd'));
         return today.isSame(deliveryTime, 'd');
@@ -68,11 +67,14 @@ export default (props) => {
         return acc;
     }, {});
 
+    console.log('>>> STATE', state);
+
     return (
         <div>
-            <h2>Today</h2>
-            <pre>{JSON.stringify(res, null, 2)}</pre>
-            <pre>{JSON.stringify(targetOrders, null, 2)}</pre>
+            <h2>Today {today.format('DD/MM/YYYY')}</h2>
+            {Object.keys(res).map(id => <pre>{`${id}: ${state.dict[id].name} (${res[id]})`}</pre>)}
+            {/* <pre>{JSON.stringify(res, null, 2)}</pre>
+            <pre>{JSON.stringify(targetOrders, null, 2)}</pre> */}
         </div>  
     )
 }
