@@ -9,7 +9,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, Mountain View, and Sunnyvale of California. Order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Atherton, Menlo Park, Palo Alto, Los Altos, Los Altos Hills, Mountain View, and Sunnyvale of California. Order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
 }
 
 
@@ -46,6 +46,11 @@ export const payment = {
 
 export const geo = {
     locations: [{
+            name: 'Atherton, CA',
+            city: 'Atherton',
+            state: 'California',
+            zipCodes: [],
+        }, {
             name: 'Menlo Park, CA',
             city: 'Menlo Park',
             state: 'California',
