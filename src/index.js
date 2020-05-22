@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import Order from './components/Order';
 import Admin from './components/Admin';
 import AdminItem from './components/Admin/AdminItem';
+import Range from './components/Admin/Range';
 import Today from './components/Admin/Today';
 import Tomorrow from './components/Admin/Tomorrow';
 import Profile from './components/Profile';
@@ -60,6 +61,7 @@ ReactDOM.render(
         <Switch>
           {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
           <Route path="/user"><Account /></Route>
+          <Route path="/admin/range"><Range /></Route>
           <Route path="/admin/today"><Today /></Route>
           <Route path="/admin/tomorrow"><Tomorrow /></Route>
           <Route path="/admin/:id"><AdminItem /></Route>

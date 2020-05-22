@@ -5,6 +5,8 @@ import Layout from '../Layout';
 import Status from './Status';
 import moment from 'moment';
 import Table from '../core/Table';
+import DeliveryTable from '../core/Table/DeliveryTable';
+import queryString from 'query-string';
 
 const styles = {
     container: {
@@ -50,14 +52,32 @@ const Products_Text = ({products}) => (
     </pre>
 )
 
+
 export default (props) => {
+    const parsed = queryString.parse(window.location.search);
+    const now = moment();
+    const format = 'MM/DD/YYYY hh:mm A';
+    const str = now.format('MM/DD/YYYY');
+    const frTime = moment(str + ' ' + parsed.fr, format);
+    const toTime = moment(str + ' ' + parsed.to, format);
+    //console.log('>>> PARSED', str, parsed.fr, parsed.to, frTime, toTime);
+
+    let { id } = useParams();
     const {state, dispatch} = useContext(ShopContext);
     const orders = state.admin.orders;
-    const today = moment();
+    const today= moment();
     const targetOrders =orders.filter(item => {
         const deliveryTime = moment(item.deliveryDT);
-        console.log('>>> ID:', today, deliveryTime, item.id, today.isSame(deliveryTime, 'd'));
-        return today.isSame(deliveryTime, 'd');
+
+        const str = now.format('MM/DD/YYYY');
+        const frTime = moment(str + ' ' + parsed.fr, format);
+        const toTime = moment(str + ' ' + parsed.to, format);
+
+        // console.log('>>> TIME', deliveryTime.format(format), 
+        //         frTime.format(format), toTime.format(format), 
+        //         deliveryTime.isBetween(frTime, toTime));
+
+        return deliveryTime.isBetween(frTime, toTime);
     });
     const res = targetOrders.reduce((acc, order) => {
         const prods = JSON.parse(order.products);
@@ -67,20 +87,11 @@ export default (props) => {
         return acc;
     }, {});
 
-    console.log('>>> STATE', state);
-
     return (
         <Layout>
-            <h2>{today.format('dddd DD/MM/YYYY')}</h2>
+            <h2>{today.format('dddd DD/MM/YYYY')} From: {parsed.fr} To: {parsed.to}</h2>
             {Object.keys(res).map(id => <pre>{`${id}: ${state.dict[id].name} (${res[id]})`}</pre>)}
-            <Table data={targetOrders || []} />
+            <DeliveryTable data={targetOrders || []} />
         </Layout>  
-    )
-
-    return (
-        <div>
-            <h2>Today {today.format('DD/MM/YYYY')}</h2>
-            {Object.keys(res).map(id => <pre>{`${id}: ${state.dict[id].name} (${res[id]})`}</pre>)}
-        </div>  
     )
 }

@@ -4,6 +4,7 @@ import ShopContext from '../../hooks/ShopContext';
 import Layout from '../Layout';
 import Status from './Status';
 import moment from 'moment';
+import Table from '../core/Table';
 
 const styles = {
     container: {
@@ -51,7 +52,6 @@ const Products_Text = ({products}) => (
 
 
 export default (props) => {
-    let { id } = useParams();
     const {state, dispatch} = useContext(ShopContext);
     const orders = state.admin.orders;
     const tomorrow = moment().add(1, 'days');
@@ -68,9 +68,10 @@ export default (props) => {
     }, {});
 
     return (
-        <div>
-            <h2>Tomorrow {tomorrow.format('DD/MM/YYYY')}</h2>
+        <Layout>
+            <h2>{tomorrow.format('dddd DD/MM/YYYY')}</h2>
             {Object.keys(res).map(id => <pre>{`${id}: ${state.dict[id].name} (${res[id]})`}</pre>)}
-        </div>  
+            <Table data={targetOrders || []} />
+        </Layout>  
     )
 }

@@ -106,10 +106,6 @@ const OrderTable = ({data = []})  => {
         Header: 'Orders',
         columns: [
           {
-            Header: 'user',
-            accessor: 'user',
-          },
-          {
             Header: 'First Name',
             accessor: 'firstName',
           },
@@ -130,10 +126,6 @@ const OrderTable = ({data = []})  => {
             accessor: 'products',
           },
           {
-            Header: 'Total',
-            accessor: 'total',
-          },
-          {
             Header: 'Phone',
             accessor: 'phone',
           },
@@ -146,16 +138,8 @@ const OrderTable = ({data = []})  => {
             accessor: 'deliveryDT',
           },
           {
-            Header: 'OrderDT',
-            accessor: 'orderDT',
-          },
-          {
             Header: 'Id',
             accessor: 'id',
-          },
-          {
-            Header: 'Entity',
-            accessor: 'entity',
           },
           {
             Header: 'Status',
