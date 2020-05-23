@@ -180,13 +180,13 @@ const OrderTable = ({data = []})  => {
             Total: ${total.toFixed(2)}, 
             Ordered: {ordered}, 
             Confirm: {confirmed}, 
-            Canceled: {canceled}, <Link to="/admin/today">Today</Link>, <Link to="/admin/tomorrow">Tomorrow</Link>,
-            <Link to={`/admin/range?fr=00:00:00&to=12:00:00`}>Trip A</Link>
-            <Link to={`/admin/range?fr=11:59:00&to=14:00:00`}>Trip B</Link>
-            {/* <Link to={`/admin/range?fr=12:30:00&to=13:31:00`}>Trip C</Link> */}
-            <Link to={`/admin/range?fr=13:59:00&to=17:00:00`}>Trip C</Link>
-            <Link to={`/admin/range?fr=16:59:00&to=18:00:00`}>Trip D</Link>
-            <Link to={`/admin/range?fr=17:59:00&to=23:59:00`}>Trip E</Link>
+            Canceled: {canceled}, 
+            <div><Link to="/admin/today">Today</Link>, <Link to="/admin/tomorrow">Tomorrow</Link>,</div>
+            <div><Link to={`/admin/range?fr=00:00:00&to=12:00:00`}>Trip A [before noon], </Link></div>
+            <div><Link to={`/admin/range?fr=11:59:00&to=14:00:00`}>Trip B [12-2pm], </Link></div>
+            <div><Link to={`/admin/range?fr=13:59:00&to=17:00:00`}>Trip C [2-5pm], </Link></div>
+            <div><Link to={`/admin/range?fr=16:59:00&to=18:00:00`}>Trip D [5-6pm], </Link></div>
+            <div><Link to={`/admin/range?fr=17:59:00&to=23:59:00`}>Trip E [after 6pm]</Link></div>
       </div>
       <Table columns={columns} data={data} 
         getRowProps={row => {

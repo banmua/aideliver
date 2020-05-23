@@ -9,7 +9,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Atherton, Menlo Park, Palo Alto, Los Altos, Los Altos Hills, Mountain View, and Sunnyvale of California. Order now and get <span style='font-weight:bold;color:red'>30%</span> Grand Opening Discount!",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California.",
 }
 
 
@@ -29,12 +29,12 @@ export const footer = {
 
 export const payment = {
     discounts: {
-        grandOpening: {
-            name: 'Discount', 
-            value: 30,
-            unit: 'percent',
-            unitPostfix: '%'
-        }
+        // grandOpening: {
+        //     name: 'Discount', 
+        //     value: 30,
+        //     unit: 'percent',
+        //     unitPostfix: '%'
+        // }
     },
     checkout: {
         step1: ({id, total}) => (`You order total is $${total}. Are you sure you want to submit this order?`),
@@ -45,12 +45,14 @@ export const payment = {
 
 
 export const geo = {
-    locations: [{
-            name: 'Atherton, CA',
-            city: 'Atherton',
-            state: 'California',
-            zipCodes: [],
-        }, {
+    locations: [
+        // {
+        //     name: 'Atherton, CA',
+        //     city: 'Atherton',
+        //     state: 'California',
+        //     zipCodes: [],
+        // }, 
+        {
             name: 'Menlo Park, CA',
             city: 'Menlo Park',
             state: 'California',
@@ -75,16 +77,17 @@ export const geo = {
             city: 'Mountain View',
             state: 'California',
             zipCodes: [],
-        }, {
-            name: 'Sunnyvale, CA',
-            city: 'Sunnyvale',
-            state: 'California',
-            zipCode: [],
-        }
+        }, 
+        // {
+        //     name: 'Sunnyvale, CA',
+        //     city: 'Sunnyvale',
+        //     state: 'California',
+        //     zipCode: [],
+        // }
     ]
 }
 
-export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'N1'];
+export const menu = ['G1', 'C1', 'G2', 'R1', 'R2'];
 
 export const products = [
     {
@@ -273,7 +276,8 @@ export const products = [
         price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
-    }, {
+    }, 
+    {
         id: 'N1',
         name: 'Grilled Pork & Rice Noodles',
         description: 'Grilled pork with rice noodles',
