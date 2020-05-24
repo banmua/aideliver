@@ -7,6 +7,8 @@ import ShopContext, {getAdmins} from '../../hooks/ShopContext';
 import Table from '../core/Table';
 import moment from 'moment';
 
+const sortByOrderDT = (a, b) => a.orderDT === b.orderDT ? 0 : a.orderDT > b.orderDT ? -11 : 1;
+
 const Admin = props => {
     const {state, dispatch} = useContext(ShopContext);
     const [orders, setOrders] = useState(null);
@@ -24,13 +26,14 @@ const Admin = props => {
 
                 const items = data.data.listOrders.items
                         .filter(obj => obj.entity.toLowerCase() === state.entity.id.toLowerCase())
-                        . map(item => {
+                        .map(item => {
                                 return {
                                     ...item,
                                     deliveryDT: moment(item.deliveryDT).format("MM/DD/YYYY hh:mm A"),
                                     orderDT: moment(item.orderDT).format("MM/DD/YYYY hh:mm A"),
                                 }
-                            });
+                            })
+                        .sort(sortByOrderDT);
 
                 setOrders(items);
                 dispatch({type: 'SET_ORDERS', payload: {orders: items}})

@@ -181,7 +181,9 @@ const OrderTable = ({data = []})  => {
             Ordered: {ordered}, 
             Confirm: {confirmed}, 
             Canceled: {canceled}, 
-            <div><Link to="/admin/today">Today</Link>, <Link to="/admin/tomorrow">Tomorrow</Link>,</div>
+            <div><Link to="/admin">All</Link>,</div>
+            <div><Link to="/admin/today">Today</Link>,</div>
+            <div><Link to="/admin/tomorrow">Tomorrow</Link>,</div>
             <div><Link to={`/admin/range?fr=00:00:00&to=12:00:00`}>Trip A [before noon], </Link></div>
             <div><Link to={`/admin/range?fr=11:59:00&to=14:00:00`}>Trip B [12-2pm], </Link></div>
             <div><Link to={`/admin/range?fr=13:59:00&to=17:00:00`}>Trip C [2-5pm], </Link></div>
