@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import ShopContext, {getTotal} from '../../hooks/ShopContext';
 import {API, graphqlOperation} from 'aws-amplify';
 import {createOrder as CreateOrder} from '../../graphql/mutations';
-import {errorMessages, isValid} from '../UserInfo/errors';
+import {errorMessages, isValid, isValid2} from '../UserInfo/errors';
 //import uuid from 'uuid/v4';
 import {v4 as uuid} from 'uuid';
 
@@ -52,15 +52,31 @@ export default ({style}) => {
 
     const validate = () => {
         const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
+        console.log('>>> STATE', state.isValid);
+
         const reducer = (acc, field) => acc && state.isValid[field];
+        return fields.reduce(reducer, true);
+    }
+
+    const validate2 = () => {
+        if (!state?.userInfo) return false;
+
+        const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
+        const reducer = (acc, field) => {
+            const value = ['deliveryDate', 'deliveryTime'].includes(field) ? state.userInfo.deliveryDT : state.userInfo[field];
+
+            //console.log('>>> VALIDATE', field, value, isValid2(field, state, true), state);
+
+            return acc && isValid2(field, state, true)
+        }
+
         return fields.reduce(reducer, true);
     }
 
     const submitOrder = () => {
         dispatch({type: 'UPDATE', payload: {key: 'errorChecking', value: true}});
-
-        const isValidated = validate();
-
+        const isValidated = validate2();
+        
         if (Object.keys(state.cart).length == 0) {
             window.alert('Your order is currently empty. Please select products, provide valid user info and submit again.')
         

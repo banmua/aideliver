@@ -9,10 +9,8 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California.",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California <em style='font-weight:bold;color:red'>Currently, our available delivery times are: Fri 6:30 PM, Sat-Sun 11 AM - 6:30 PM.</em>",
 }
-
-
 
 export const navbar = {
     homeIcon: true,
@@ -87,7 +85,7 @@ export const geo = {
     ]
 }
 
-export const menu = ['G1', 'C1', 'G2', 'R1', 'R2'];
+export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'N1'];
 
 export const products = [
     {
@@ -291,6 +289,36 @@ export const products = [
 export const content = {
     cartHeading: 'Your Order',
     userInfoHeading: 'Your Info',
+}
+
+export const delivery = {
+    default: [{
+        start: '10:00 AM',
+        end: '11.59 AM',
+        qty: 6
+    }, {
+        start: '12:00 PM',
+        end: '01.59 PM',
+        qty: 6
+    }, {
+        start: '02:00 PM',
+        end: '04:59 AM',
+        qty: 6
+    }, {
+        start: '05:00 PM',
+        end: '05.59 PM',
+        qty: 6
+    }, {
+        start: '06:00 PM',
+        end: '08 AM',
+        qty: 6
+    }, {
+        start: '10:00 AM',
+        end: '11.59 AM',
+        qty: 6
+    
+    }]
+
 }
 
 export default {

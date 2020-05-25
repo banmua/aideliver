@@ -7,7 +7,8 @@ export const validateEmail = emailAddress => {
 
 export const validatePhone = phoneNumber => {
     const reg = /^\d{10}$/;
-    if (phoneNumber.match(reg)) return true;
+    const str = new String(phoneNumber);
+    if (str.match(reg)) return true;
     return false;
 }
 
@@ -15,7 +16,7 @@ export const checkTime = (date) => {
     var hours = date.getHours();
     var mins = date.getMinutes();
     var day = date.getDay();
-    return hours >= 10 && (hours <20);     // 10 AM to 8 PM
+    return hours >= 11 && (hours <19);     // 11 AM to 7 PM
 }
 
 export default {

@@ -8,8 +8,8 @@ export const errorMessages = {
     city: 'required field',
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
-    deliveryDate: 'we are still in beta, please set to the next day and later',
-    deliveryTime: 'please set the time between 10AM - 8PM',
+    deliveryDate: 'next day and later and only on Fri, Sat and Sun',
+    deliveryTime: 'available time: Fri: 6:30 PM, Sat and Sun: 11 AM - 6:30 PM',
 }
 
 Date.prototype.addHours = function(h) {
@@ -44,24 +44,33 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
 
         case 'deliveryDate': {
             if (!errorChecking) return true;
-
-            const now = moment();
-            const value = moment(state.userInfo.deliveryDT).startOf('day');
+            const val = moment(state.userInfo.deliveryDT);
+            const valStartOfDay = val.startOf('day');
             const tomorrow = moment().add(1, 'days').startOf('day');
+            const isFriSatSun = [5, 6, 0].includes(valStartOfDay.day());
 
-            return value.isSameOrAfter(tomorrow);
+            return valStartOfDay.isSameOrAfter(tomorrow) && isFriSatSun;
         }
             
         case 'deliveryTime': {
             if (!errorChecking) return true;
 
-            const value = moment(state.userInfo.deliveryDT);
+            const val = moment(state.userInfo.deliveryDT);
             const startOfDay = moment(state.userInfo.deliveryDT).startOf('day');
-            const openTime = moment(startOfDay).add(10, 'hours');
-            const closeTime = moment(startOfDay).add(20, 'hours').add(1, 'seconds');
+            const openTime = moment(startOfDay).add(11, 'hours');
+            const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
             const twoHoursFromNow = moment().add(2, 'hours');
+            const isFriday = val.day() === 5;
+            const hour = val.get('hour');
+            const min = val.get('minutes');
+
+            if (isFriday) {
+                return hour === 18 && min === 30;
+            }
             
-            return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
+            return val.isSameOrAfter(twoHoursFromNow) 
+                    && val.isSameOrAfter(openTime) 
+                    && closeTime.isSameOrAfter(val);
         }
 
         
@@ -97,17 +106,46 @@ export const isValid = (fieldName, value, errorChecking = false) => {
             return val.isSameOrAfter(now.add(1, 'days'));
         }
 
-        case 'deliveryDate': {
+        case 'deliveryDate3': {
             const value = moment(value);
             const startOfDay = moment(value).startOf('day');
-            const openTime = moment(startOfDay).add(10, 'hours');
-            const closeTime = moment(startOfDay).add(20, 'hours').add(1, 'seconds');
+            const openTime = moment(startOfDay).add(11, 'hours');
+            const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes'); //add(1, 'seconds');
             const twoHoursFromNow = moment().add(2, 'hours');
             
             return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
+            //return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
+        }
+
+        case 'deliveryDate': {
+            const val = moment(value);
+            const valStartOfDay = val.startOf('day');
+            const tomorrow = moment().add(1, 'days').startOf('day');
+            const isFriSatSun = [5, 6, 0].includes(valStartOfDay.day());
+
+            return valStartOfDay.isSameOrAfter(tomorrow) && isFriSatSun;
         }
 
         case 'deliveryTime': {
+            const val = moment(value);
+
+            const openTime = moment(moment(value).startOf('day')).add(11, 'hours');
+            const closeTime = moment(moment(value).startOf('day')).add(18, 'hours').add(31, 'minutes');
+            const twoHoursFromNow = moment().add(2, 'hours');
+            const isFriday = val.day() === 5;
+            const hour = val.get('hour');
+            const min = val.get('minutes');
+
+            if (isFriday) {
+                return hour === 18 && min === 30;
+            }
+            
+            return val.isSameOrAfter(twoHoursFromNow) 
+                    && val.isSameOrAfter(openTime) 
+                    && closeTime.isSameOrAfter(val);
+        }
+
+        case 'deliveryTime_OLD': {
             const now = new Date();
             return errorChecking ? moment(value).isAfter(moment(now.addHours(1))) && checkTime(value) : true;
         }
