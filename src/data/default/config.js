@@ -22,7 +22,7 @@ export const navbar = {
 }
 
 export const footer = {
-    line: 'PhoBalo.com - 714-448-9496 - phobalo72@gmail.com'
+    line: 'PhoBalo.com - 650-935-0455 - phobalo72@gmail.com'
 }
 
 export const payment = {
@@ -37,7 +37,7 @@ export const payment = {
     checkout: {
         step1: ({id, total}) => (`You order total is $${total}. Are you sure you want to submit this order?`),
 
-        step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (714) 448-9496 / phobalo72@gmail.com`)
+        step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (650) 935-0455 / phobalo72@gmail.com`)
     }
 }
 

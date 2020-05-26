@@ -6,9 +6,9 @@ export const validateEmail = emailAddress => {
 }
 
 export const validatePhone = phoneNumber => {
-    const reg = /^\d{10}$/;
-    const str = new String(phoneNumber);
-    if (str.match(reg)) return true;
+    //const reg = /^\d{10}$/;
+    const reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    if (phoneNumber.match(reg)) return true;
     return false;
 }
 

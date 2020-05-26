@@ -30,6 +30,14 @@ Date.prototype.addHours = function(h) {
     return this;
 }
 
+const genDT = () => {
+    let tomorrow = moment().add(1, 'days').startOf('day');
+    if ([1,2,3,4,5].includes(tomorrow.day())) {
+        return tomorrow.add(18.50, 'hours');
+    }
+    return tomorrow.add(11, 'hours');
+}
+
 const defaultState = {
     deliveryFee: 5,
     menu: data.menu,
@@ -48,8 +56,7 @@ const defaultState = {
         phone: '',
         email: '',
         referrer: '',
-        //deliveryDT: moment().add(1, 'days').add(2, 'hours').startOf('hour'), //(new Date()).addHours(2),
-        deliveryDT: moment().day('Saturday'),
+        deliveryDT: genDT(),
         entity: 'aideliver'
     },
     login: {
