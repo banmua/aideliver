@@ -7,7 +7,9 @@ export const validateEmail = emailAddress => {
 
 export const validatePhone = phoneNumber => {
     //const reg = /^\d{10}$/;
-    const reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    //const reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    const reg = /^[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im;
+
     if (phoneNumber.match(reg)) return true;
     return false;
 }
