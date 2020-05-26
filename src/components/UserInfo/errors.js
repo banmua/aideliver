@@ -9,7 +9,7 @@ export const errorMessages = {
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
     deliveryDate: 'please set the date to next day and later',
-    deliveryTime: 'available time: Mon-Fri: 6:30 PM, Sat-Sun: 11 AM - 6:30 PM',
+    deliveryTime: 'available time: Mon-Fri: 6:30pm, Sat-Sun: 9am - 6:30pm',
 }
 
 Date.prototype.addHours = function(h) {
@@ -58,7 +58,7 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
 
             const val = moment(state.userInfo.deliveryDT);
             const startOfDay = moment(state.userInfo.deliveryDT).startOf('day');
-            const openTime = moment(startOfDay).add(11, 'hours');
+            const openTime = moment(startOfDay).add(9, 'hours');
             const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
             const twoHoursFromNow = moment().add(2, 'hours');
             const isMonToFri = [1,2,3,4,5].includes(val.day()); 
@@ -130,7 +130,7 @@ export const isValid = (fieldName, value, errorChecking = false) => {
         case 'deliveryTime': {
             const val = moment(value);
 
-            const openTime = moment(moment(value).startOf('day')).add(11, 'hours');
+            const openTime = moment(moment(value).startOf('day')).add(9, 'hours');
             const closeTime = moment(moment(value).startOf('day')).add(18, 'hours').add(31, 'minutes');
             const twoHoursFromNow = moment().add(2, 'hours');
             const isMonToFri = [1,2,3,4,5].includes(val.day()); 
