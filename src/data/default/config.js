@@ -9,7 +9,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California <em style='font-weight:bold;color:red'>Currently, available delivery times are: Fri 6:30 PM, Sat-Sun 11 AM - 6:30 PM.</em>",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California <span style='font-weight:bold;color:red'>Currently, available delivery times are: Mon-Fri 6:30 PM, Sat-Sun 11 AM - 6:30 PM.</span>",
 }
 
 export const navbar = {

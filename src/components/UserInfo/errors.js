@@ -8,8 +8,8 @@ export const errorMessages = {
     city: 'required field',
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
-    deliveryDate: 'next day and later and only on Fri, Sat and Sun',
-    deliveryTime: 'available time: Fri: 6:30 PM, Sat and Sun: 11 AM - 6:30 PM',
+    deliveryDate: 'please set the date to next day and later',
+    deliveryTime: 'available time: Mon-Fri: 6:30 PM, Sat-Sun: 11 AM - 6:30 PM',
 }
 
 Date.prototype.addHours = function(h) {
@@ -49,7 +49,8 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
             const tomorrow = moment().add(1, 'days').startOf('day');
             const isFriSatSun = [5, 6, 0].includes(valStartOfDay.day());
 
-            return valStartOfDay.isSameOrAfter(tomorrow) && isFriSatSun;
+            return valStartOfDay.isSameOrAfter(tomorrow);
+            //return valStartOfDay.isSameOrAfter(tomorrow) && isFriSatSun;
         }
             
         case 'deliveryTime': {
@@ -60,11 +61,11 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
             const openTime = moment(startOfDay).add(11, 'hours');
             const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
             const twoHoursFromNow = moment().add(2, 'hours');
-            const isFriday = val.day() === 5;
+            const isMonToFri = [1,2,3,4,5].includes(val.day()); 
             const hour = val.get('hour');
             const min = val.get('minutes');
 
-            if (isFriday) {
+            if (isMonToFri) {
                 return hour === 18 && min === 30;
             }
             
@@ -132,11 +133,11 @@ export const isValid = (fieldName, value, errorChecking = false) => {
             const openTime = moment(moment(value).startOf('day')).add(11, 'hours');
             const closeTime = moment(moment(value).startOf('day')).add(18, 'hours').add(31, 'minutes');
             const twoHoursFromNow = moment().add(2, 'hours');
-            const isFriday = val.day() === 5;
+            const isMonToFri = [1,2,3,4,5].includes(val.day()); 
             const hour = val.get('hour');
             const min = val.get('minutes');
 
-            if (isFriday) {
+            if (isMonToFri) {
                 return hour === 18 && min === 30;
             }
             
