@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {useParams} from 'react-router-dom';
-import ShopContext from '../../hooks/ShopContext';
+import ShopContext, {getAdmins} from '../../hooks/ShopContext';
 import Layout from '../Layout';
 import Status from './Status';
 
@@ -133,10 +133,11 @@ export default (props) => {
                 <Products products={products} />
                 {order && <UserInfo order={order} />} */}
 
-                <hr />
-                <div style={{backgroundColor: '#f0f0f0', padding: '10px 10px 20px'}}>
-                    <Status id={id} order={order} />
-                </div>
+
+                { getAdmins().includes(state.login.userName) ? 
+                    <div style={{backgroundColor: '#f0f0f0', padding: '10px 10px 20px'}}>
+                        <Status id={id} order={order} />
+                    </div> : null }
             </div>
         </Layout>
     )

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { useTable } from 'react-table';
 import {Link} from 'react-router-dom';
+import ShopContext, {getAdmins} from '../../../hooks/ShopContext';
 
 import makeData from './makeData'
 
@@ -101,6 +102,8 @@ function Table({ columns, data,
 }
 
 const OrderTable = ({data = []})  => {
+  const {state, dispatch} = useContext(ShopContext);
+  
   const columns = React.useMemo(() => [
       {
         Header: 'Orders',
@@ -165,14 +168,18 @@ const OrderTable = ({data = []})  => {
             Ordered: {ordered}, 
             Confirm: {confirmed}, 
             Canceled: {canceled}, 
-            <div><Link to="/admin">All</Link>,</div>
-            <div><Link to="/admin/today">Today</Link>,</div>
-            <div><Link to="/admin/tomorrow">Tomorrow</Link>,</div>
-            <div><Link to={`/admin/range?fr=00:00:00&to=12:00:00`}>Trip A [before noon], </Link></div>
-            <div><Link to={`/admin/range?fr=11:59:00&to=14:00:00`}>Trip B [12-2pm], </Link></div>
-            <div><Link to={`/admin/range?fr=13:59:00&to=17:00:00`}>Trip C [2-5pm], </Link></div>
-            <div><Link to={`/admin/range?fr=16:59:00&to=18:00:00`}>Trip D [5-6pm], </Link></div>
-            <div><Link to={`/admin/range?fr=17:59:00&to=23:59:00`}>Trip E [after 6pm]</Link></div>
+            { getAdmins().includes(state.login.userName) ? 
+              <>
+                <div><Link to="/admin">All</Link>,</div>
+                <div><Link to="/admin/today">Today</Link>,</div>
+                <div><Link to="/admin/tomorrow">Tomorrow</Link>,</div>
+                <div><Link to={`/admin/range?fr=00:00:00&to=12:00:00`}>Trip A [before noon], </Link></div>
+                <div><Link to={`/admin/range?fr=11:59:00&to=14:00:00`}>Trip B [12-2pm], </Link></div>
+                <div><Link to={`/admin/range?fr=13:59:00&to=17:00:00`}>Trip C [2-5pm], </Link></div>
+                <div><Link to={`/admin/range?fr=16:59:00&to=18:00:00`}>Trip D [5-6pm], </Link></div>
+                <div><Link to={`/admin/range?fr=17:59:00&to=23:59:00`}>Trip E [after 6pm]</Link></div>
+              </>
+              : null }
       </div>
       <Table columns={columns} data={data} 
         getRowProps={row => {
