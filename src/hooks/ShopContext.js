@@ -2,7 +2,7 @@ import React, {useEffect, useReducer} from 'react';
 import data  from '../data';
 import moment from 'moment';
 
-const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham', 'PhoBalo'];
+const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham', 'PhoBalo', 'nico', 'camchan'];
 export const getAdmins = () => admins;
 
 const ShopContext = React.createContext(data);

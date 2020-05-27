@@ -100,7 +100,7 @@ export default props => {
                         //margin="normal"
                         id="date-picker-dialog"
                         label="Delivery Date"
-                        format="MM/dd/yyyy"
+                        format="dddd MM/dd/yyyy"
 
                         style={errors.deliveryDate ? styles.textError : styles.text} 
                         error={errors.deliveryDate}
