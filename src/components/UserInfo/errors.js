@@ -8,8 +8,8 @@ export const errorMessages = {
     city: 'required field',
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
-    deliveryDate: 'please set the date to next day and later',
-    deliveryTime: 'available time: Mon-Fri: 6:30pm, Sat-Sun: 9am - 6:30pm',
+    deliveryDate: 'please set to the next day and later',
+    deliveryTime: 'available: Mon-Fri: 5:30pm-6:30pm, Sat-Sun: 9am-6:30pm',
 }
 
 Date.prototype.addHours = function(h) {
@@ -66,7 +66,12 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
             const min = val.get('minutes');
 
             if (isMonToFri) {
-                return hour === 18 && min === 30;
+                const fiveThirty = moment(startOfDay).add(17, 'hours').add(30, 'minutes');
+                const sixThirty = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
+                return val.isSameOrAfter(twoHoursFromNow)
+                    && val.isSameOrAfter(fiveThirty) 
+                    && sixThirty.isSameOrAfter(val);
+                //return hour === 18 && min === 30;
             }
             
             return val.isSameOrAfter(twoHoursFromNow) 
