@@ -28,7 +28,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California <span style='font-weight:bold;color:red'>Currently, available delivery times are: Mon-Fri 5:30pm - 6:30pm, Sat-Sun 9am - 6:30pm.</span>",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Atherton, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California <span style='font-weight:bold;color:red'>Currently, available delivery times are: Mon-Fri 5:30pm - 6:30pm, Sat-Sun 9am - 6:30pm.</span>",
 }
 
 export const navbar = {
@@ -64,12 +64,12 @@ export const payment = {
 
 export const geo = {
     locations: [
-        // {
-        //     name: 'Atherton, CA',
-        //     city: 'Atherton',
-        //     state: 'California',
-        //     zipCodes: [],
-        // }, 
+        {
+            name: 'Atherton, CA',
+            city: 'Atherton',
+            state: 'California',
+            zipCodes: [],
+        }, 
         {
             name: 'Menlo Park, CA',
             city: 'Menlo Park',
