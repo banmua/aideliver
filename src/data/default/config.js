@@ -44,8 +44,18 @@ const coupons = [{
     startDate: '05/28/2020',
     endDate: '05/31/2020',
     qty: 50,
+}, {
+    codes: ['PhoNow06', '13YP-V02L-F18A'],  
+    name: 'PhoNow06',
+    discount: {
+        value: 20,
+        unit: 'percent',
+        unitPostfix: '%'
+    },
+    startDate: '05/28/2020',
+    endDate: '05/31/2020',
+    qty: 50,
 }];
-    // "13YP-V02L-F18A",
     // "M11E-2TLC-AK95",
     // "T8A8-1WDB-QND5",
     // "AX9C-V5NB-75FT",
@@ -88,7 +98,7 @@ export const payment = {
         // }
     },
     checkout: {
-        step1: ({id, total}) => (`You order total is $${total}. The actual cost will be readjusted with a valid coupon. Are you sure you want to submit this order?`),
+        step1: ({id, total}) => (`You order total is $${total}. The actual cost will be adjusted with a valid coupon. Are you sure you want to submit this order?`),
 
         step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (650) 935-0455 / phobalo72@gmail.com`)
     }

@@ -46,7 +46,9 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
 
         case 'referrer': {
             const {referrer = ''} = state.userInfo;
-            return errorChecking ? (referrer && cc.validate(referrer)) || referrer.trim() === '' : true;
+            const isValidCoupon = referrer.toLowerCase() === 'phonow06' || referrer.trim() === '';
+            //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
+            return errorChecking ? isValidCoupon : true;
         }
 
         case 'deliveryDate': {
@@ -114,7 +116,9 @@ export const isValid = (fieldName, value, errorChecking = false) => {
 
         case 'referrer': {
             const referrer = value || '';
-            return errorChecking ? (referrer && cc.validate(referrer)) || referrer.trim() === '' : true;
+            const isValidCoupon = referrer.toLowerCase() === 'phonow06' || referrer.trim() === '';
+            //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
+            return errorChecking ? isValidCoupon : true;
         }
 
         case 'deliveryDate': {
