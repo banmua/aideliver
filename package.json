@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.10",
     "aws-amplify-react": "^4.1.9",
+    "coupon-code": "^0.4.5",
     "date-fns": "^2.12.0",
     "history": "^4.10.1",
     "moment": "^2.25.3",

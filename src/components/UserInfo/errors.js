@@ -1,5 +1,6 @@
 import {validateEmail, validatePhone, checkTime} from '../../utils/utils';
 import moment from 'moment';
+import cc from 'coupon-code';
 
 export const errorMessages = {
     firstName: 'required field',
@@ -8,6 +9,7 @@ export const errorMessages = {
     city: 'required field',
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
+    referrer: 'please provide correct coupon code, if you have any',
     deliveryDate: 'please set to the next day and later',
     deliveryTime: 'available: Mon-Fri: 5:30pm-6:30pm, Sat-Sun: 9am-6:30pm',
 }
@@ -41,6 +43,11 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
         
         case 'email': 
             return errorChecking ? validateEmail(state.userInfo.email) : true;
+
+        case 'referrer': {
+            const {referrer = ''} = state.userInfo;
+            return errorChecking ? (referrer && cc.validate(referrer)) || referrer.trim() === '' : true;
+        }
 
         case 'deliveryDate': {
             if (!errorChecking) return true;
@@ -105,22 +112,9 @@ export const isValid = (fieldName, value, errorChecking = false) => {
         case 'email': 
             return errorChecking ? validateEmail(value) : true;
 
-        case 'deliveryDate2': {
-            const now = moment(new Date());
-            if (!errorChecking) return true;
-            const val = moment(value);
-            return val.isSameOrAfter(now.add(1, 'days'));
-        }
-
-        case 'deliveryDate3': {
-            const value = moment(value);
-            const startOfDay = moment(value).startOf('day');
-            const openTime = moment(startOfDay).add(11, 'hours');
-            const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes'); //add(1, 'seconds');
-            const twoHoursFromNow = moment().add(2, 'hours');
-            
-            return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
-            //return value.isSameOrAfter(twoHoursFromNow) && value.isSameOrAfter(openTime) && closeTime.isSameOrAfter(value);
+        case 'referrer': {
+            const referrer = value || '';
+            return errorChecking ? (referrer && cc.validate(referrer)) || referrer.trim() === '' : true;
         }
 
         case 'deliveryDate': {
@@ -149,11 +143,6 @@ export const isValid = (fieldName, value, errorChecking = false) => {
             return val.isSameOrAfter(twoHoursFromNow) 
                     && val.isSameOrAfter(openTime) 
                     && closeTime.isSameOrAfter(val);
-        }
-
-        case 'deliveryTime_OLD': {
-            const now = new Date();
-            return errorChecking ? moment(value).isAfter(moment(now.addHours(1))) && checkTime(value) : true;
         }
         
         default:

@@ -7,12 +7,13 @@ import {errorMessages, isValid, isValid2} from '../UserInfo/errors';
 //import uuid from 'uuid/v4';
 import {v4 as uuid} from 'uuid';
 
+const formFields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'referrer', 'deliveryDate', 'deliveryTime'];
 
 export default ({style}) => {
     const {state, dispatch} = useContext(ShopContext);
 
     const {cart, entity} = state;
-    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, deliveryDT} = state.userInfo;
+    const {firstName, lastName, street, city, state: geoState, country, language, phone, email, referrer, deliveryDT} = state.userInfo;
 
     const createOrder = async (id) => {
         const order = {
@@ -34,7 +35,7 @@ export default ({style}) => {
             deliveryDT: deliveryDT.toISOString(),
             orderDT: (new Date()).toISOString(),
             status: 'ordered',
-            //referrer: '',
+            referrer,
             //actualDeliveryDT: '',
             //deliverer: '',
             //notes: '',
@@ -51,8 +52,7 @@ export default ({style}) => {
     }
 
     const validate = () => {
-        const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
-        console.log('>>> STATE', state.isValid);
+        const fields = formFields;
 
         const reducer = (acc, field) => acc && state.isValid[field];
         return fields.reduce(reducer, true);
@@ -61,7 +61,7 @@ export default ({style}) => {
     const validate2 = () => {
         if (!state?.userInfo) return false;
 
-        const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
+        const fields = formFields;
         const reducer = (acc, field) => {
             const value = ['deliveryDate', 'deliveryTime'].includes(field) ? state.userInfo.deliveryDT : state.userInfo[field];
 

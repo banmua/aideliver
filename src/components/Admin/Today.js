@@ -67,8 +67,6 @@ export default (props) => {
         return acc;
     }, {});
 
-    console.log('>>> STATE', state);
-
     return (
         <Layout>
             <h2>{today.format('dddd DD/MM/YYYY')}</h2>

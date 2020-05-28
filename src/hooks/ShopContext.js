@@ -1,6 +1,11 @@
 import React, {useEffect, useReducer} from 'react';
 import data  from '../data';
 import moment from 'moment';
+import cc from 'coupon-code';
+
+// const coupons = Array.from({length: 10}, (x, i) => cc.generate());
+// console.log('>>> COUPONS', coupons);
+
 
 const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham', 'PhoBalo', 'nico', 'camchan'];
 export const getAdmins = () => admins;
@@ -71,7 +76,7 @@ const defaultState = {
         country: false,
         phone: false,
         email: false,
-        referrer: true,
+        referrer: false,
         deliveryDate: true,
         deliveryTime: true,
     },
@@ -169,7 +174,5 @@ export const getItemTotal = (state, id) => (state.dict[id].price * state.cart[id
 export const getNumOfItems = state => Object.keys(state.cart).reduce((sum, id) => sum + state.cart[id], 0);
 export const getDiscount = discount => calcDiscount(discount);
 export const isAdmin = state => !!state.login.userName && admins.includes(state.login.userName);
-
-
 
 export default ShopContext;

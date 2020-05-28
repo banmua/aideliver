@@ -28,7 +28,7 @@ export default props => {
         dispatch({type: 'UPDATE', payload: {key, value: isValid(key, value, true), parent: 'isValid'}});
     }
 
-    const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'deliveryDate', 'deliveryTime'];
+    const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'referrer', 'deliveryDate', 'deliveryTime'];
     const errors = {};
     fields.forEach(field => {
         const flag = isValid2(field, state, state.errorChecking);
@@ -93,14 +93,17 @@ export default props => {
                             value={email} 
                             onChange={event => update('email', event.target.value, 'userInfo')}
                         /></div>
-                {/* <div><TextField id="standard-basic" label="Referrer Code" style={styles.text} 
-                            value={referrer} onChange={event => update('referrer', event.target.value, 'userInfo')}
-                        /></div> */}
+                <div><TextField id="standard-basic" label="Coupon Code (optional)" style={styles.text} 
+                            error={errors.referrer}
+                            helperText={errors.referrer ? errorMessages.referrer : ''}
+                            value={referrer} 
+                            onChange={event => update('referrer', event.target.value, 'userInfo')}
+                        /></div>
                 <div><KeyboardDatePicker style={styles.text}
                         //margin="normal"
                         id="date-picker-dialog"
                         label="Delivery Date"
-                        format="dddd MM/dd/yyyy"
+                        format="MM/dd/yyyy"
 
                         style={errors.deliveryDate ? styles.textError : styles.text} 
                         error={errors.deliveryDate}
