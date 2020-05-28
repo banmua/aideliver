@@ -56,7 +56,6 @@ export default (props) => {
     const today = moment();
     const targetOrders =orders.filter(item => {
         const deliveryTime = moment(item.deliveryDT);
-        console.log('>>> ID:', today, deliveryTime, item.id, today.isSame(deliveryTime, 'd'));
         return today.isSame(deliveryTime, 'd');
     });
     const res = targetOrders.reduce((acc, order) => {
