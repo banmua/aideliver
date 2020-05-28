@@ -6,6 +6,7 @@ import SubTotal from './SubTotal';
 import Total from './Total';
 import Delivery from './Delivery';
 import Discount from './Discount';
+import Promo from './Promo';
 import ShopContext from '../../../hooks/ShopContext';
 
 const styles = {
@@ -28,6 +29,7 @@ export default props => {
             <Header />
             {Object.keys(state.cart).map(key => <Item key={key} id={key} />)}
             <Discount />
+            <Promo />
             <SubTotal />
             <Tax />
             <Delivery />

@@ -1,62 +1,19 @@
 import {entityTypes} from '../../constants';
 
-const coupons = [{
-    codes: ["D414-X6AU-DV9K"],  
-    name: 'diamond',
-    discount: {
-        value: 100,
-        unit: 'percent',
-        unitPostfix: '%'
-    },
-    startDate: '05/28/2020',
-    endDate: '05/31/2020',
-    qty: 5,
-}, {
-    codes: ["5JUC-052L-KU1K"],   
-    name: 'gold',
-    discount: {
-        value: 50,
-        unit: 'percent',
-        unitPostfix: '%'
-    },
-    startDate: '05/28/2020',
-    endDate: '05/31/2020',
-    qty: 10,
-}, {
-    codes: ["HRBV-TQWW-GTGH"],  
-    name: 'silver',
-    discount: {
-        value: 25,
-        unit: 'percent',
-        unitPostfix: '%'
-    },
-    startDate: '05/28/2020',
-    endDate: '05/31/2020',
-    qty: 20,
-}, {
-    codes: ["H4NC-TPL1-HH16"],  
-    name: 'silver',
-    discount: {
-        value: 15,
-        unit: 'percent',
-        unitPostfix: '%'
-    },
-    startDate: '05/28/2020',
-    endDate: '05/31/2020',
-    qty: 50,
-}, {
-    codes: ['PhoNow06', '13YP-V02L-F18A'],  
-    name: 'PhoNow06',
-    discount: {
-        value: 20,
-        unit: 'percent',
-        unitPostfix: '%'
-    },
-    startDate: '05/28/2020',
-    endDate: '05/31/2020',
-    qty: 50,
-}];
-    // "M11E-2TLC-AK95",
+const promos = {
+    'PhoNow06': {
+            codes: 'phonow06',  
+            name: 'PhoNow06',
+            value: 20,
+            unit: 'percent',
+            unitPostfix: '%',
+            startDate: '05/28/2020',
+            endDate: '05/31/2020',
+            qty: 50,
+        }
+    }
+    
+// "M11E-2TLC-AK95",
     // "T8A8-1WDB-QND5",
     // "AX9C-V5NB-75FT",
     // "MXV3-CVP5-T2NF",
@@ -88,7 +45,7 @@ export const footer = {
 }
 
 export const payment = {
-    coupons,
+    promos,
     discounts: {
         // grandOpening: {
         //     name: 'Discount', 
@@ -98,7 +55,7 @@ export const payment = {
         // }
     },
     checkout: {
-        step1: ({id, total}) => (`You order total is $${total}. The actual cost will be adjusted with a valid coupon. Are you sure you want to submit this order?`),
+        step1: ({id, total}) => (`You order total is $${total}. Are you sure you want to submit this order?`),
 
         step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (650) 935-0455 / phobalo72@gmail.com`)
     }

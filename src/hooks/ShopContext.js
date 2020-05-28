@@ -160,9 +160,27 @@ const calcAllDiscounts = state => {
     return sum;
 }
 
+const calcPromo = (discount) => state => {
+    if (!discount || !discount.value) return (0).toFixed(2);
+    return (calcRawSubTotal(state) * discount.value / 100).toFixed(2);
+}
+
+const calcAllPromos = state => {
+    if (!state.payment || !state.payment.promos) return 0;
+    const {referrer = ''} = state.userInfo;
+    let sum = 0;
+    Object.keys(state.payment.promos)
+        .filter(key => referrer && key.toLowerCase() === referrer.toLowerCase())
+        .map(key => {
+            sum = sum + calcPromo(state.payment.promos[key])(state);
+        })
+    return sum;
+}
+
+
 const calcRawSubTotal = state => Object.keys(state.cart).reduce( (sum, id) => sum + state.dict[id].price * state.cart[id], 0);
 
-const calcSubTotal = state => (calcRawSubTotal(state) - calcAllDiscounts(state));
+const calcSubTotal = state => (calcRawSubTotal(state) - calcAllDiscounts(state)) - calcAllPromos(state);
 
 const calcTax = state => 0.08 * calcSubTotal(state);
 const calcTotal = state => calcTax(state) + state.deliveryFee + calcSubTotal(state);
@@ -173,6 +191,7 @@ export const getTotal = state => calcTotal(state).toFixed(2);
 export const getItemTotal = (state, id) => (state.dict[id].price * state.cart[id]).toFixed(2);
 export const getNumOfItems = state => Object.keys(state.cart).reduce((sum, id) => sum + state.cart[id], 0);
 export const getDiscount = discount => calcDiscount(discount);
+export const getPromo = promo => calcPromo(promo);
 export const isAdmin = state => !!state.login.userName && admins.includes(state.login.userName);
 
 export default ShopContext;
