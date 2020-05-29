@@ -299,7 +299,7 @@ export const products = [
         name: 'Extra broth',
         description: 'Extra beef broth',
         native: 'Them nuoc leo',
-        price: '2.00',
+        price: '8.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
     }, {
