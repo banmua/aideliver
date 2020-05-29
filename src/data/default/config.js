@@ -125,7 +125,7 @@ export const products = [
         price: '2.00',
         unit: 'portion',
         image: '/images/bunPho2.jpg',
-        choices: ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8']
+        choices: ['E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9']
     }, {
         id: 'B1',
         name: 'Pho tai',
@@ -294,8 +294,15 @@ export const products = [
         price: '4.00',
         unit: 'portion',
         image: '/images/goiCuon.jpg',
-    }, 
-    {
+    }, {
+        id: 'E9',
+        name: 'Extra broth',
+        description: 'Extra beef broth',
+        native: 'Them nuoc leo',
+        price: '2.00',
+        unit: 'portion',
+        image: '/images/goiCuon.jpg',
+    }, {
         id: 'N1',
         name: 'Grilled Pork & Rice Noodles',
         description: 'Grilled pork with rice noodles',

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { useTable } from 'react-table';
 import {Link} from 'react-router-dom';
@@ -24,7 +24,7 @@ const getBackgroundColor = status => {
 // Create a default prop getter
 const defaultPropGetter = () => ({})
 
-function Table({ columns, data, 
+function Table({ columns, data, clickHeader,
     getHeaderProps = defaultPropGetter,
     getColumnProps = defaultPropGetter,
     getRowProps = defaultPropGetter,
@@ -49,7 +49,10 @@ function Table({ columns, data,
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              <th {...column.getHeaderProps()}><span onClick={() => {
+                  console.log('>>> COL', column);
+                  clickHeader(column.id);
+               }}>{column.render('Header')}</span></th>
             ))}
           </tr>
         ))}
@@ -78,16 +81,6 @@ function Table({ columns, data,
 }
 
 const OrderTable = ({data: inputData = []})  => {
-
-  const {state, dispatch} = useContext(ShopContext);
-  const sortData = {
-      data: inputData,
-      heading: 'DeliveryDT',
-      direction: 'desc',
-  };
-
-  const [sort, setSort] = useState(sortData);
-
   const sortColumn = column => inputData.sort((a, b) => {
     const aval = a[column];
     const bval = b[column];
@@ -103,7 +96,17 @@ const OrderTable = ({data: inputData = []})  => {
     return -1;
   });
 
-  const data = sortColumn('orderDT');
+  const {state, dispatch} = useContext(ShopContext);
+  const [sort, setSort] = useState({heading: 'orderDT', direction: 'desc'});
+
+  const data = sortColumn(sort.heading);
+
+  const clickHeader = (columnId) => {
+    setSort({...sort, heading: columnId});
+    dispatch({type: 'UPDATE', payload: {key: 'orders', value: sortColumn(columnId), parent: 'admin'}})
+  }
+
+
   
   const columns = React.useMemo(() => [
       {
@@ -202,7 +205,7 @@ const OrderTable = ({data: inputData = []})  => {
               </>
               : null }
       </div>
-      <Table columns={columns} data={data} 
+      <Table columns={columns} data={data} clickHeader={clickHeader}
         getRowProps={row => {
           const status = row.values.status;
           return {
