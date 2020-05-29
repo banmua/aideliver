@@ -1,11 +1,35 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import { useTable } from 'react-table';
 import {Link} from 'react-router-dom';
 import ShopContext, {getAdmins} from '../../../hooks/ShopContext';
-import {Styles} from './style';
 
-import makeData from './makeData';
+import makeData from './makeData'
+
+const Styles = styled.div`
+  padding: 1rem;
+  table {
+    border-spacing: 0;
+    border: 1px solid black;
+    tr {
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
+`
 
 const getBackgroundColor = status => {
   switch(status) {
@@ -77,33 +101,8 @@ function Table({ columns, data,
   )
 }
 
-const OrderTable = ({data: inputData = []})  => {
-
+const OrderTable = ({data = []})  => {
   const {state, dispatch} = useContext(ShopContext);
-  const sortData = {
-      data: inputData,
-      heading: 'DeliveryDT',
-      direction: 'desc',
-  };
-
-  const [sort, setSort] = useState(sortData);
-
-  const sortColumn = column => inputData.sort((a, b) => {
-    const aval = a[column];
-    const bval = b[column];
-
-    if (aval === bval) return 0;
-
-    if (sort.direction === 'asc') {
-      if (aval > bval) return 1;
-      return -1;
-    }
-
-    if (bval > aval) return 1;
-    return -1;
-  });
-
-  const data = sortColumn('orderDT');
   
   const columns = React.useMemo(() => [
       {
@@ -184,7 +183,7 @@ const OrderTable = ({data: inputData = []})  => {
   return (
     <Styles>
       <div style={{marginBottom: '10px'}}>
-            *** Orders: {data.length}, 
+            Orders: {data.length}, 
             Total: ${total.toFixed(2)}, 
             Ordered: {ordered}, 
             Confirmed: {confirmed}, 
