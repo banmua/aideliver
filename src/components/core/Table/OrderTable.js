@@ -7,6 +7,74 @@ import {Styles} from './style';
 
 import makeData from './makeData';
 
+const genColumnInfo = () => [
+  {
+    Header: 'Orders',
+    columns: [
+      {
+        Header: 'user',
+        accessor: 'user',
+      },
+      {
+        Header: 'First Name',
+        accessor: 'firstName',
+      },
+      {
+        Header: 'Last Name',
+        accessor: 'lastName',
+      },
+      {
+        Header: 'Street',
+        accessor: 'street',
+      },
+      {
+        Header: 'City',
+        accessor: 'city',
+      },
+      {
+        Header: 'Products',
+        accessor: 'products',
+      },
+      {
+        Header: 'DeliveryDT',
+        accessor: 'deliveryDT',
+      },
+      {
+        Header: 'OrderDT',
+        accessor: 'orderDT',
+      },
+      {
+        Header: 'Total',
+        accessor: 'total',
+      },
+      {
+        Header: 'Phone',
+        accessor: 'phone',
+      },
+      {
+        Header: 'Email',
+        accessor: 'email',
+      },
+      {
+        Header: 'Id',
+        accessor: 'id',
+      },
+      {
+        Header: 'Entity',
+        accessor: 'entity',
+      },
+      {
+        Header: 'Coupon',
+        accessor: 'referrer',
+      },
+      {
+        Header: 'Status',
+        accessor: 'status',
+      },
+    ],
+  },
+];
+
 const getBackgroundColor = status => {
   switch(status) {
     case 'canceled': return '#ffe6e6';
@@ -49,10 +117,11 @@ function Table({ columns, data, clickHeader,
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}><span onClick={() => {
-                  console.log('>>> COL', column);
-                  clickHeader(column.id);
-               }}>{column.render('Header')}</span></th>
+              <th {...column.getHeaderProps()}><span onClick={() => clickHeader(column.id)} 
+                    style={{
+                      cursor: 'pointer'
+                    }}
+                >{column.render('Header')}</span></th>
             ))}
           </tr>
         ))}
@@ -81,102 +150,39 @@ function Table({ columns, data, clickHeader,
 }
 
 const OrderTable = ({data: inputData = []})  => {
-  const sortColumn = column => inputData.sort((a, b) => {
-    const aval = a[column];
-    const bval = b[column];
+  const sortColumn = (data, column) => {
+    const sortedData = data.sort((a, b) => {
+      const aval = a[column];
+      const bval = b[column];
 
-    if (aval === bval) return 0;
+      if (aval === bval) return 0;
 
-    if (sort.direction === 'asc') {
-      if (aval > bval) return 1;
+      if (sort.direction === 'asc') {
+        if (aval > bval) return 1;
+        return -1;
+      }
+
+      if (bval > aval) return 1;
       return -1;
-    }
-
-    if (bval > aval) return 1;
-    return -1;
-  });
+    });
+    return [...sortedData]
+  }
 
   const {state, dispatch} = useContext(ShopContext);
   const [sort, setSort] = useState({heading: 'orderDT', direction: 'desc'});
+  const [data, setData] = useState(inputData);
 
-  const data = sortColumn(sort.heading);
+  useEffect(() => {
+    setData(sortColumn(inputData, sort.heading));
+  }, [sort])
 
   const clickHeader = (columnId) => {
-    setSort({...sort, heading: columnId});
-    dispatch({type: 'UPDATE', payload: {key: 'orders', value: sortColumn(columnId), parent: 'admin'}})
+    setSort({...sort, heading: columnId, direction: sort.direction === 'asc' ? 'desc' : 'asc'});
+    setData(sortColumn(data, sort.heading));
+    dispatch({type: 'UPDATE', payload: {key: 'orders', value: sortColumn(data, columnId), parent: 'admin'}})
   }
-
-
   
-  const columns = React.useMemo(() => [
-      {
-        Header: 'Orders',
-        columns: [
-          {
-            Header: 'user',
-            accessor: 'user',
-          },
-          {
-            Header: 'First Name',
-            accessor: 'firstName',
-          },
-          {
-            Header: 'Last Name',
-            accessor: 'lastName',
-          },
-          {
-            Header: 'Street',
-            accessor: 'street',
-          },
-          {
-            Header: 'City',
-            accessor: 'city',
-          },
-          {
-            Header: 'Products',
-            accessor: 'products',
-          },
-          {
-            Header: 'DeliveryDT',
-            accessor: 'deliveryDT',
-          },
-          {
-            Header: 'OrderDT',
-            accessor: 'orderDT',
-          },
-          {
-            Header: 'Total',
-            accessor: 'total',
-          },
-          {
-            Header: 'Phone',
-            accessor: 'phone',
-          },
-          {
-            Header: 'Email',
-            accessor: 'email',
-          },
-          {
-            Header: 'Id',
-            accessor: 'id',
-          },
-          {
-            Header: 'Entity',
-            accessor: 'entity',
-          },
-          {
-            Header: 'Coupon',
-            accessor: 'referrer',
-          },
-          {
-            Header: 'Status',
-            accessor: 'status',
-          },
-        ],
-      },
-    ],
-    []
-  )
+  const columns = React.useMemo(genColumnInfo,[])
 
   const total = data.reduce((acc, item) => item.status === 'canceled' ? acc : acc + Number(item.total), 0);
   const ordered = data.reduce((acc, item) => item.status === 'ordered' ? acc + 1 : acc, 0);
@@ -186,6 +192,7 @@ const OrderTable = ({data: inputData = []})  => {
 
   return (
     <Styles>
+      <div>Search: {sort.heading}</div>
       <div style={{marginBottom: '10px'}}>
             *** Orders: {data.length}, 
             Total: ${total.toFixed(2)}, 
@@ -205,12 +212,10 @@ const OrderTable = ({data: inputData = []})  => {
               </>
               : null }
       </div>
-      <Table columns={columns} data={data} clickHeader={clickHeader}
+      <Table columns={columns} data={data?.length > 0 ? data : inputData} clickHeader={clickHeader}
         getRowProps={row => {
           const status = row.values.status;
-          return {
-              style: {backgroundColor: getBackgroundColor(status)}
-            }
+          return {style: {backgroundColor: getBackgroundColor(status)}}
           }
         } />
     </Styles>
