@@ -110,6 +110,8 @@ function Table({ columns, data, clickHeader,
     data,
   })
 
+  const [selected, setSelected] = useState('orderDT');
+
   // Render the UI for your table
   return (
     <table {...getTableProps()}>
@@ -117,9 +119,14 @@ function Table({ columns, data, clickHeader,
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}><span onClick={() => clickHeader(column.id)} 
+              <th {...column.getHeaderProps()}><span 
+                    onClick={() => {
+                      setSelected(column.id);
+                      clickHeader(column.id);
+                    }}
                     style={{
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      color: column.id === selected ? 'red' : 'black',
                     }}
                 >{column.render('Header')}</span></th>
             ))}
@@ -149,6 +156,12 @@ function Table({ columns, data, clickHeader,
   )
 }
 
+
+const calcTotal = data => data.reduce((acc, item) => item.status === 'canceled' ? acc : acc + Number(item.total), 0);
+const calcOrdered = data => data.reduce((acc, item) => item.status === 'ordered' ? acc + 1 : acc, 0);
+const calcConfirmed = data => data.reduce((acc, item) => item.status === 'confirmed' ? acc + 1 : acc, 0);
+const calcCanceled = data => data.reduce((acc, item) => item.status === 'canceled' ? acc + 1 : acc, 0);
+
 const OrderTable = ({data: inputData = []})  => {
   const sortColumn = (data, column) => {
     const sortedData = data.sort((a, b) => {
@@ -171,9 +184,18 @@ const OrderTable = ({data: inputData = []})  => {
   const {state, dispatch} = useContext(ShopContext);
   const [sort, setSort] = useState({heading: 'orderDT', direction: 'desc'});
   const [data, setData] = useState(inputData);
+  const [total, setTotal] = useState(calcTotal(inputData));
+  const [ordered, setOrdered] = useState(calcOrdered(inputData));
+  const [confirmed, setConfirmed] = useState(calcConfirmed(inputData));
+  const [canceled, setCanceled] = useState(calcCanceled(inputData));
 
   useEffect(() => {
-    setData(sortColumn(inputData, sort.heading));
+    const data = sortColumn(inputData, sort.heading);
+    setData(data);
+    setTotal(calcTotal(data));
+    setOrdered(calcOrdered(data));
+    setConfirmed(calcConfirmed(data));
+    setCanceled(calcCanceled(data));
   }, [sort])
 
   const clickHeader = (columnId) => {
@@ -184,15 +206,14 @@ const OrderTable = ({data: inputData = []})  => {
   
   const columns = React.useMemo(genColumnInfo,[])
 
-  const total = data.reduce((acc, item) => item.status === 'canceled' ? acc : acc + Number(item.total), 0);
-  const ordered = data.reduce((acc, item) => item.status === 'ordered' ? acc + 1 : acc, 0);
-  const confirmed = data.reduce((acc, item) => item.status === 'confirmed' ? acc + 1 : acc, 0);
-  const canceled = data.reduce((acc, item) => item.status === 'canceled' ? acc + 1 : acc, 0);
+  // const total = data.reduce((acc, item) => item.status === 'canceled' ? acc : acc + Number(item.total), 0);
+  // const ordered = data.reduce((acc, item) => item.status === 'ordered' ? acc + 1 : acc, 0);
+  // const confirmed = data.reduce((acc, item) => item.status === 'confirmed' ? acc + 1 : acc, 0);
+  // const canceled = data.reduce((acc, item) => item.status === 'canceled' ? acc + 1 : acc, 0);
 
 
   return (
     <Styles>
-      <div>Search: {sort.heading}</div>
       <div style={{marginBottom: '10px'}}>
             *** Orders: {data.length}, 
             Total: ${total.toFixed(2)}, 
