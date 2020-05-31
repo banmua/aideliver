@@ -216,7 +216,7 @@ export const products = [
         image: '/images/popcornChicken3.jpg',
     }, {
         id: 'R1',
-        name: 'Eggroll',
+        name: 'Eggrolls',
         description: 'Fried rolls of ground pork and veggies',
         native: 'Cha gio',
         price: '2.00',
@@ -224,7 +224,7 @@ export const products = [
         image: '/images/chaGio.jpg',
     }, {
         id: 'R2',
-        name: 'Spring Roll',
+        name: 'Spring Rolls',
         description: 'Rice paper rolls with shrimp and pork',
         native: 'Goi cuon',
         price: '2.00',
