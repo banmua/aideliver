@@ -69,8 +69,7 @@ export const geo = {
             city: 'Atherton',
             state: 'California',
             zipCodes: [],
-        }, 
-        {
+        }, {
             name: 'Menlo Park, CA',
             city: 'Menlo Park',
             state: 'California',
@@ -348,6 +347,30 @@ export const delivery = {
 
 }
 
+export const time = {
+    delivery: {
+        monday: [{time: '12:00', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
+        tuesday: [{time: '12:00', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
+        wednesday: [{time: '12:00', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
+        thursday: [{time: '12:00', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
+        friday: [{time: '12:00', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
+        saturday: [
+                {time: '11:00', label: '11:00 AM', qty: 6}, 
+                {time: '12:00', label: '12:00 PM', qty: 6}, 
+                {time: '17:00', label: '5:00 PM', qty: 6}, 
+                {time: '18:00', label: '6:00 PM', qty: 6},
+                {time: '19:30', label: '7:30 PM', qty: 6}
+            ],
+        sunday: [
+            {time: '11:00', label: '11:00 AM', qty: 6}, 
+            {time: '12:00', label: '12:00 PM', qty: 6}, 
+            {time: '17:00', label: '5:00 PM', qty: 6}, 
+            {time: '18:00', label: '6:00 PM', qty: 6},
+            {time: '19:30', label: '7:30 PM', qty: 6}
+        ],
+    }
+}
+
 export default {
     products,
     menu,
@@ -358,4 +381,5 @@ export default {
     payment,
     geo,
     content,
+    time,
 }

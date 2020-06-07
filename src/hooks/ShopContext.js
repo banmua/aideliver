@@ -37,6 +37,24 @@ Date.prototype.addHours = function(h) {
 
 const genDT = () => {
     let tomorrow = moment().add(1, 'days').startOf('day');
+    const day = moment(tomorrow).format('dddd').toLowerCase();
+    const avail = data.time?.delivery ? data.time.delivery[day] : [];
+
+    if (avail.length > 0) {
+        const str = `${moment(tomorrow).format('MM/DD/YYYY')} ${avail[0].time}`;
+        const dt = moment(str, 'MM/DD/YYYY HH:mm');
+        console.log('>>> genDT:', dt);
+        return dt;
+    }
+
+    if ([1,2,3,4,5].includes(tomorrow.day())) { // Mon-Fri: 6:30 PM
+        return tomorrow.add(18.50, 'hours');
+    }
+    return tomorrow.add(11, 'hours');       // Sat-Sun: 11 AM
+}
+
+const genDT2 = () => {
+    let tomorrow = moment().add(1, 'days').startOf('day');
     if ([1,2,3,4,5].includes(tomorrow.day())) {
         return tomorrow.add(18.50, 'hours');
     }
@@ -91,7 +109,8 @@ const defaultState = {
     admin: {
         orders: [],
         dict: {},
-    }
+    },
+    time: data.time,
 }
 
 const reducer = (state, action) => {
@@ -120,7 +139,7 @@ const reducer = (state, action) => {
         }
 
         case 'CLEAR': {
-            return {...defaultState}
+            return {...defaultState, userInfo: {...defaultState.userInfo, deliveryDT: genDT()}}
         }
 
         case 'SET_ORDERS': {

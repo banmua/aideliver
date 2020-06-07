@@ -12,6 +12,7 @@ import {MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker} from '@
 import ShopContext from '../../hooks/ShopContext';
 import styles, {useStyles} from './styles';
 import {errorMessages, isValid, isValid2} from './errors';
+import DeliveryTime from './DeliveryTime';
 
 Date.prototype.addHours= function(h){
     this.setHours(this.getHours()+h);
@@ -99,22 +100,29 @@ export default props => {
                             value={referrer} 
                             onChange={event => update('referrer', event.target.value, 'userInfo')}
                         /></div>
-                <div><KeyboardDatePicker style={styles.text}
+                <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            columnGap: '0px',
+                            width: '380px',
+                        }}>
+                    <KeyboardDatePicker style={styles.text}
                         //margin="normal"
                         id="date-picker-dialog"
                         label="Delivery Date"
                         format="MM/dd/yyyy"
 
-                        style={errors.deliveryDate ? styles.textError : styles.text} 
+                        style={errors.deliveryDate ? {...styles.textError, width: '150px'} : {...styles.text, width: '150px'}} 
                         error={errors.deliveryDate}
                         helperText={errors.deliveryDate ? errorMessages.deliveryDate : ''}
 
                         value={deliveryDT}
                         onChange={date => update('deliveryDT', date, 'userInfo')}
                         KeyboardButtonProps={{'aria-label': 'change date'}}
-                    />
+                    /> 
+                    <DeliveryTime />
                 </div>
-                <div><KeyboardTimePicker style={styles.text}
+                {/* <div><KeyboardTimePicker style={styles.text}
                         //margin="normal"
                         id="time-picker"
                         label="Delivery Time"
@@ -124,9 +132,15 @@ export default props => {
                         helperText={errors.deliveryTime ? errorMessages.deliveryTime : ''}
 
                         value={deliveryDT}
-                        onChange={date => update('deliveryDT', date, 'userInfo')}
+                        onChange={date => {
+                            console.log('>>> DATE:', date);
+                            update('deliveryDT', date, 'userInfo')
+                        }}
                         KeyboardButtonProps={{'aria-label': 'change time'}}
                     />
+                </div> */}
+                <div>
+                    
                 </div>
             </form>
         </MuiPickersUtilsProvider>

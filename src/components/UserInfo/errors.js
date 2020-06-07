@@ -10,8 +10,8 @@ export const errorMessages = {
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
     referrer: 'please provide correct coupon code, if you have any',
-    deliveryDate: 'please set to the next day and later',
-    deliveryTime: 'available: Mon-Fri: 5:30pm-6:30pm, Sat-Sun: 9am-6:30pm',
+    deliveryDate: 'next day and later',
+    deliveryTime: 'select time',
 }
 
 Date.prototype.addHours = function(h) {
