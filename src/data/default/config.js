@@ -358,21 +358,25 @@ export const delivery = {
 
 export const time = {
     delivery: {
-        monday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
-        tuesday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
-        wednesday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
-        thursday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
-        friday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}],
+        monday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}, {time: '18:30', label: '6:30 PM', qty: 6}],
+        tuesday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}, {time: '18:30', label: '6:30 PM', qty: 6}],
+        wednesday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}, {time: '18:30', label: '6:30 PM', qty: 6}],
+        thursday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}, {time: '18:30', label: '6:30 PM', qty: 6}],
+        friday: [{time: '12:0', label: '12:00 PM', qty: 6}, {time: '17:30', label: '5:30 PM', qty: 6}, {time: '18:30', label: '6:30 PM', qty: 6}],
         saturday: [
+                {time: '9:0', label: '9:00 AM', qty: 6}, 
                 {time: '11:0', label: '11:00 AM', qty: 6}, 
                 {time: '12:0', label: '12:00 PM', qty: 6}, 
+                {time: '14:0', label: '2:00 PM', qty: 6},
                 {time: '17:0', label: '5:00 PM', qty: 6}, 
                 {time: '18:0', label: '6:00 PM', qty: 6},
                 {time: '19:30', label: '7:30 PM', qty: 6}
             ],
         sunday: [
+            {time: '9:0', label: '9:00 AM', qty: 6}, 
             {time: '11:0', label: '11:00 AM', qty: 6}, 
             {time: '12:0', label: '12:00 PM', qty: 6}, 
+            {time: '14:0', label: '2:00 PM', qty: 6},
             {time: '17:0', label: '5:00 PM', qty: 6}, 
             {time: '18:0', label: '6:00 PM', qty: 6},
             {time: '19:30', label: '7:30 PM', qty: 6}
