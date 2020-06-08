@@ -9,7 +9,7 @@ export const errorMessages = {
     city: 'required field',
     phone: 'please provide a valid 10-digit phone number',
     email: 'please provide a valid email address',
-    referrer: 'please provide correct coupon code, if you have any',
+    referrer: 'incorrect or expired coupon code',
     deliveryDate: 'next day and later',
     deliveryTime: 'select time',
 }
@@ -46,7 +46,8 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
 
         case 'referrer': {
             const {referrer = ''} = state.userInfo;
-            const isValidCoupon = referrer === 'PhoNow06' || referrer.trim() === '';
+            const isValidCoupon = referrer.trim() === '';
+            //const isValidCoupon = referrer === 'PhoNow06' || referrer.trim() === '';
             //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
             return errorChecking ? isValidCoupon : true;
         }
@@ -116,7 +117,8 @@ export const isValid = (fieldName, value, errorChecking = false) => {
 
         case 'referrer': {
             const referrer = value || '';
-            const isValidCoupon = referrer === 'PhoNow06' || referrer.trim() === '';
+            const isValidCoupon = referrer.trim() === '';
+            //const isValidCoupon = referrer === 'PhoNow06' || referrer.trim() === '';
             //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
             return errorChecking ? isValidCoupon : true;
         }

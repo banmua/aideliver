@@ -8,7 +8,7 @@ const promos = {
             unit: 'percent',
             unitPostfix: '%',
             startDate: '05/28/2020',
-            endDate: '05/31/2020',
+            endDate: '06/07/2020',
             qty: 50,
         }
     }
