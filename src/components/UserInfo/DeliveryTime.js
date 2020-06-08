@@ -15,7 +15,7 @@ const DeliveryTime = props => {
     const getTime = () => {
         const dt = moment(deliveryDT);
         const hour = dt.get('hour');
-        const min = dt.get('min');
+        const min = dt.get('minute');
         const str = `${hour}:${min}`;
         const arr = availTimes.map(obj => obj.time);
         const val = arr.includes(str) ? str : availTimes[0].time;
@@ -27,13 +27,6 @@ const DeliveryTime = props => {
     useEffect(() => {
         setTime(getTime());
     }, [deliveryDT])
-
-    // useEffect(() => {
-    //     const str = `${moment(deliveryDT).format('MM/DD/YYYY')} ${time}`;
-    //     const dt = moment(str, 'MM/DD/YYYY HH:mm');
-    //     dispatch({type: 'UPDATE', payload: {key: 'deliveryDT', value: dt, parent: 'userInfo'}});
-    //     dispatch({type: 'UPDATE', payload: {key: 'deliveryTime', value: true, parent: 'isValid'}});
-    // }, [time])
 
     return (
         <FormControl style={{width: '150px'}}>
