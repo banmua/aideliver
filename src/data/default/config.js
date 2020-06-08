@@ -28,7 +28,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Atherton, Palo Alto, Los Altos, Los Altos Hills, and Mountain View of California. <span style='font-weight:bold;color:red'>Currently, available delivery times are: Mon-Fri 5:30pm - 6:30pm, Sat-Sun 9am - 6:30pm.</span>",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Atherton, Palo Alto, Los Altos, Los Altos Hills, Mountain View, Sunnyvale and Cupertino of California.",
 }
 
 export const navbar = {
@@ -94,13 +94,17 @@ export const geo = {
             city: 'Mountain View',
             state: 'California',
             zipCodes: [],
-        }, 
-        // {
-        //     name: 'Sunnyvale, CA',
-        //     city: 'Sunnyvale',
-        //     state: 'California',
-        //     zipCode: [],
-        // }
+        }, {
+            name: 'Sunnyvale, CA',
+            city: 'Sunnyvale',
+            state: 'California',
+            zipCode: [],
+        }, {
+            name: 'Cupertino, CA',
+            city: 'Cupertino',
+            state: 'California',
+            zipCode: [],
+        }
     ]
 }
 
