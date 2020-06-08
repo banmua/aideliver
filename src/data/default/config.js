@@ -28,7 +28,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Atherton, Palo Alto, Los Altos, Los Altos Hills, Mountain View, Sunnyvale and Cupertino of California.",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Atherton, Palo Alto, East Palo Alto, Los Altos, Los Altos Hills, Mountain View, Sunnyvale and Cupertino of California.",
 }
 
 export const navbar = {
@@ -77,6 +77,11 @@ export const geo = {
         }, {
             name: 'Palo Alto, CA',
             city: 'Palo Alto',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'East Palo Alto, CA',
+            city: 'East Palo Alto',
             state: 'California',
             zipCodes: [],
         }, {
