@@ -43,7 +43,6 @@ const genDT = () => {
     if (avail.length > 0) {
         const str = `${moment(tomorrow).format('MM/DD/YYYY')} ${avail[0].time}`;
         const dt = moment(str, 'MM/DD/YYYY HH:mm');
-        console.log('>>> genDT:', dt);
         return dt;
     }
 

@@ -63,31 +63,31 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
             //return valStartOfDay.isSameOrAfter(tomorrow) && isFriSatSun;
         }
             
-        case 'deliveryTime': {
-            if (!errorChecking) return true;
+        // case 'deliveryTime': {
+        //     if (!errorChecking) return true;
 
-            const val = moment(state.userInfo.deliveryDT);
-            const startOfDay = moment(state.userInfo.deliveryDT).startOf('day');
-            const openTime = moment(startOfDay).add(9, 'hours');
-            const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
-            const twoHoursFromNow = moment().add(2, 'hours');
-            const isMonToFri = [1,2,3,4,5].includes(val.day()); 
-            const hour = val.get('hour');
-            const min = val.get('minutes');
+        //     const val = moment(state.userInfo.deliveryDT);
+        //     const startOfDay = moment(state.userInfo.deliveryDT).startOf('day');
+        //     const openTime = moment(startOfDay).add(9, 'hours');
+        //     const closeTime = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
+        //     const twoHoursFromNow = moment().add(2, 'hours');
+        //     const isMonToFri = [1,2,3,4,5].includes(val.day()); 
+        //     const hour = val.get('hour');
+        //     const min = val.get('minutes');
 
-            if (isMonToFri) {
-                const fiveThirty = moment(startOfDay).add(17, 'hours').add(30, 'minutes');
-                const sixThirty = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
-                return val.isSameOrAfter(twoHoursFromNow)
-                    && val.isSameOrAfter(fiveThirty) 
-                    && sixThirty.isSameOrAfter(val);
-                //return hour === 18 && min === 30;
-            }
+        //     if (isMonToFri) {
+        //         const fiveThirty = moment(startOfDay).add(17, 'hours').add(30, 'minutes');
+        //         const sixThirty = moment(startOfDay).add(18, 'hours').add(31, 'minutes');
+        //         return val.isSameOrAfter(twoHoursFromNow)
+        //             && val.isSameOrAfter(fiveThirty) 
+        //             && sixThirty.isSameOrAfter(val);
+        //         //return hour === 18 && min === 30;
+        //     }
             
-            return val.isSameOrAfter(twoHoursFromNow) 
-                    && val.isSameOrAfter(openTime) 
-                    && closeTime.isSameOrAfter(val);
-        }
+        //     return val.isSameOrAfter(twoHoursFromNow) 
+        //             && val.isSameOrAfter(openTime) 
+        //             && closeTime.isSameOrAfter(val);
+        // }
 
         
         default:
@@ -132,24 +132,24 @@ export const isValid = (fieldName, value, errorChecking = false) => {
             return valStartOfDay.isSameOrAfter(tomorrow) && isFriSatSun;
         }
 
-        case 'deliveryTime': {
-            const val = moment(value);
+        // case 'deliveryTime': {
+        //     const val = moment(value);
 
-            const openTime = moment(moment(value).startOf('day')).add(9, 'hours');
-            const closeTime = moment(moment(value).startOf('day')).add(18, 'hours').add(31, 'minutes');
-            const twoHoursFromNow = moment().add(2, 'hours');
-            const isMonToFri = [1,2,3,4,5].includes(val.day()); 
-            const hour = val.get('hour');
-            const min = val.get('minutes');
+        //     const openTime = moment(moment(value).startOf('day')).add(9, 'hours');
+        //     const closeTime = moment(moment(value).startOf('day')).add(18, 'hours').add(31, 'minutes');
+        //     const twoHoursFromNow = moment().add(2, 'hours');
+        //     const isMonToFri = [1,2,3,4,5].includes(val.day()); 
+        //     const hour = val.get('hour');
+        //     const min = val.get('minutes');
 
-            if (isMonToFri) {
-                return hour === 18 && min === 30;
-            }
+        //     if (isMonToFri) {
+        //         return hour === 18 && min === 30;
+        //     }
             
-            return val.isSameOrAfter(twoHoursFromNow) 
-                    && val.isSameOrAfter(openTime) 
-                    && closeTime.isSameOrAfter(val);
-        }
+        //     return val.isSameOrAfter(twoHoursFromNow) 
+        //             && val.isSameOrAfter(openTime) 
+        //             && closeTime.isSameOrAfter(val);
+        // }
         
         default:
             return true;
