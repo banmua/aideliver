@@ -118,7 +118,7 @@ export const geo = {
     ]
 }
 
-export const menu = ['G1', 'C1', 'G2', 'R1', 'R2', 'N1'];
+export const menu = ['G1', 'C1', 'G2', 'N1', 'R2', 'R1', 'R3'];
 
 export const products = [
     {
@@ -243,6 +243,14 @@ export const products = [
         price: '2.00',
         unit: 'roll',
         image: '/images/goiCuon.jpg',
+    }, {
+        id: 'R3',
+        name: 'Seafood Eggrolls',
+        description: 'Seafood eggrolls',
+        native: 'Cha gio hai san',
+        price: '3.00',
+        unit: 'roll',
+        image: '/images/chaGioHaiSan.jpg',
     }, {
         id: 'E1',
         name: 'Extra noodles',
