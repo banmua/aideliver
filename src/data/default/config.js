@@ -28,7 +28,7 @@ export const entity = {
 }
 
 export const banner = {
-    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Menlo Park, Atherton, Palo Alto, East Palo Alto, Los Altos, Los Altos Hills, Mountain View, Sunnyvale and Cupertino of California.",
+    line: "<em style='font-weight:bold;color:red'>Next-day delivery of delicious Vietnamese Pho and Rolls!</em> Serving the cities Atherton, Menlo Park, Stanford, Palo Alto, East Palo Alto, Los Altos, Los Altos Hills, Mountain View, Sunnyvale and Cupertino of California.",
 }
 
 export const navbar = {
@@ -72,6 +72,11 @@ export const geo = {
         }, {
             name: 'Menlo Park, CA',
             city: 'Menlo Park',
+            state: 'California',
+            zipCodes: [],
+        }, {
+            name: 'Stanford, CA',
+            city: 'Stanford',
             state: 'California',
             zipCodes: [],
         }, {
@@ -324,36 +329,6 @@ export const products = [
 export const content = {
     cartHeading: 'Your Order',
     userInfoHeading: 'Your Info',
-}
-
-export const delivery = {
-    default: [{
-        start: '10:00 AM',
-        end: '11.59 AM',
-        qty: 6
-    }, {
-        start: '12:00 PM',
-        end: '01.59 PM',
-        qty: 6
-    }, {
-        start: '02:00 PM',
-        end: '04:59 AM',
-        qty: 6
-    }, {
-        start: '05:00 PM',
-        end: '05.59 PM',
-        qty: 6
-    }, {
-        start: '06:00 PM',
-        end: '08 AM',
-        qty: 6
-    }, {
-        start: '10:00 AM',
-        end: '11.59 AM',
-        qty: 6
-    
-    }]
-
 }
 
 export const time = {
