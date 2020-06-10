@@ -118,7 +118,7 @@ export const geo = {
     ]
 }
 
-export const menu = ['G1', 'C1', 'G2', 'N1', 'R2', 'R1', 'R3'];
+export const menu = ['G1', 'C1', 'G2', 'N1', 'R2', 'R1', 'R3', 'L1'];
 
 export const products = [
     {
@@ -331,6 +331,14 @@ export const products = [
         price: '12.00',
         unit: 'bowl',
         image: '/images/bunThitNuong2.jpg',
+    }, {
+        id: 'L1',
+        name: 'Shaking Beef',
+        description: 'beef, rice and salad',
+        native: 'Com bo luc lac',
+        price: '14.00',
+        unit: 'dish',
+        image: '/images/comBoLucLac.jpg',
     }
 ]
 
