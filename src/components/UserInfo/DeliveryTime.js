@@ -24,6 +24,18 @@ const DeliveryTime = props => {
 
     const [time, setTime] = useState(getTime());
 
+    const onChange = event => {
+        setTime(event.target.value);
+        const arr = event.target.value.split(':');
+        const hour = arr[0];
+        const minute = arr[1];
+        const dt = moment(deliveryDT);
+        dt.set({hour, minute});
+        
+        dispatch({type: 'UPDATE', payload: {key: 'deliveryDT', value: dt, parent: 'userInfo'}});
+        dispatch({type: 'UPDATE', payload: {key: 'deliveryTime', value: true, parent: 'isValid'}});
+    }
+
     useEffect(() => {
         setTime(getTime());
     }, [deliveryDT])
@@ -33,7 +45,7 @@ const DeliveryTime = props => {
             <InputLabel id="deliveryTime-label">Avail. delivery time</InputLabel>
             <Select labelId="deliveryTime-label"
                     id="deliveryTime" value={time}
-                    onChange={e => setTime(e.target.value)} >
+                    onChange={onChange} >
                 {availTimes.map(t => <MenuItem key={t.time} value={t.time}>{t.label}</MenuItem>)}
             </Select>
         </FormControl>

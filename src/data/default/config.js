@@ -359,7 +359,7 @@ export const time = {
                 {time: '14:0', label: '2:00 PM', qty: 6},
                 {time: '17:0', label: '5:00 PM', qty: 6}, 
                 {time: '18:0', label: '6:00 PM', qty: 6},
-                {time: '19:00', label: '7:00 PM', qty: 6}
+                {time: '19:0', label: '7:00 PM', qty: 6}
             ],
         sunday: [
             {time: '9:0', label: '9:00 AM', qty: 6}, 
