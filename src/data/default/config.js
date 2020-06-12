@@ -1,9 +1,9 @@
 import {entityTypes} from '../../constants';
 
 const promos = {
-    'PhoNow270': {
-            codes: 'phonow270',  
-            name: 'PhoNow270',
+    'PhoNow06': {
+            codes: 'phonow06',  
+            name: 'PhoNow06',
             value: 20,
             unit: 'percent',
             unitPostfix: '%',

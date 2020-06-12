@@ -47,7 +47,7 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
         case 'referrer': {
             const {referrer = ''} = state.userInfo;
             //const isValidCoupon = referrer.trim() === '';
-            const isValidCoupon = referrer === 'PhoNow270' || referrer.trim() === '';
+            const isValidCoupon = referrer === 'PhoNow06' || referrer.trim() === '';
             //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
             return errorChecking ? isValidCoupon : true;
         }
@@ -118,7 +118,7 @@ export const isValid = (fieldName, value, errorChecking = false) => {
         case 'referrer': {
             const referrer = value || '';
             //const isValidCoupon = referrer.trim() === '';
-            const isValidCoupon = referrer === 'PhoNow270' || referrer.trim() === '';
+            const isValidCoupon = referrer === 'PhoNow06' || referrer.trim() === '';
             //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
             return errorChecking ? isValidCoupon : true;
         }
