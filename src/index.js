@@ -11,6 +11,7 @@ import AdminItem from './components/Admin/AdminItem';
 import Range from './components/Admin/Range';
 import Today from './components/Admin/Today';
 import Tomorrow from './components/Admin/Tomorrow';
+import Emails from './components/Admin/Emails';
 import Profile from './components/Profile';
 import Account from './components/Account';
 import Contact from './components/Contact';
@@ -64,6 +65,7 @@ ReactDOM.render(
           <Route path="/admin/range"><Range /></Route>
           <Route path="/admin/today"><Today /></Route>
           <Route path="/admin/tomorrow"><Tomorrow /></Route>
+          <Route path="/admin/emails"><Emails /></Route>
           <Route path="/admin/:id"><AdminItem /></Route>
           <Route path="/admin"><Layout><Admin /></Layout></Route>
           <Route path="/profile"><Layout><Profile /></Layout></Route>

@@ -191,6 +191,7 @@ const OrderTable = ({data = []})  => {
             { getAdmins().includes(state.login.userName) ? 
               <>
                 <div><Link to="/admin">All</Link>,</div>
+                {/* <div><Link to="/admin/emails">Emails</Link>,</div> */}
                 <div><Link to="/admin/today">Today</Link>,</div>
                 <div><Link to="/admin/tomorrow">Tomorrow</Link>,</div>
                 <div><Link to={`/admin/range?fr=00:00:00&to=12:00:00`}>Trip A [before noon], </Link></div>
