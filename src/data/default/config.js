@@ -1,16 +1,16 @@
 import {entityTypes} from '../../constants';
 
 const promos = {
-    // 'PhoNow06': {
-    //         codes: 'phonow06',  
-    //         name: 'PhoNow06',
-    //         value: 20,
-    //         unit: 'percent',
-    //         unitPostfix: '%',
-    //         startDate: '05/28/2020',
-    //         endDate: '06/07/2020',
-    //         qty: 50,
-    //     }
+    'PhoNow270': {
+            codes: 'phonow270',  
+            name: 'PhoNow270',
+            value: 20,
+            unit: 'percent',
+            unitPostfix: '%',
+            startDate: '06/10/2020',
+            endDate: '06/21/2020',
+            qty: 50,
+        }
     }
     
 // "M11E-2TLC-AK95",
