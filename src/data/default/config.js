@@ -1,23 +1,45 @@
 import {entityTypes} from '../../constants';
+import {buyOneGetOneFree, buyTwoGetOneFree} from '../../hooks/ShopContext';
+const PhoNow06 = {
+    codes: 'phonow06',  
+    name: 'PhoNow06',
+    value: 20,
+    unit: 'percent',
+    unitPostfix: '%',
+    startDate: '06/10/2020',
+    endDate: '06/21/2020',
+    qty: 50,
+    type: 'percent',
+}
 
-const promos = {
-    'PhoNow06': {
-            codes: 'phonow06',  
-            name: 'PhoNow06',
-            value: 20,
-            unit: 'percent',
-            unitPostfix: '%',
-            startDate: '06/10/2020',
-            endDate: '06/21/2020',
-            qty: 50,
-        }
-    }
+const BuyOneGetOneFree27 = {
+    codes: 'buyonegetonefree27',  
+    name: 'BuyOneGetOneFree27',
+    value: 0,
+    unit: 'percent',
+    unitPostfix: '%',
+    startDate: '06/18/2020',
+    endDate: '07/18/2020',
+    qty: 50,
+    type: 'custom',
+    calc: state => buyOneGetOneFree(state),
+}
+
+const BuyTwoGetOneFree29 =  {
+    codes: 'buytwogetonefree29',  
+    name: 'BuyTwoGetOneFree29',
+    value: 0,
+    unit: 'percent',
+    unitPostfix: '%',
+    startDate: '06/18/2020',
+    endDate: '07/18/2020',
+    qty: 50,
+    type: 'custom',
+    calc: state => buyTwoGetOneFree(state),
+}
+
+const promos = {BuyTwoGetOneFree29}
     
-// "M11E-2TLC-AK95",
-    // "T8A8-1WDB-QND5",
-    // "AX9C-V5NB-75FT",
-    // "MXV3-CVP5-T2NF",
-    // "XH01-WQQN-BDC7",
 
 export const entity = {
     id: 'phobalo',

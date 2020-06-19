@@ -31,9 +31,10 @@ export default props => {
             {keys.filter(key => referrer && key.toLowerCase() === referrer.toLowerCase())
                 .map(key => {
                     const pro = promos[key];
+                    const str = pro.type === 'percent' ? ` (${pro.value}${pro.unitPostfix})` : '';
                     return (
                         <div style={styles.container}>
-                            <div style={styles.right}>{`${pro.name} (${pro.value}${pro.unitPostfix}):`}</div>
+                            <div style={styles.right}>{`${pro.name}${str}:`}</div>
                             <div style={styles.right}>{`- $${getPromo(pro)(state)}`}</div>
                         </div>
                     )

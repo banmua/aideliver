@@ -2,6 +2,7 @@ import React, {useEffect, useReducer} from 'react';
 import data  from '../data';
 import moment from 'moment';
 import cc from 'coupon-code';
+import { sumerianScene } from 'aws-amplify';
 
 // const coupons = Array.from({length: 10}, (x, i) => cc.generate());
 // console.log('>>> COUPONS', coupons);
@@ -164,6 +165,36 @@ export const ShopContextProvider = ({children}) => {
     )
 }
 
+///////////
+
+export const buyOneGetOneFree = state => {
+    const {cart, dict} = state;
+    const keys = Object.keys(cart);
+    let sum = 0;
+    keys.forEach(key => {
+        const qty = cart[key];
+        if (qty > 1) {
+            sum = sum + Math.floor(qty/2) * Number(dict[key].price);
+        }
+    })
+    return sum;
+}
+
+export const buyTwoGetOneFree = state => {
+    const {cart, dict} = state;
+    const keys = Object.keys(cart);
+    let sum = 0;
+    keys.forEach(key => {
+        const qty = cart[key];
+        if (qty > 2) {
+            sum = sum + Math.floor(qty/3) * Number(dict[key].price);
+        }
+    })
+    return sum;
+}
+
+////////////
+
 const calcDiscount = (discount) => state => {
     if (!discount || !discount.value) return (0).toFixed(2);
     return (calcRawSubTotal(state) * discount.value / 100).toFixed(2);
@@ -178,9 +209,14 @@ const calcAllDiscounts = state => {
     return sum;
 }
 
-const calcPromo = (discount) => state => {
-    if (!discount || !discount.value) return (0).toFixed(2);
-    return (calcRawSubTotal(state) * discount.value / 100).toFixed(2);
+const calcPromo = (promo) => state => {
+    if (promo.type === 'custom' && promo.calc) {
+        return promo.calc(state).toFixed(2);
+    }
+
+    if (!promo || !promo.value) return (0).toFixed(2);
+
+    return (calcRawSubTotal(state) * promo.value / 100).toFixed(2);
 }
 
 const calcAllPromos = state => {
