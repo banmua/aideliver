@@ -182,12 +182,19 @@ export const buyOneGetOneFree = state => {
 
 export const buyTwoGetOneFree = state => {
     const {cart, dict} = state;
-    const keys = Object.keys(cart);
+    let combi = {};
+    Object.keys(cart).forEach(key => {
+        if (key.startsWith('B') || key.startsWith('C')) {
+            combi['PHO'] = combi['PHO'] ? combi['PHO'] + cart[key] : cart[key];
+        }
+    })
+
     let sum = 0;
-    keys.forEach(key => {
-        const qty = cart[key];
+    Object.keys(combi).forEach(key => {
+        const qty = combi[key];
         if (qty > 2) {
-            sum = sum + Math.floor(qty/3) * Number(dict[key].price);
+            const price = key === 'PHO' ? dict['B1'].price : dict[key].price;
+            sum = sum + Math.floor(qty/3) * Number(price);
         }
     })
     return sum;
