@@ -24,7 +24,8 @@ export default props => {
 
     const getDelivery = () => state.deliveryFee.toFixed(2); 
 
-    const isFreeShipping = state.freeShipping.includes(state.userInfo.referrer);
+    const referrer = state.userInfo.referrer.trim();
+    const isFreeShipping = state.freeShipping.includes(referrer);
     const str = isFreeShipping ? '0.00' : String(getDelivery());
     return (
         <div style={styles.container}>
