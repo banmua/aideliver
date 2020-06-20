@@ -1,5 +1,5 @@
 import {entityTypes} from '../../constants';
-import {buyOneGetOneFree, buyTwoGetOneFree} from '../../hooks/ShopContext';
+import {buyOneGetOneFree, buyTwoGetOneFree, freeOrder} from '../../hooks/ShopContext';
 const PhoNow06 = {
     codes: 'phonow06',  
     name: 'PhoNow06',
@@ -38,8 +38,23 @@ const BuyTwoGetOneFree29 =  {
     calc: state => buyTwoGetOneFree(state),
 }
 
-const promos = {BuyTwoGetOneFree29}
+const FreeOrder7016 =  {
+    codes: 'freeorder7016',  
+    name: 'FreeOrder7016',
+    value: 100,
+    unit: 'percent',
+    unitPostfix: '%',
+    startDate: '06/18/2020',
+    endDate: '07/18/2020',
+    qty: 50,
+    type: 'custom',
+    calc: state => freeOrder(state),
+}
+
+
+const promos = {BuyTwoGetOneFree29, FreeOrder7016}
     
+const freeShipping = ['FreeOrder7016'];
 
 export const entity = {
     id: 'phobalo',
@@ -414,4 +429,5 @@ export default {
     geo,
     content,
     time,
+    freeShipping,
 }

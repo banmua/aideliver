@@ -22,7 +22,9 @@ export default props => {
     const {cart, dict} = state;
     const {promos = {}} = state.payment;
     const keys = Object.keys(promos);
-    const {referrer = ''} = state.userInfo;
+    const {referrer: rawReferrer = ''} = state.userInfo;
+
+    const referrer = rawReferrer.trim();
 
     if (keys.length === 0 || !keys.includes(referrer)) return null;
 

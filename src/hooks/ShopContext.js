@@ -8,7 +8,7 @@ import { sumerianScene } from 'aws-amplify';
 // console.log('>>> COUPONS', coupons);
 
 
-const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham', 'PhoBalo', 'nico', 'camchan'];
+const admins = ['ThachLe', 'ThanhLe', 'PhuongLe', 'TrangPham', 'PhoBalo', 'camchan'];
 export const getAdmins = () => admins;
 
 const ShopContext = React.createContext(data);
@@ -111,6 +111,7 @@ const defaultState = {
         dict: {},
     },
     time: data.time,
+    freeShipping: data.freeShipping || [],
 }
 
 const reducer = (state, action) => {
@@ -186,6 +187,8 @@ export const buyTwoGetOneFree = state => {
     Object.keys(cart).forEach(key => {
         if (key.startsWith('B') || key.startsWith('C')) {
             combi['PHO'] = combi['PHO'] ? combi['PHO'] + cart[key] : cart[key];
+        } else {
+            combi[key] = cart[key]
         }
     })
 
@@ -198,6 +201,10 @@ export const buyTwoGetOneFree = state => {
         }
     })
     return sum;
+}
+
+export const freeOrder = (state) => {
+    return calcRawSubTotal(state);
 }
 
 ////////////
@@ -222,13 +229,15 @@ const calcPromo = (promo) => state => {
     }
 
     if (!promo || !promo.value) return (0).toFixed(2);
-
-    return (calcRawSubTotal(state) * promo.value / 100).toFixed(2);
+    return  promo.freeShipping 
+            ? (calcRawSubTotal(state) * promo.value / 100 + state.deliveryFee).toFixed(2)
+            : (calcRawSubTotal(state) * promo.value / 100).toFixed(2);
 }
 
 const calcAllPromos = state => {
     if (!state.payment || !state.payment.promos) return 0;
-    const {referrer = ''} = state.userInfo;
+    const {referrer: rawReferrer = ''} = state.userInfo;
+    const referrer = rawReferrer.trim();
     let sum = 0;
     Object.keys(state.payment.promos)
         .filter(key => referrer && key.toLowerCase() === referrer.toLowerCase())
@@ -244,7 +253,13 @@ const calcRawSubTotal = state => Object.keys(state.cart).reduce( (sum, id) => su
 const calcSubTotal = state => (calcRawSubTotal(state) - calcAllDiscounts(state)) - calcAllPromos(state);
 
 const calcTax = state => 0.08 * calcSubTotal(state);
-const calcTotal = state => calcTax(state) + state.deliveryFee + calcSubTotal(state);
+const calcTotal = state => {
+    const {referrer: rawReferrer = ''} = state.userInfo;
+    const referrer = rawReferrer.trim();
+
+    const shipping = state.freeShipping && state.freeShipping.includes(referrer) ? 0 : state.deliveryFee;
+    return calcTax(state) + shipping + calcSubTotal(state);
+}
 
 export const getSubTotal = state => calcSubTotal(state).toFixed(2);
 export const getTax = state => calcTax(state).toFixed(2); 

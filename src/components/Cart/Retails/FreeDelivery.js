@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import ShopContext from '../../../hooks/ShopContext';
+import { useControlled } from '@material-ui/core';
 
 
 const styles = {
@@ -25,11 +26,13 @@ export default props => {
     const getDelivery = () => state.deliveryFee.toFixed(2); 
 
     const isFreeShipping = state.freeShipping.includes(state.userInfo.referrer);
-    const str = isFreeShipping ? '0.00' : String(getDelivery());
+
+    if (isFreeShipping) return null;
+
     return (
         <div style={styles.container}>
-            <div style={styles.right}>Delivery:</div>
-            <div style={styles.right}>${str}</div>
+            <div style={styles.right}>Free delivery:</div>
+            <div style={styles.right}>- ${getDelivery()}</div>
         </div>
     )
 }
