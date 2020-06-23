@@ -54,7 +54,7 @@ const freeorder7016 =  {
 
 const promos = {buytwogetonefree29, freeorder7016}
     
-const freeShipping = ['FreeOrder7016'];
+const freeShipping = ['freeorder7016'];
 
 export const entity = {
     id: 'phobalo',
