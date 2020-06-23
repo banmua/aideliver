@@ -46,8 +46,10 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
 
         case 'referrer': {
             const {referrer = ''} = state.userInfo;
+            const isValidCoupon = ['buytwogetonefree29', 'freeorder7016'].includes(referrer.trim().toLowerCase()) || referrer.trim() === '';
+            
             //const isValidCoupon = referrer.trim() === '';
-            const isValidCoupon = ['BuyTwoGetOneFree29', 'FreeOrder7016'].includes(referrer.trim()) || referrer.trim() === '';
+            //const isValidCoupon = ['BuyTwoGetOneFree29', 'FreeOrder7016'].includes(referrer.trim()) || referrer.trim() === '';
             //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
             return errorChecking ? isValidCoupon : true;
         }
@@ -117,8 +119,9 @@ export const isValid = (fieldName, value, errorChecking = false) => {
 
         case 'referrer': {
             const referrer = value && value.trim() || '';
+            const isValidCoupon = ['buytwogetonefree29', 'freeorder7016'].includes(referrer.trim().toLowerCase()) || referrer.trim() === '';
             //const isValidCoupon = referrer.trim() === '';
-            const isValidCoupon = ['BuyTwoGetOneFree29', 'FreeOrder7016'].includes(referrer || referrer === '');
+            //const isValidCoupon = ['BuyTwoGetOneFree29', 'FreeOrder7016'].includes(referrer || referrer === '');
             //const isValidCoupon = cc.validate(referrer) || referrer.trim() === ''
             return errorChecking ? isValidCoupon : true;
         }

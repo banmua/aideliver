@@ -25,7 +25,7 @@ const BuyOneGetOneFree27 = {
     calc: state => buyOneGetOneFree(state),
 }
 
-const BuyTwoGetOneFree29 =  {
+const buytwogetonefree29 =  {
     codes: 'buytwogetonefree29',  
     name: 'BuyTwoGetOneFree29',
     value: 0,
@@ -38,7 +38,7 @@ const BuyTwoGetOneFree29 =  {
     calc: state => buyTwoGetOneFree(state),
 }
 
-const FreeOrder7016 =  {
+const freeorder7016 =  {
     codes: 'freeorder7016',  
     name: 'FreeOrder7016',
     value: 100,
@@ -52,7 +52,7 @@ const FreeOrder7016 =  {
 }
 
 
-const promos = {BuyTwoGetOneFree29, FreeOrder7016}
+const promos = {buytwogetonefree29, freeorder7016}
     
 const freeShipping = ['FreeOrder7016'];
 

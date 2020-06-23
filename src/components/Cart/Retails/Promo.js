@@ -24,7 +24,7 @@ export default props => {
     const keys = Object.keys(promos);
     const {referrer: rawReferrer = ''} = state.userInfo;
 
-    const referrer = rawReferrer.trim();
+    const referrer = rawReferrer.trim().toLowerCase();
 
     if (keys.length === 0 || !keys.includes(referrer)) return null;
 
