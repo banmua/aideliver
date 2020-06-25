@@ -155,7 +155,7 @@ export const geo = {
     ]
 }
 
-export const menu = ['G1', 'C1', 'G2', 'N1', 'R2', 'R1', 'R3', 'L1'];
+export const menu = ['G1', 'C1', 'V1', 'G2', 'N1', 'R2', 'R1', 'L1'];
 
 export const products = [
     {
@@ -376,7 +376,15 @@ export const products = [
         price: '14.00',
         unit: 'dish',
         image: '/images/comBoLucLac.jpg',
-    }
+    }, {
+        id: 'V1',
+        name: 'Veggie Pho',
+        description: 'Vegetarian noodle soup',
+        native: 'Pho chay',
+        price: '12.00',
+        unit: 'bowl',
+        image: '/images/vegiePho.jpg',
+    },
 ]
 
 export const content = {
