@@ -40,10 +40,10 @@ export const isValid2 = (fieldName, state, errorChecking = false) => {
             return errorChecking ? !!state.userInfo.city : true;
 
         case 'phone': 
-            return errorChecking ? validatePhone(state.userInfo.phone) : true;
+            return errorChecking ? validatePhone(state.userInfo.phone.trim()) : true;
         
         case 'email': 
-            return errorChecking ? validateEmail(state.userInfo.email) : true;
+            return errorChecking ? validateEmail(state.userInfo.email.trim()) : true;
 
         case 'referrer': {
             const {referrer = ''} = state.userInfo;
