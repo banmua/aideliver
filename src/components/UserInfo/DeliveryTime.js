@@ -1,4 +1,6 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
+import {update} from '../../redux/slices/shop';
 import ShopContext from '../../hooks/ShopContext';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
@@ -6,11 +8,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import moment from 'moment';
 
-const DeliveryTime = props => {
-    const {state, dispatch} = useContext(ShopContext);
-    const {deliveryDT} = state.userInfo;
+const DeliveryTime = ({shop, update}) => {
+    const {deliveryDT} = shop.userInfo;
     const dayOfWeek = moment(deliveryDT).format('dddd').toLowerCase();
-    const availTimes = state.time?.delivery ? state.time.delivery[dayOfWeek] : [];
+    const availTimes = shop.time?.delivery ? shop.time.delivery[dayOfWeek] : [];
 
     const getTime = () => {
         const dt = moment(deliveryDT);
@@ -31,9 +32,8 @@ const DeliveryTime = props => {
         const minute = arr[1];
         const dt = moment(deliveryDT);
         dt.set({hour, minute});
-        
-        dispatch({type: 'UPDATE', payload: {key: 'deliveryDT', value: dt, parent: 'userInfo'}});
-        dispatch({type: 'UPDATE', payload: {key: 'deliveryTime', value: true, parent: 'isValid'}});
+        update({key: 'deliveryDT', value: dt, group: 'userInfo'});
+        update({key: 'deliveryTime', value: true, group: 'isValid'});
     }
 
     useEffect(() => {
@@ -53,4 +53,4 @@ const DeliveryTime = props => {
     )
 }
 
-export default DeliveryTime;
+export default connect(state => ({shop: state.shop}), {update})(DeliveryTime);

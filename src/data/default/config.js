@@ -93,8 +93,8 @@ export const payment = {
     },
     checkout: {
         step1: ({id, total}) => (`You order total is $${total}. Are you sure you want to submit this order?`),
-
-        step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (650) 935-0455 / phobalo72@gmail.com`)
+        step2: ({id, total}) => (`Thank you for ordering from PhoBalo.com! Your order No is #${id}. We will contact you for delivery and payment (cash, check, Zelle or Venmo). Our contact info is (650) 935-0455 / phobalo72@gmail.com`),
+        error: 'An error occured while submitting the order, please try again.',
     }
 }
 

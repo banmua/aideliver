@@ -1,5 +1,7 @@
 import React, {useContext} from 'react';
-import ShopContext, {getItemTotal} from '../../../hooks/ShopContext';
+import {connect} from 'react-redux';
+import {add, remove, getItemTotal} from '../../../redux/slices/shop';
+import ShopContext  from '../../../hooks/ShopContext';
 import AddIcon from '@material-ui/icons/AddCircleSharp';
 import RemoveIcon from '@material-ui/icons/RemoveCircleSharp';
 
@@ -26,16 +28,16 @@ const styles = {
     },
 }
 
-export default props => {
-    const {id} = props;
+const Item = props => {
+    const {id, add, remove, shop} = props;
     const {state, dispatch} = useContext(ShopContext);
 
-    const add = id => dispatch({type: 'ADD', payload: {id}});
-    const remove = id => dispatch({type: 'REMOVE', payload: {id}});
+    const addItem = id => dispatch({type: 'ADD', payload: {id}});
+    const removeItem = id => dispatch({type: 'REMOVE', payload: {id}});
 
-    const product = state.dict[id];
+    const product = shop.dict[id];
     const {name, price, unit} = product;
-    const count = state.cart[id];
+    const count = shop.cart[id];
     const getPrice = () => count*price;
     const unitStr = count === 1 ? unit : unit + 's';
     return (
@@ -43,11 +45,13 @@ export default props => {
             <div style={styles.name}>{product.name} ({id})</div>
             <div style={styles.number}>${product.price}</div>
             <div style={styles.number}>{count}</div>
-            <div style={styles.number}>${getItemTotal(state, id)}</div>
+            <div style={styles.number}>${getItemTotal(shop, id)}</div>
             <div style={styles.icon}>
-                <AddIcon color='secondary' onClick={() => add(id)} />
-                <RemoveIcon color='secondary' onClick={() => remove(id)} />
+                <AddIcon color='secondary' onClick={() => {add({id})}} />
+                <RemoveIcon color='secondary' onClick={() => {remove({id})}} />
             </div>
         </div>
     )
 }
+
+export default connect(state => ({shop: state.shop}), {add, remove})(Item);

@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
-import ShopContext, {getTax} from '../../../hooks/ShopContext';
-
+import React from 'react';
+import {connect} from 'react-redux';
+import {getTax} from '../../../redux/slices/shop';
 
 const styles = {
     container: {
@@ -17,14 +17,13 @@ const styles = {
     }
 }
 
-export default props => {
-    const {state, dispatch} = useContext(ShopContext);
-    const {cart, dict} = state;
-
+const Tax = ({shop}) => {
     return (
         <div style={styles.container}>
             <div style={styles.right}>Tax:</div>
-            <div style={styles.right}>${getTax(state)}</div>
+            <div style={styles.right}>${getTax(shop)}</div>
         </div>
     )
 }
+
+export default connect(state => ({shop: state.shop}))(Tax)

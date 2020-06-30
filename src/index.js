@@ -17,13 +17,14 @@ import Account from './components/Account';
 import Contact from './components/Contact';
 import {CartAndSubmit} from './components/Cart';
 import ProductList from './components/Product/ProductList';
-import {ShopContextProvider} from './hooks/ShopContext';
+import ShopContext, {ShopContextProvider} from './hooks/ShopContext';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import ShopContext from './hooks/ShopContext';
 import {Redirect} from 'react-router-dom';
 import { Auth} from 'aws-amplify';
+import {Provider} from 'react-redux';
+import store from './redux';
 
 Amplify.configure(config);
 
@@ -47,8 +48,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   }, [userName]);
 
   return (
-    <Route {...rest} render={props => 
-            userName
+    <Route {...rest} render={props => userName
               ? (<Component {...props} />) 
               : (<Redirect to={{pathname: "/user", state: { from: props.location }}}/>)}
     />
@@ -57,26 +57,28 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <ShopContextProvider>
-      <Router>
-        <Switch>
-          {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
-          <Route path="/user"><Account /></Route>
-          <Route path="/admin/range"><Range /></Route>
-          <Route path="/admin/today"><Today /></Route>
-          <Route path="/admin/tomorrow"><Tomorrow /></Route>
-          <Route path="/admin/emails"><Emails /></Route>
-          <Route path="/admin/:id"><AdminItem /></Route>
-          <Route path="/admin"><Layout><Admin /></Layout></Route>
-          <Route path="/profile"><Layout><Profile /></Layout></Route>
-          <Route path="/contact"><Layout><Contact /></Layout></Route>
-          <Route path="/about"><Layout><h2>About Us:</h2></Layout></Route>
-          <Route path="/catalog"><Layout><ProductList /></Layout></Route>
-          <Route path="/cart"><Layout><CartAndSubmit /></Layout></Route>
-          <Route path="/"><Layout><Order /></Layout></Route>
-        </Switch>
-      </Router>
-    </ShopContextProvider>
+    <Provider store={store} >
+      <ShopContextProvider>
+        <Router>
+          <Switch>
+            {/* <PrivateRoute path="/admin" component={<Admin />} /> */}
+            <Route path="/user"><Account /></Route>
+            <Route path="/admin/range"><Range /></Route>
+            <Route path="/admin/today"><Today /></Route>
+            <Route path="/admin/tomorrow"><Tomorrow /></Route>
+            <Route path="/admin/emails"><Emails /></Route>
+            <Route path="/admin/:id"><AdminItem /></Route>
+            <Route path="/admin"><Layout><Admin /></Layout></Route>
+            <Route path="/profile"><Layout><Profile /></Layout></Route>
+            <Route path="/contact"><Layout><Contact /></Layout></Route>
+            <Route path="/about"><Layout><h2>About Us:</h2></Layout></Route>
+            <Route path="/catalog"><Layout><ProductList /></Layout></Route>
+            <Route path="/cart"><Layout><CartAndSubmit /></Layout></Route>
+            <Route path="/"><Layout><Order /></Layout></Route>
+          </Switch>
+        </Router>
+      </ShopContextProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

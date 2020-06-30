@@ -26,8 +26,9 @@ Date.prototype.minusDays = function(d) {
 
 export const isValid2 = (fieldName, state, errorChecking = false) => {
     switch (fieldName) {
-        case 'firstName': 
+        case 'firstName': {
             return errorChecking ? !!state.userInfo.firstName : true;
+        }
         
         case 'lastName': 
             return errorChecking ? !!state.userInfo.lastName : true;

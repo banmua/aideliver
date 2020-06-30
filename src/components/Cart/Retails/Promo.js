@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import ShopContext, {getPromo} from '../../../hooks/ShopContext';
-
+import {connect} from 'react-redux';
+import {getPromo} from '../../../redux/slices/shop';
 
 const styles = {
     container: {
@@ -17,12 +17,10 @@ const styles = {
     }
 }
 
-export default props => {
-    const {state, dispatch} = useContext(ShopContext);
-    const {cart, dict} = state;
-    const {promos = {}} = state.payment;
+const Promo = ({shop}) => {
+    const {promos = {}} = shop.payment;
     const keys = Object.keys(promos);
-    const {referrer: rawReferrer = ''} = state.userInfo;
+    const {referrer: rawReferrer = ''} = shop.userInfo;
 
     const referrer = rawReferrer.trim().toLowerCase();
 
@@ -37,7 +35,7 @@ export default props => {
                     return (
                         <div style={styles.container}>
                             <div style={styles.right}>{`${pro.name}${str}:`}</div>
-                            <div style={styles.right}>{`- $${getPromo(pro)(state)}`}</div>
+                            <div style={styles.right}>{`- $${getPromo(pro)(shop)}`}</div>
                         </div>
                     )
                 })
@@ -45,3 +43,5 @@ export default props => {
         </>
     )
 }
+
+export default connect(state => ({shop: state.shop}))(Promo)

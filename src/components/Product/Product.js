@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import {connect} from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import {add} from '../../redux/slices/shop';
 
 const styles ={
     name: {
@@ -47,10 +49,10 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-export default props => {
+const Product = props => {
     const [choice, setChoice] = useState('');
     const classes = useStyles();
-    const {image, name, description, native, price, id, unit, choices} = props;
+    const {image, name, description, native, price, id, unit, choices, add} = props;
     const {state, dispatch} = useContext(ShopContext);
 
     const isGroup = choices && choices.length > 0;
@@ -98,7 +100,8 @@ export default props => {
                     const count = state.cart[id] || 0;
 
                     if (!prod.limit || count < prod.limit) {
-                        dispatch({type: 'ADD', payload: {id: choices ? choice : id}});
+                        //dispatch({type: 'ADD', payload: {id: choices ? choice : id}});
+                        add({id: choices ? choice : id});
                     }
                 }
 
@@ -108,3 +111,5 @@ export default props => {
         </Card>
     );
 }
+
+export default connect(null, {add})(Product);

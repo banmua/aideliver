@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
-import ShopContext from '../../../hooks/ShopContext';
-
+import React from 'react';
+import {connect} from 'react-redux';
 
 const styles = {
     container: {
@@ -9,28 +8,30 @@ const styles = {
         padding: '5px 0',
         whiteSpace: 'nowrap'
     },
-
     right: {
         justifySelf: 'end',
         fontWeight: 'bold',
         fontSize: '16px',
+    },
+    notes: {
+        justifySelf: 'start',
+        paddingLeft: '7px',
     }
+
 }
 
-export default props => {
-    const {state, dispatch} = useContext(ShopContext);
-
-    const {cart, dict} = state;
-
-    const getDelivery = () => state.deliveryFee.toFixed(2); 
-
-    const referrer = state.userInfo.referrer.trim().toLowerCase();
-    const isFreeShipping = state.freeShipping.includes(referrer);
+const Delivery = ({shop}) => {
+    const getDelivery = () => shop.deliveryFee.toFixed(2);
+    const referrer = shop.userInfo.referrer.trim().toLowerCase();
+    const isFreeShipping = shop.freeShipping.includes(referrer);
     const str = isFreeShipping ? '0.00' : String(getDelivery());
     return (
         <div style={styles.container}>
             <div style={styles.right}>Delivery:</div>
             <div style={styles.right}>${str}</div>
+            <div style={styles.notes}>{isFreeShipping && '(free)'}</div>
         </div>
     )
 }
+
+export default connect(state => ({shop: state.shop}))(Delivery)

@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
-import ShopContext, {getSubTotal} from '../../../hooks/ShopContext';
-
+import React from 'react';
+import {connect} from 'react-redux';
+import {getSubTotal} from '../../../redux/slices/shop';
 
 const styles = {
     container: {
@@ -17,12 +17,13 @@ const styles = {
     }
 }
 
-export default props => {
-    const {state, dispatch} = useContext(ShopContext);
+const SubTotal = ({shop}) => {
     return (
         <div style={styles.container}>
             <div style={styles.right}>Subtotal:</div>
-            <div style={styles.right}>${getSubTotal(state)}</div>
+            <div style={styles.right}>${getSubTotal(shop)}</div>
         </div>
     )
 }
+
+export default connect(state => ({shop: state.shop}))(SubTotal)

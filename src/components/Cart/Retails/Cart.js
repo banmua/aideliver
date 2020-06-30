@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {connect} from 'react-redux';
 import Header from './Header';
 import Item from './Item';
 import Tax from './Tax';
@@ -21,13 +22,13 @@ const styles = {
     }
 }
 
-export default props => {
+const Cart = ({shop}) => {
     const {state, dispatch} = useContext(ShopContext);
 
     return (
         <div style={styles.container} >
             <Header />
-            {Object.keys(state.cart).map(key => <Item key={key} id={key} />)}
+            {Object.keys(shop.cart).map(key => <Item key={key} id={key} />)}
             <Discount />
             <Promo />
             <SubTotal />
@@ -37,3 +38,5 @@ export default props => {
         </div>
     )
 }
+
+export default connect(state => ({shop: state.shop}))(Cart)

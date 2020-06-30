@@ -1,4 +1,6 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
+import {update, clear} from '../../redux/slices/shop';
 import 'date-fns';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
@@ -19,20 +21,19 @@ Date.prototype.addHours= function(h){
     return this;
 }
 
-export default props => {
+const UserInfo = ({update, clear, shop}) => {
     const classes = useStyles();
-    const {state, dispatch} = useContext(ShopContext);
-    const {firstName, lastName, street, city, phone, email, referrer, deliveryDT} = state.userInfo;
+    const {firstName, lastName, street, city, phone, email, referrer, deliveryDT} = shop.userInfo;
 
-    const update = (key, value, parent) => {
-        dispatch({type: 'UPDATE', payload: {key, value, parent}});
-        dispatch({type: 'UPDATE', payload: {key, value: isValid(key, value, true), parent: 'isValid'}});
+    const updateItem = (key, value, group) => {
+        update({key, value, group});
+        update({key, value: isValid(key, value, true), group: 'isValid'});
     }
 
     const fields = ['firstName', 'lastName', 'street', 'city', 'phone', 'email', 'referrer', 'deliveryDate', 'deliveryTime'];
     const errors = {};
     fields.forEach(field => {
-        const flag = isValid2(field, state, state.errorChecking);
+        const flag = isValid2(field, shop, shop.errorChecking);
         errors[field] = !flag;
     })
     
@@ -44,21 +45,21 @@ export default props => {
                             error={errors.firstName}
                             helperText={errors.firstName ? errorMessages.firstName : ''}
                             value={firstName} 
-                            onChange={event => update('firstName', event.target.value, 'userInfo')}
+                            onChange={event => updateItem('firstName', event.target.value, 'userInfo')}
                         /></div>
                 <div><TextField id="standard-basic" label="Last name" 
                             style={errors.lastName ? styles.textError : styles.text} 
                             error={errors.lastName}
                             helperText={errors.lastName ? errorMessages.lastName : ''}
                             value={lastName} 
-                            onChange={event => update('lastName', event.target.value, 'userInfo')}
+                            onChange={event => {updateItem('lastName', event.target.value, 'userInfo')}}
                         /></div>
                 <div><TextField id="standard-basic" label="Street"
                             style={errors.street ? styles.textError : styles.text} 
                             error={errors.street}
                             helperText={errors.street ? errorMessages.street : ''}
                             value={street} 
-                            onChange={event => update('street', event.target.value, 'userInfo')}
+                            onChange={event => updateItem('street', event.target.value, 'userInfo')}
                         /></div>
                <div>
                     <FormControl className={classes.formControl}>
@@ -67,14 +68,10 @@ export default props => {
                                     style={errors.city ? styles.textError : styles.text} 
                                     error={errors.city}
                                     value={city} 
-                                    onChange={event => update('city', event.target.value, 'userInfo')}>
-                            {state.geo.locations.map((loc, i) => 
+                                    onChange={event => updateItem('city', event.target.value, 'userInfo')}>
+                            {shop.geo.locations.map((loc, i) => 
                                 <MenuItem key={`${loc.name}_${i}`} value={loc.city}>{loc.name}</MenuItem>
                             )}
-                            {/* <MenuItem value={"Palo Alto"}>Palo Alto, CA</MenuItem>
-                            <MenuItem value={"Los Altos"}>Los Altos, CA</MenuItem>
-                            <MenuItem value={"Mountain View"}>Mountain View, CA</MenuItem>
-                            <MenuItem value={"Sunnyvale"}>Sunnyvale, CA</MenuItem> */}
                         </Select>
                         <FormHelperText style={styles.textError}>{errors.city ? errorMessages.city : ''}</FormHelperText>
                     </FormControl>
@@ -85,20 +82,20 @@ export default props => {
                             error={errors.phone}
                             helperText={errors.phone ? errorMessages.phone : ''}
                             value={phone} 
-                            onChange={event => update('phone', event.target.value, 'userInfo')}
+                            onChange={event => updateItem('phone', event.target.value, 'userInfo')}
                         /></div>
                 <div><TextField id="standard-basic" label="Email" style={styles.text} 
                             style={errors.email ? styles.textError : styles.text} 
                             error={errors.email}
                             helperText={errors.email ? errorMessages.email : ''}
                             value={email} 
-                            onChange={event => update('email', event.target.value, 'userInfo')}
+                            onChange={event => updateItem('email', event.target.value, 'userInfo')}
                         /></div>
                 <div><TextField id="standard-basic" label="Coupon Code (optional)" style={styles.text} 
                             error={errors.referrer}
                             helperText={errors.referrer ? errorMessages.referrer : ''}
                             value={referrer} 
-                            onChange={event => update('referrer', event.target.value, 'userInfo')}
+                            onChange={event => updateItem('referrer', event.target.value, 'userInfo')}
                         /></div>
                 <div style={{
                             display: 'grid',
@@ -117,32 +114,14 @@ export default props => {
                         helperText={errors.deliveryDate ? errorMessages.deliveryDate : ''}
 
                         value={deliveryDT}
-                        onChange={date => update('deliveryDT', date, 'userInfo')}
+                        onChange={date => updateItem('deliveryDT', date, 'userInfo')}
                         KeyboardButtonProps={{'aria-label': 'change date'}}
                     /> 
                     <DeliveryTime />
-                </div>
-                {/* <div><KeyboardTimePicker style={styles.text}
-                        //margin="normal"
-                        id="time-picker"
-                        label="Delivery Time"
-
-                        style={errors.deliveryTime ? styles.textError : styles.text} 
-                        error={errors.deliveryTime}
-                        helperText={errors.deliveryTime ? errorMessages.deliveryTime : ''}
-
-                        value={deliveryDT}
-                        onChange={date => {
-                            console.log('>>> DATE:', date);
-                            update('deliveryDT', date, 'userInfo')
-                        }}
-                        KeyboardButtonProps={{'aria-label': 'change time'}}
-                    />
-                </div> */}
-                <div>
-                    
                 </div>
             </form>
         </MuiPickersUtilsProvider>
     )
 }
+
+export default connect(state => ({shop: state.shop}), {update, clear})(UserInfo);
