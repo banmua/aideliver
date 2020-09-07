@@ -9,7 +9,7 @@ import mariscossanjuan from './mariscossanjuan';
 export const config = () => {
     const hostname = window.location.hostname;
 
-    const res = phobalo //costcotogo; //goldenrimrealty; //vietdrinks; // default;
+    const res = mariscossanjuan; //phobalo; //costcotogo; //goldenrimrealty; //vietdrinks; // default;
 
     if (hostname.endsWith('aideliver.com')) return aideliver;
     if (hostname.endsWith('phobalo.com')) return phobalo;
