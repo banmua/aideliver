@@ -155,7 +155,7 @@ export const geo = {
     ]
 }
 
-export const menu = ['C2', 'G1', 'C1', 'V1', 'G2', 'N1', 'R2', 'R1', 'L1'];
+export const menu = ['G1', 'C1', 'V1', 'G2', 'N1', 'R2', 'R1', 'L1'];
 
 export const products = [
     {
